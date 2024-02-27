@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вітаємо!</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Вітаємо!</h1>
+    <p>Це ваша особиста сторінка вітання.</p>
+    <p>Тут ви можете:</p>
+    <ul>
+        <li>Переглянути новини.</li>
+        <li>Створити список справ.</li>
+        <li>Перевірити погоду.</li>
+        <li>І багато іншого!</li>
+    </ul>
+    <a th:href="@{/about}" th:text="'Дізнатися більше'"></a>
+</div>
+</body>
+</html>
