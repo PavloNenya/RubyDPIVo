@@ -3,4 +3,94 @@
 @import "../settings";
 @import "../base/swiper.scss";
 
+.mainscreen {
+    &__title {
+        line-height: 1;
+        padding: 10px;
 
+        &::after {
+            content: "";
+            display: inline-block;
+            width: percent(63, 330);
+            padding-bottom: percent(63, 330);
+            margin-left: 10px;
+            transform: rotate(-10.562deg);
+            background-image: url("../img/mainscreen/banner.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+
+        @include phone-landscape {
+            &::after {
+                display: none;
+            }
+        }
+
+        @include tablet {
+            white-space: nowrap !important;
+        }
+    }
+
+    &__content {
+        position: relative;
+        @include adaptiveValue("margin-bottom", 50, 26);
+        padding-top: percent(517, 1224);
+        @include adaptiveValue("padding-bottom", 30, 18);
+        @include adaptiveValue("padding-right", 60, 18);
+        @include adaptiveValue("padding-left", 60, 18);
+        border-radius: 5px;
+    }
+
+    &__block {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        @include adaptiveValue("font-size", 24, 12);
+        font-weight: 500;
+        color: var(--color-text-reverse);
+    }
+
+    &__text {
+        @include adaptiveValue("max-width", 357, 190);
+    }
+
+    &__swiper {
+        margin-left: calc(50% - 50vw);
+        margin-right: calc(50% - 50vw);
+    }
+
+    &__items {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__item {
+        @include adaptiveValue("min-width", 120, 83);
+        @include adaptiveValue("min-height", 90, 60);
+        @include adaptiveValue("max-width", 120, 83);
+        @include adaptiveValue("max-height", 90, 60);
+    }
+
+    &__img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    &__banner {
+        display: none;
+        position: absolute;
+        top: percent(120, 600);
+        right: percent(63, 1200);
+        @include adaptiveValue("width", 183, 70, $containerWidth, 480);
+        transform: rotate(-10.562deg);
+
+        @include phone-landscape {
+            display: initial;
+        }
+    }
+}
