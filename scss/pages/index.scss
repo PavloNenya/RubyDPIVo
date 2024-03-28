@@ -94,3 +94,128 @@
         }
     }
 }
+
+/* =====================================
+================================================================================*/
+
+$cardMarginFrom: 35.5;
+$cardMarginTo: 17;
+
+.sale {
+    &__body {
+        display: flex;
+        flex-direction: column;
+        @include adaptiveValue("gap", 22, 6);
+
+        @include tablet {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+
+    &__img-wrapper {
+        flex: 0 0 percent(487, $containerWidth);
+    }
+
+    &__img {
+        width: 100%;
+        height: 100%;
+        aspect-ratio: 330 / 216;
+        border-radius: 5px;
+        object-fit: cover;
+        object-position: center;
+
+        @include laptop {
+            aspect-ratio: initial;
+        }
+    }
+
+    &__content {
+        @include adaptiveValue("padding", 50, 18);
+        border-radius: 5px;
+        background-color: var(--color-background-block);
+    }
+
+    &__block {
+        @include adaptiveValue("margin-bottom", 30, 15);
+        border-bottom: 1px solid var(--color-secondary-grey);
+    }
+
+    &__title {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        @include adaptiveValue("margin-bottom", 30, 20);
+    }
+
+    &__text {
+        @include adaptiveValue("margin-bottom", 41, 33.5);
+    }
+
+    &__button {
+        width: 100%;
+
+        .button {
+            flex: 1 1 auto;
+        }
+    }
+}
+
+.timer {
+    @include adaptiveValue("margin-bottom", 68, 32);
+
+    &__items {
+        display: flex;
+        @include adaptiveValue("font-size", 64, 28);
+        line-height: 87%;
+        letter-spacing: em(0.064, 64);
+    }
+
+    &__item {
+        position: relative;
+        text-align: center;
+
+        &:not(:first-child) {
+            @include adaptiveValue("margin-left", $cardMarginFrom, $cardMarginTo);
+        }
+
+        &:not(:last-child) {
+            @include adaptiveValue("margin-right", $cardMarginFrom, $cardMarginTo);
+        }
+
+        &::before {
+            content: attr(data-title);
+            position: absolute;
+            left: 50%;
+            @include adaptiveValue("bottom", -20, -6);
+            transform: translateX(-50%) translateY(100%);
+            @include adaptiveValue("font-size", 16, 8);
+            line-height: 1;
+            color: var(--color-text-muted);
+        }
+
+        &:not(:last-child)::after {
+            content: ":";
+            position: absolute;
+            @include adaptiveValue("right", (-$cardMarginFrom), (-$cardMarginTo));
+            transform: translateX(50%);
+        }
+    }
+}
+
+.form-sale {
+    &__item {
+        position: relative;
+    }
+
+    &__button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: percent(26, 500);
+    }
+}
+
+/* =====================================
+================================================================================*/
