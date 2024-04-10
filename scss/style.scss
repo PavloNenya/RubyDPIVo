@@ -1,12 +1,12 @@
-@use "sass:math";
+@use 'sass:math';
 
-@import "settings";
+@import 'settings';
 
-@import "fonts/icons";
-@import "fonts/fonts";
+@import 'fonts/icons';
+@import 'fonts/fonts';
 
 // Reset and general parameters ============================================================================================================================================================================================== =============================================================================================== ===============================================================================================
-@import "base/null";
+@import 'base/null';
 
 body {
     .lock & {
@@ -33,7 +33,7 @@ body {
 // Responsive container ======================================================================================================================================================================================================================
 
 @if ($responsiveType==1) {
-    [class*="__container"] {
+    [class*='__container'] {
         @if ($maxWidthContainer>0) {
             max-width: rem($maxWidthContainer);
             box-sizing: content-box;
@@ -44,7 +44,7 @@ body {
         }
     }
 } @else {
-    [class*="__container"] {
+    [class*='__container'] {
         margin: 0 auto;
         @if ($maxWidthContainer>0) {
             max-width: rem($maxWidthContainer);
@@ -69,17 +69,25 @@ body {
     }
 }
 
+section:first-child {
+    @include adaptiveValue('margin-top', 32.5, 26.5);
+}
+
+section:last-child {
+    @include adaptiveValue('margin-bottom', 108.5, 69);
+}
+
 section:not(:first-child) {
-    @include adaptiveValue("margin-top", 110, 70);
+    @include adaptiveValue('margin-top', 110, 70);
 }
 
 section:not(:last-child) {
-    @include adaptiveValue("margin-bottom", 110, 70);
+    @include adaptiveValue('margin-bottom', 110, 70);
 }
 
 h1,
 .title-1 {
-    @include adaptiveValue("font-size", 96, 78, 480, 320, 1);
+    @include adaptiveValue('font-size', 96, 78, 480, 320, 1);
     font-weight: 600;
     line-height: 87%;
     letter-spacing: em(0.396, 198);
@@ -87,13 +95,20 @@ h1,
     color: var(--color-text);
 
     @include phone-landscape {
-        @include adaptiveValue("font-size", 193.9, 70.6, $containerWidth, 480, 1);
+        @include adaptiveValue(
+            'font-size',
+            193.9,
+            70.6,
+            $containerWidth,
+            480,
+            1
+        );
     }
 }
 
 h2,
 .title-2 {
-    @include adaptiveValue("font-size", 64, 32);
+    @include adaptiveValue('font-size', 64, 32);
     font-weight: 500;
     line-height: 87%;
     letter-spacing: em(0.128, 64);
@@ -102,7 +117,7 @@ h2,
 
 h3,
 .title-3 {
-    @include adaptiveValue("font-size", 64, 32);
+    @include adaptiveValue('font-size', 64, 32);
     font-weight: 500;
     line-height: normal;
     color: var(--color-text-reverse);
@@ -127,12 +142,12 @@ h5,
 }
 
 .text-muted {
-    @include adaptiveValue("font-size", 16, 12);
+    @include adaptiveValue('font-size', 16, 12);
     color: var(--color-text-muted);
 }
 
 .text-light {
-    @include adaptiveValue("font-size", 16, 12);
+    @include adaptiveValue('font-size', 16, 12);
     color: var(--color-text-reverse);
 }
 
@@ -146,7 +161,7 @@ h5,
     justify-content: center;
     align-items: center;
     text-align: center;
-    @include adaptiveValue("font-size", 16, 12);
+    @include adaptiveValue('font-size', 16, 12);
     font-weight: 600;
     border-radius: 12px;
     text-transform: capitalize;
@@ -155,17 +170,17 @@ h5,
     &_lg {
         line-height: 87%;
         letter-spacing: percent(0.032, 16);
-        @include adaptiveValue("padding-top", 16, 14);
-        @include adaptiveValue("padding-bottom", 16, 14);
-        @include adaptiveValue("padding-right", 32, 20);
-        @include adaptiveValue("padding-left", 32, 20);
+        @include adaptiveValue('padding-top', 16, 14);
+        @include adaptiveValue('padding-bottom', 16, 14);
+        @include adaptiveValue('padding-right', 32, 20);
+        @include adaptiveValue('padding-left', 32, 20);
     }
 
     &_md {
-        @include adaptiveValue("padding-top", 16, 8);
-        @include adaptiveValue("padding-bottom", 16, 8);
-        @include adaptiveValue("padding-right", 36, 18);
-        @include adaptiveValue("padding-left", 36, 18);
+        @include adaptiveValue('padding-top', 16, 8);
+        @include adaptiveValue('padding-bottom', 16, 8);
+        @include adaptiveValue('padding-right', 36, 18);
+        @include adaptiveValue('padding-left', 36, 18);
     }
 
     &_default {
@@ -173,8 +188,8 @@ h5,
         background-color: var(--color-background);
 
         .icon-arrow {
-            @include adaptiveValue("font-size", 16, 8);
-            @include adaptiveValue("margin-left", 10, 5);
+            @include adaptiveValue('font-size', 16, 8);
+            @include adaptiveValue('margin-left', 10, 5);
         }
 
         // TODO
@@ -206,8 +221,8 @@ h5,
         background-color: transparent;
 
         .icon-arrow {
-            @include adaptiveValue("font-size", 16, 8);
-            @include adaptiveValue("margin-left", 10, 5);
+            @include adaptiveValue('font-size', 16, 8);
+            @include adaptiveValue('margin-left', 10, 5);
         }
     }
 
@@ -251,3 +266,12 @@ h5,
         visibility: hidden;
     }
 }
+
+.logo {
+    &__link {
+        font-size: initial;
+    }
+}
+
+@import 'modules/header.scss';
+@import 'modules/footer.scss';

@@ -1,214 +1,285 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sneakpeek</title>
+    <link rel="stylesheet" href="css/style.min.css" />
+    <link rel="stylesheet" href="css/index.min.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sneakpeek</title>
-  <link rel="stylesheet" href="css/style.min.css" />
-  <link rel="stylesheet" href="css/index.min.css" />
-</head>
-
-<body>
-  <div class="wrapper">
-    @@include('html/_header.htm',{})
-    <main class="page">
-      <section class="page__mainscreen mainscreen">
-        <div class="mainscreen__container">
-          <div class="mainscreen__body">
-            <h1 class="mainscreen__title title-1">sneak<wbr />peek</h1>
-            <div class="mainscreen__content ibg">
-              <img class="mainscreen__main-img" src="img/mainscreen/bg.jpg" alt="bg.jpg" />
-              <div class="mainscreen__block">
-                <div class="mainscreen__text">
-                  <p>
-                    In the whole summer show, this is the designer’s best look
-                    yet
-                  </p>
-                </div>
-                <div class="mainscreen__date">
-                  <p>17.06<br />2023</p>
-                </div>
-              </div>
-              <img class="mainscreen__banner" src="img/mainscreen/banner.png" alt="banner.png" />
-            </div>
-            <div class="mainscreen__swiper swiper">
-              <ul class="mainscreen__items swiper-wrapper">
-                <li class="mainscreen__item swiper-slide">
-                  <img class="mainscreen__img" src="img/mainscreen/items/item-1.png" alt="item-1.png" />
-                </li>
-                <li class="mainscreen__item swiper-slide">
-                  <img class="mainscreen__img" src="img/mainscreen/items/item-2.png" alt="item-2.png" />
-                </li>
-                <li class="mainscreen__item swiper-slide">
-                  <img class="mainscreen__img" src="img/mainscreen/items/item-3.png" alt="item-3.png" />
-                </li>
-                <li class="mainscreen__item swiper-slide">
-                  <img class="mainscreen__img" src="img/mainscreen/items/item-4.png" alt="item-4.png" />
-                </li>
-                <li class="mainscreen__item swiper-slide">
-                  <img class="mainscreen__img" src="img/mainscreen/items/item-5.png" alt="item-5.png" />
-                </li>
-                <li class="mainscreen__item swiper-slide">
-                  <img class="mainscreen__img" src="img/mainscreen/items/item-6.png" alt="item-6.png" />
-                </li>
-                <li class="mainscreen__item swiper-slide">
-                  <img class="mainscreen__img" src="img/mainscreen/items/item-7.png" alt="item-7.png" />
-                </li>
-                <li class="mainscreen__item swiper-slide">
-                  <img class="mainscreen__img" src="img/mainscreen/items/item-8.png" alt="item-8.png" />
-                </li>
-                <li class="mainscreen__item swiper-slide">
-                  <img class="mainscreen__img" src="img/mainscreen/items/item-9.png" alt="item-9.png" />
-                </li>
-                <li class="mainscreen__item swiper-slide">
-                  <img class="mainscreen__img" src="img/mainscreen/items/item-1.png" alt="item-1.png" />
-                </li>
-                <li class="mainscreen__item swiper-slide">
-                  <img class="mainscreen__img" src="img/mainscreen/items/item-2.png" alt="item-2.png" />
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="page__sale sale">
-        <div class="sale__container">
-          <div class="sale__body">
-            <div class="sale__img-wrapper">
-              <img class="sale__img" src="img/sale/sale-1.jpg" alt="sale-1.jpg" />
-            </div>
-            <div class="sale__content">
-              <div class="sale__block">
-                <h2 class="sale__title title-2">
-                  Get 30% sale for summer collection
-                </h2>
-                <p class="sale__text text-muted">
-                  The most wanted styles is waiting for you right now. Find
-                  the best styles of modern outfits for you at one place.
-                </p>
-              </div>
-              <div class="sale__timer timer">
-                <div class="timer__items">
-                  <div class="timer__item timer__days" data-title="days">
-                    00
+  <body>
+    <div class="wrapper">
+      @@include('html/_header.htm',{})
+      <main class="page">
+        <section class="page__mainscreen mainscreen">
+          <div class="mainscreen__container">
+            <div class="mainscreen__body">
+              <h1 class="mainscreen__title title-1">sneak<wbr />peek</h1>
+              <div class="mainscreen__content ibg">
+                <img
+                  class="mainscreen__main-img"
+                  src="img/mainscreen/bg.jpg"
+                  alt="bg.jpg"
+                />
+                <div class="mainscreen__block">
+                  <div class="mainscreen__text">
+                    <p>
+                      In the whole summer show, this is the designer’s best look
+                      yet
+                    </p>
                   </div>
-                  <div class="timer__item timer__hours" data-title="hours">
-                    00
-                  </div>
-                  <div class="timer__item timer__minutes" data-title="minutes">
-                    00
-                  </div>
-                  <div class="timer__item timer__seconds" data-title="seconds">
-                    00
+                  <div class="mainscreen__date">
+                    <p>17.06<br />2023</p>
                   </div>
                 </div>
+                <img
+                  class="mainscreen__banner"
+                  src="img/mainscreen/banner.png"
+                  alt="banner.png"
+                />
               </div>
-              <div class="sale__button button-wrapper">
-                <a class="button button_lg button_default" href="#">buy now<span class="icon-arrow"></span></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="page__blog blog">
-        <div class="blog__container">
-          <div class="blog__body">
-            <div class="blog__title-block title-block">
-              <h2 class="title-block__title title-2">Our Blog</h2>
-              <div class="title-block__button button-wrapper">
-                <a class="button button_md button_ghost" href="#"><span class="icon-arrow"></span>View All</a>
-              </div>
-            </div>
-            <div class="blog__items">
-              <div class="blog__item ibg">
-                <img src="img/blog/blog-1.jpg" alt="blog-1" />
-                <div class="blog__button button-wrapper">
-                  <a class="button button_lg button_transparent" href="#">2023 Lookbook<span
-                      class="icon-arrow"></span></a>
-                </div>
-                <div class="blog__content">
-                  <h3 class="blog__title title-3">New Release</h3>
-                  <p class="blog__text text-light">
-                    Presenting new trends of 2023
-                  </p>
-                </div>
-                <div class="blog__line"></div>
-              </div>
-              <div class="blog__item ibg">
-                <img src="img/blog/blog-2.jpg" alt="blog-2" />
-                <div class="blog__button button-wrapper">
-                  <a class="button button_lg button_transparent" href="#"><span class="icon-play"></span>Watch
-                    Trending</a>
-                </div>
-                <div class="blog__content">
-                  <h3 class="blog__title title-3">New Release</h3>
-                  <p class="blog__text text-light">
-                    Presenting new trends of 2023
-                  </p>
-                </div>
-                <div class="blog__line"></div>
-              </div>
-              <div class="blog__item ibg">
-                <img src="img/blog/blog-3.jpg" alt="blog-3" />
-                <div class="blog__button button-wrapper">
-                  <a class="button button_lg button_reverse" href="#"><span>Subscribe</span></a>
-                </div>
-                <div class="blog__content">
-                  <p class="blog__text text-light">
-                    Subscribe to the newsletter and receive new offers from
-                    our store with hot offers.
-                  </p>
-                </div>
-                <ul class="blog__icons icons">
-                  <li class="icons__item">
-                    <img src="img/blog/icons/icons-1.png" alt="icons-1" />
+              <div class="mainscreen__swiper swiper">
+                <ul class="mainscreen__items swiper-wrapper">
+                  <li class="mainscreen__item swiper-slide">
+                    <img
+                      class="mainscreen__img"
+                      src="img/mainscreen/items/item-1.png"
+                      alt="item-1.png"
+                    />
                   </li>
-                  <li class="icons__item">
-                    <img src="img/blog/icons/icons-2.png" alt="icons-2" />
+                  <li class="mainscreen__item swiper-slide">
+                    <img
+                      class="mainscreen__img"
+                      src="img/mainscreen/items/item-2.png"
+                      alt="item-2.png"
+                    />
                   </li>
-                  <li class="icons__item">
-                    <img src="img/blog/icons/icons-3.png" alt="icons-3" />
+                  <li class="mainscreen__item swiper-slide">
+                    <img
+                      class="mainscreen__img"
+                      src="img/mainscreen/items/item-3.png"
+                      alt="item-3.png"
+                    />
+                  </li>
+                  <li class="mainscreen__item swiper-slide">
+                    <img
+                      class="mainscreen__img"
+                      src="img/mainscreen/items/item-4.png"
+                      alt="item-4.png"
+                    />
+                  </li>
+                  <li class="mainscreen__item swiper-slide">
+                    <img
+                      class="mainscreen__img"
+                      src="img/mainscreen/items/item-5.png"
+                      alt="item-5.png"
+                    />
+                  </li>
+                  <li class="mainscreen__item swiper-slide">
+                    <img
+                      class="mainscreen__img"
+                      src="img/mainscreen/items/item-6.png"
+                      alt="item-6.png"
+                    />
+                  </li>
+                  <li class="mainscreen__item swiper-slide">
+                    <img
+                      class="mainscreen__img"
+                      src="img/mainscreen/items/item-7.png"
+                      alt="item-7.png"
+                    />
+                  </li>
+                  <li class="mainscreen__item swiper-slide">
+                    <img
+                      class="mainscreen__img"
+                      src="img/mainscreen/items/item-8.png"
+                      alt="item-8.png"
+                    />
+                  </li>
+                  <li class="mainscreen__item swiper-slide">
+                    <img
+                      class="mainscreen__img"
+                      src="img/mainscreen/items/item-9.png"
+                      alt="item-9.png"
+                    />
+                  </li>
+                  <li class="mainscreen__item swiper-slide">
+                    <img
+                      class="mainscreen__img"
+                      src="img/mainscreen/items/item-1.png"
+                      alt="item-1.png"
+                    />
+                  </li>
+                  <li class="mainscreen__item swiper-slide">
+                    <img
+                      class="mainscreen__img"
+                      src="img/mainscreen/items/item-2.png"
+                      alt="item-2.png"
+                    />
                   </li>
                 </ul>
-                <div class="blog__line blog__line_small"></div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-      <section class="page__sale sale">
-        <div class="sale__container">
-          <div class="sale__body">
-            <div class="sale__img-wrapper">
-              <img class="sale__img" src="img/sale/sale-2.jpg" alt="sale-2.jpg" />
-            </div>
-            <div class="sale__content">
-              <div class="sale__block">
-                <h2 class="sale__title title-2">
-                  35% off for only
-                  this friday and get special gift
-                </h2>
-                <p class="sale__text text-muted">
-                  Subscribe to the our newsletter and get a bonus code for a 35% discount during this friday sale, plus
-                  a cool gift!!
-                </p>
+        </section>
+        <section class="page__sale sale">
+          <div class="sale__container">
+            <div class="sale__body">
+              <div class="sale__img-wrapper">
+                <img
+                  class="sale__img"
+                  src="img/sale/sale-1.jpg"
+                  alt="sale-1.jpg"
+                />
               </div>
-              <form class="sale__form form-sale" action="#">
-                <div class="form-sale__item">
-                  <input class="form-sale__input" type="email" name="email">
-                  <button class="form-sale__button" type="submit">Go</button>
+              <div class="sale__content">
+                <div class="sale__block">
+                  <h2 class="sale__title title-2">
+                    Get 30% sale for summer collection
+                  </h2>
+                  <p class="sale__text text-muted">
+                    The most wanted styles is waiting for you right now. Find
+                    the best styles of modern outfits for you at one place.
+                  </p>
                 </div>
-              </form>
+                <div class="sale__timer timer">
+                  <div class="timer__items">
+                    <div class="timer__item timer__days" data-title="days">
+                      00
+                    </div>
+                    <div class="timer__item timer__hours" data-title="hours">
+                      00
+                    </div>
+                    <div
+                      class="timer__item timer__minutes"
+                      data-title="minutes"
+                    >
+                      00
+                    </div>
+                    <div
+                      class="timer__item timer__seconds"
+                      data-title="seconds"
+                    >
+                      00
+                    </div>
+                  </div>
+                </div>
+                <div class="sale__button button-wrapper">
+                  <a class="button button_lg button_default" href="#"
+                    >buy now<span class="icon-arrow"></span
+                  ></a>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-    </main>
-    @@include('html/_footer.htm',{})
-  </div>
-  <!-- @@include('html/_popup.htm',{}) -->
-  <script type="module" src="js/app.min.js"></script>
-</body>
-
+        </section>
+        <section class="page__blog blog">
+          <div class="blog__container">
+            <div class="blog__body">
+              <div class="blog__title-block title-block">
+                <h2 class="title-block__title title-2">Our Blog</h2>
+                <div class="title-block__button button-wrapper">
+                  <a class="button button_md button_ghost" href="#"
+                    ><span class="icon-arrow"></span>View All</a
+                  >
+                </div>
+              </div>
+              <div class="blog__items">
+                <div class="blog__item ibg">
+                  <img src="img/blog/blog-1.jpg" alt="blog-1" />
+                  <div class="blog__button button-wrapper">
+                    <a class="button button_lg button_transparent" href="#"
+                      >2023 Lookbook<span class="icon-arrow"></span
+                    ></a>
+                  </div>
+                  <div class="blog__content">
+                    <h3 class="blog__title title-3">New Release</h3>
+                    <p class="blog__text text-light">
+                      Presenting new trends of 2023
+                    </p>
+                  </div>
+                  <div class="blog__line"></div>
+                </div>
+                <div class="blog__item ibg">
+                  <img src="img/blog/blog-2.jpg" alt="blog-2" />
+                  <div class="blog__button button-wrapper">
+                    <a class="button button_lg button_transparent" href="#"
+                      ><span class="icon-play"></span>Watch Trending</a
+                    >
+                  </div>
+                  <div class="blog__content">
+                    <h3 class="blog__title title-3">New Release</h3>
+                    <p class="blog__text text-light">
+                      Presenting new trends of 2023
+                    </p>
+                  </div>
+                  <div class="blog__line"></div>
+                </div>
+                <div class="blog__item ibg">
+                  <img src="img/blog/blog-3.jpg" alt="blog-3" />
+                  <div class="blog__button button-wrapper">
+                    <a class="button button_lg button_reverse" href="#"
+                      ><span>Subscribe</span></a
+                    >
+                  </div>
+                  <div class="blog__content">
+                    <p class="blog__text text-light">
+                      Subscribe to the newsletter and receive new offers from
+                      our store with hot offers.
+                    </p>
+                  </div>
+                  <ul class="blog__icons icons">
+                    <li class="icons__item">
+                      <img src="img/blog/icons/icons-1.png" alt="icons-1" />
+                    </li>
+                    <li class="icons__item">
+                      <img src="img/blog/icons/icons-2.png" alt="icons-2" />
+                    </li>
+                    <li class="icons__item">
+                      <img src="img/blog/icons/icons-3.png" alt="icons-3" />
+                    </li>
+                  </ul>
+                  <div class="blog__line blog__line_small"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="page__sale sale">
+          <div class="sale__container">
+            <div class="sale__body">
+              <div class="sale__img-wrapper">
+                <img
+                  class="sale__img"
+                  src="img/sale/sale-2.jpg"
+                  alt="sale-2.jpg"
+                />
+              </div>
+              <div class="sale__content">
+                <div class="sale__block">
+                  <h2 class="sale__title title-2">
+                    35% off for only this friday and get special gift
+                  </h2>
+                  <p class="sale__text text-muted">
+                    Subscribe to the our newsletter and get a bonus code for a
+                    35% discount during this friday sale, plus a cool gift!!
+                  </p>
+                </div>
+                <form class="sale__form form-sale" action="#">
+                  <div class="form-sale__item">
+                    <input class="form-sale__input" type="email" name="email" />
+                    <button class="form-sale__button" type="submit">Go</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      @@include('html/_footer.htm',{})
+    </div>
+    <!-- @@include('html/_popup.htm',{}) -->
+    <script type="module" src="js/app.min.js"></script>
+  </body>
 </html>
