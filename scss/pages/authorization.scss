@@ -56,4 +56,22 @@
     flex-direction: row;
     gap: 16px;
   }
+
+  &__button {
+    width: 35%;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .authorization__input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .authorization__button {
+    width: 100%;
+  }
 }
