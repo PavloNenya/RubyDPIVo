@@ -330,6 +330,12 @@ $itemCount: 3;
 
   &__image {
     width: 100%;
+    aspect-ratio: 4/5;
+    border-radius: 10px;
+  }
+
+  &__image--large {
+    aspect-ratio: 4/4;
   }
 
   &__information {
