@@ -294,3 +294,101 @@ $itemCount: 3;
 
 /* =====================================
 ================================================================================*/
+
+.goods {
+  &__cards-wrapper {
+    --columns: 4;
+    display: grid;
+    column-gap: 20px;
+    grid-template-columns: repeat(var(--columns), 1fr);
+    row-gap: 20px;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  @media screen and (max-width: 768px) {
+    .goods__cards-wrapper {
+      --columns: 2;
+    }
+  }
+
+  @media screen and (max-width: 320px) {
+    .goods__cards-wrapper {
+      --columns: 1;
+    }
+  }
+}
+
+.card {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  gap: 16px;
+
+  box-sizing: border-box;
+  // max-width: 285px;
+
+  &__image {
+    width: 100%;
+  }
+
+  &__information {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__price-cost {
+    font-size: 24px;
+  }
+
+  &__price {
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+  }
+
+  &__price-cost-sale {
+    text-decoration: line-through;
+  }
+}
+
+.infolabel {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  border-radius: 12px;
+  color: var(--color-accent);
+  gap: 2px;
+  padding-inline: 10px;
+  padding-block: 6px;
+  background-color: var(--color-reverse);
+  width: max-content;
+  display: flex;
+  align-items: center;
+
+  &__icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.button-like {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  border-radius: 50%;
+  background-color: var(--color-reverse);
+  color: var(--color-accent);
+  height: 36px;
+  width: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
