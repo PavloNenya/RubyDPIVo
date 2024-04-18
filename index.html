@@ -4,14 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sneakpeek</title>
+    <link rel="icon" type="image/x-icon" href="./img/icons/favicon.svg" />
     <link rel="stylesheet" href="css/style.min.css" />
     <link rel="stylesheet" href="css/index.min.css" />
-    <a href="registration.html">Sign Up/In (All)</a>
+    <!-- <a href="registration.html">Sign Up/In (All)</a> -->
   </head>
 
-  <body>
+  <body class="page__body">
     <div class="wrapper">
-      @@include('html/_header.htm',{})
+      @@include('html/_header.html',{})
       <main class="page">
         <section class="page__mainscreen mainscreen">
           <div class="mainscreen__container">
@@ -131,120 +132,159 @@
               <div class="goods__title-block title-block">
                 <h2 class="title-block__title title-2">New Collection</h2>
                 <div class="title-block__button button-wrapper">
-                  <a class="button button_md button_ghost" href="#"><span class="icon-arrow"></span>View All</a>
+                  <a class="button button_md button_ghost" href="#"
+                    ><span class="icon-arrow"></span>View All</a
+                  >
                 </div>
               </div>
-  
+
               <div class="goods__cards-wrapper">
                 <div class="product__card card">
                   <img
                     class="card__image"
                     src="/img/cards/1/item-1.jpg"
                     alt="img-of-item"
-                  >
-  
-                  <div class="infolabel">new <img class="infolabel__icon" src="/img/icons/clock.svg" alt=""></span></div>
-                  <div class="button-like"><a class="button-like__icon" href=""><img src="/img/icons/heart.svg" alt=""></a></div>
-  
+                  />
+
+                  <div class="infolabel">
+                    new
+                    <img
+                      class="infolabel__icon"
+                      src="/img/icons/clock.svg"
+                      alt=""
+                    />
+                  </div>
+                  <div class="button-like">
+                    <a class="button-like__icon" href=""
+                      ><img src="/img/icons/heart.svg" alt=""
+                    /></a>
+                  </div>
+
                   <div class="card__information">
                     <div class="card__description">
-                      <p class="card__producer title-5">
-                        Nike SB
-                      </p>
-        
+                      <p class="card__producer title-5">Nike SB</p>
+
                       <h4 class="card__title title-4">
                         Hoodie for skateboarding
                       </h4>
                     </div>
-        
-                    <div class="card__price"> 
-                      <p class="card__price-cost title-1">$229</p><span class="card__price-cost-sale title-5">$229</span>
+
+                    <div class="card__price">
+                      <p class="card__price-cost title-1">$229</p>
+                      <span class="card__price-cost-sale title-5">$229</span>
                     </div>
                   </div>
                 </div>
-  
+
                 <div class="product__card card">
                   <img
                     class="card__image"
                     src="/img/cards/1/item-2.jpg"
                     alt="img-of-item"
-                  >
-  
-                  <div class="infolabel">new <img class="infolabel__icon" src="/img/icons/clock.svg" alt=""></span></div>
-                  <div class="button-like"><a class="button-like__icon" href=""><img src="/img/icons/heart.svg" alt=""></a></div>
-  
+                  />
+
+                  <div class="infolabel">
+                    new
+                    <img
+                      class="infolabel__icon"
+                      src="/img/icons/clock.svg"
+                      alt=""
+                    />
+                  </div>
+                  <div class="button-like">
+                    <a class="button-like__icon" href=""
+                      ><img src="/img/icons/heart.svg" alt=""
+                    /></a>
+                  </div>
+
                   <div class="card__information">
                     <div class="card__description">
-                      <p class="card__producer title-5">
-                        Jordan
-                      </p>
-        
-                      <h4 class="card__title title-4">
-                        Air Jordan 1 Mid
-                      </h4>
+                      <p class="card__producer title-5">Jordan</p>
+
+                      <h4 class="card__title title-4">Air Jordan 1 Mid</h4>
                     </div>
-        
-                    <div class="card__price"> 
-                      <p class="card__price-cost title-1">$179</p><span class="card__price-cost-sale title-5">$179</span>
+
+                    <div class="card__price">
+                      <p class="card__price-cost title-1">$179</p>
+                      <span class="card__price-cost-sale title-5">$179</span>
                     </div>
                   </div>
                 </div>
-  
+
                 <div class="product__card card">
                   <img
                     class="card__image"
                     src="/img/cards/1/item-3.jpg"
                     alt="img-of-item"
-                  >
-  
-                  <div class="infolabel">new <img class="infolabel__icon" src="/img/icons/clock.svg" alt=""></span></div>
-                  <div class="button-like"><a class="button-like__icon" href=""><img src="/img/icons/heart.svg" alt=""></a></div>
-  
+                  />
+
+                  <div class="infolabel">
+                    new
+                    <img
+                      class="infolabel__icon"
+                      src="/img/icons/clock.svg"
+                      alt=""
+                    />
+                  </div>
+                  <div class="button-like">
+                    <a class="button-like__icon" href=""
+                      ><img src="/img/icons/heart.svg" alt=""
+                    /></a>
+                  </div>
+
                   <div class="card__information">
                     <div class="card__description">
-                      <p class="card__producer title-5">
-                        Converse
-                      </p>
-        
+                      <p class="card__producer title-5">Converse</p>
+
                       <h4 class="card__title title-4">
                         Chevron Standard Fit T-Shirt
                       </h4>
                     </div>
-        
-                    <div class="card__price"> 
-                      <p class="card__price-cost title-1">$79</p><span class="card__price-cost-sale title-5">$79</span>
+
+                    <div class="card__price">
+                      <p class="card__price-cost title-1">$79</p>
+                      <span class="card__price-cost-sale title-5">$79</span>
                     </div>
                   </div>
                 </div>
-  
+
                 <div class="product__card card">
                   <img
                     class="card__image"
                     src="/img/cards/1/item-4.jpg"
                     alt="img-of-item"
-                  >
-  
-                  <div class="infolabel">new <img class="infolabel__icon" src="/img/icons/clock.svg" alt=""></span></div>
-                  <div class="button-like"><a class="button-like__icon" href=""><img src="/img/icons/heart.svg" alt=""></a></div>
-  
+                  />
+
+                  <div class="infolabel">
+                    new
+                    <img
+                      class="infolabel__icon"
+                      src="/img/icons/clock.svg"
+                      alt=""
+                    />
+                  </div>
+                  <div class="button-like">
+                    <a class="button-like__icon" href=""
+                      ><img src="/img/icons/heart.svg" alt=""
+                    /></a>
+                  </div>
+
                   <div class="card__information">
                     <div class="card__description">
-                      <p class="card__producer title-5">
-                        Carhartt
-                      </p>
-        
-                      <h4 class="card__title title-4">
-                        W' Stayton Pant
-                      </h4>
+                      <p class="card__producer title-5">Carhartt</p>
+
+                      <h4 class="card__title title-4">W' Stayton Pant</h4>
                     </div>
-        
-                    <div class="card__price"> 
-                      <p class="card__price-cost title-1">$179</p><span class="card__price-cost-sale title-5">$229</span>
+
+                    <div class="card__price">
+                      <p class="card__price-cost title-1">$179</p>
+                      <span class="card__price-cost-sale title-5">$229</span>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
         </section>
 
         <section class="page__sale sale">
@@ -299,90 +339,117 @@
           </div>
         </section>
 
-        <section class="page__categories goods"> 
-          <div class="goods__container"> 
-            <div class="goods__body"> 
-              <div class="goods__title-block title-block"> 
-                <h2 class="title-block__title title-2">Categories</h2> 
-                <div class="title-block__button button-wrapper"> 
-                  <a class="button button_md button_ghost" href="#"><span class="icon-arrow"></span>View All</a> 
-                </div> 
-              </div> 
-   
-              <div class="goods__cards-wrapper"> 
-                <div class="product__card card"> 
-                  <img 
-                    class="card__image card__image--large" 
-                    src="/img/cards/2/item-1.jpg" 
-                    alt="img-of-item" 
-                  > 
-   
-                  <div class="infolabel">shoes <img class="infolabel__icon" src="/img/icons/arrow.svg" alt=""></span></div> 
-   
-                  <div class="card__information"> 
-                    <div class="card__description"> 
-                      <h4 class="card__title title-4"> 
-                        More than 1000 pairs+ 
-                      </h4> 
-                    </div> 
-                  </div> 
-                </div> 
-   
-                <div class="product__card card"> 
-                  <img 
-                    class="card__image card__image--large" 
-                    src="/img/cards/2/item-2.jpg" 
-                    alt="img-of-item" 
-                  > 
-   
-                  <div class="infolabel">t-shirt <img class="infolabel__icon" src="/img/icons/arrow.svg" alt=""></span></div> 
-   
-                  <div class="card__information"> 
-                    <div class="card__description"> 
-                      <h4 class="card__title title-4"> 
-                        More than 1000 pairs+ 
-                      </h4> 
-                    </div> 
-                  </div> 
-                </div> 
-   
-                <div class="product__card card"> 
-                  <img 
-                    class="card__image card__image--large" 
-                    src="/img/cards/2/item-3.jpg" 
-                    alt="img-of-item" 
-                  > 
-   
-                  <div class="infolabel">hoodies <img class="infolabel__icon" src="/img/icons/arrow.svg" alt=""></span></div> 
-   
-                  <div class="card__information"> 
-                    <div class="card__description"> 
-                      <h4 class="card__title title-4"> 
-                        Warm hoodies for spring weather 
-                      </h4> 
-                    </div> 
-                  </div> 
-                </div> 
-   
-                <div class="product__card card"> 
-                  <img 
-                    class="card__image card__image--large" 
-                    src="/img/cards/2/item-4.jpg" 
-                    alt="img-of-item" 
-                  > 
-   
-                  <div class="infolabel">denim <img class="infolabel__icon" src="/img/icons/arrow.svg" alt=""></span></div> 
-   
-                  <div class="card__information"> 
-                    <div class="card__description"> 
-                      <h4 class="card__title title-4"> 
-                        Jeans, shorts, vests, etc. 
-                      </h4> 
-                    </div> 
-                  </div> 
-                </div> 
-              </div> 
-            </div> 
+        <section class="page__categories goods">
+          <div class="goods__container">
+            <div class="goods__body">
+              <div class="goods__title-block title-block">
+                <h2 class="title-block__title title-2">Categories</h2>
+                <div class="title-block__button button-wrapper">
+                  <a class="button button_md button_ghost" href="#"
+                    ><span class="icon-arrow"></span>View All</a
+                  >
+                </div>
+              </div>
+
+              <div class="goods__cards-wrapper">
+                <div class="product__card card">
+                  <img
+                    class="card__image card__image--large"
+                    src="/img/cards/2/item-1.jpg"
+                    alt="img-of-item"
+                  />
+
+                  <div class="infolabel">
+                    shoes
+                    <img
+                      class="infolabel__icon"
+                      src="/img/icons/arrow.svg"
+                      alt=""
+                    />
+                  </div>
+
+                  <div class="card__information">
+                    <div class="card__description">
+                      <h4 class="card__title title-4">More than 1000 pairs+</h4>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="product__card card">
+                  <img
+                    class="card__image card__image--large"
+                    src="/img/cards/2/item-2.jpg"
+                    alt="img-of-item"
+                  />
+
+                  <div class="infolabel">
+                    t-shirt
+                    <img
+                      class="infolabel__icon"
+                      src="/img/icons/arrow.svg"
+                      alt=""
+                    />
+                  </div>
+
+                  <div class="card__information">
+                    <div class="card__description">
+                      <h4 class="card__title title-4">More than 1000 pairs+</h4>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="product__card card">
+                  <img
+                    class="card__image card__image--large"
+                    src="/img/cards/2/item-3.jpg"
+                    alt="img-of-item"
+                  />
+
+                  <div class="infolabel">
+                    hoodies
+                    <img
+                      class="infolabel__icon"
+                      src="/img/icons/arrow.svg"
+                      alt=""
+                    />
+                  </div>
+
+                  <div class="card__information">
+                    <div class="card__description">
+                      <h4 class="card__title title-4">
+                        Warm hoodies for spring weather
+                      </h4>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="product__card card">
+                  <img
+                    class="card__image card__image--large"
+                    src="/img/cards/2/item-4.jpg"
+                    alt="img-of-item"
+                  />
+
+                  <div class="infolabel">
+                    denim
+                    <img
+                      class="infolabel__icon"
+                      src="/img/icons/arrow.svg"
+                      alt=""
+                    />
+                  </div>
+
+                  <div class="card__information">
+                    <div class="card__description">
+                      <h4 class="card__title title-4">
+                        Jeans, shorts, vests, etc.
+                      </h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
 
         <section class="page__blog blog">
@@ -464,120 +531,160 @@
               <div class="goods__title-block title-block">
                 <h2 class="title-block__title title-2">Best Seller</h2>
                 <div class="title-block__button button-wrapper">
-                  <a class="button button_md button_ghost" href="#"><span class="icon-arrow"></span>View All</a>
+                  <a class="button button_md button_ghost" href="#"
+                    ><span class="icon-arrow"></span>View All</a
+                  >
                 </div>
               </div>
-  
+
               <div class="goods__cards-wrapper">
                 <div class="product__card card">
                   <img
                     class="card__image"
                     src="/img/cards/3/item-1.jpg"
                     alt="img-of-item"
-                  >
-  
-                  <div class="infolabel">new <img class="infolabel__icon" src="/img/icons/clock.svg" alt=""></span></div>
-                  <div class="button-like"><a class="button-like__icon" href=""><img src="/img/icons/heart.svg" alt=""></a></div>
-  
+                  />
+
+                  <div class="infolabel">
+                    new
+                    <img
+                      class="infolabel__icon"
+                      src="/img/icons/clock.svg"
+                      alt=""
+                    />
+                  </div>
+                  <div class="button-like">
+                    <a class="button-like__icon" href=""
+                      ><img src="/img/icons/heart.svg" alt=""
+                    /></a>
+                  </div>
+
                   <div class="card__information">
                     <div class="card__description">
-                      <p class="card__producer title-5">
-                        Nike
-                      </p>
-        
+                      <p class="card__producer title-5">Nike</p>
+
                       <h4 class="card__title title-4">
                         Nike Sportswear Tech Fleece
                       </h4>
                     </div>
-        
-                    <div class="card__price"> 
-                      <p class="card__price-cost title-1">$109</p><span class="card__price-cost-sale title-5">$229</span>
+
+                    <div class="card__price">
+                      <p class="card__price-cost title-1">$109</p>
+                      <span class="card__price-cost-sale title-5">$229</span>
                     </div>
                   </div>
                 </div>
-  
+
                 <div class="product__card card">
                   <img
                     class="card__image"
                     src="/img/cards/3/item-2.jpg"
                     alt="img-of-item"
-                  >
-  
-                  <div class="infolabel">new <img class="infolabel__icon" src="/img/icons/clock.svg" alt=""></span></div>
-                  <div class="button-like"><a class="button-like__icon" href=""><img src="/img/icons/heart.svg" alt=""></a></div>
-  
+                  />
+
+                  <div class="infolabel">
+                    new
+                    <img
+                      class="infolabel__icon"
+                      src="/img/icons/clock.svg"
+                      alt=""
+                    />
+                  </div>
+                  <div class="button-like">
+                    <a class="button-like__icon" href=""
+                      ><img src="/img/icons/heart.svg" alt=""
+                    /></a>
+                  </div>
+
                   <div class="card__information">
                     <div class="card__description">
-                      <p class="card__producer title-5">
-                        Converse
-                      </p>
-        
-                      <h4 class="card__title title-4">
-                        Chuck Taylor All Star
-                      </h4>
+                      <p class="card__producer title-5">Converse</p>
+
+                      <h4 class="card__title title-4">Chuck Taylor All Star</h4>
                     </div>
-        
-                    <div class="card__price"> 
+
+                    <div class="card__price">
                       <p class="card__price-cost title-1">$79</p>
                     </div>
                   </div>
                 </div>
-  
+
                 <div class="product__card card">
                   <img
                     class="card__image"
                     src="/img/cards/3/item-3.jpg"
                     alt="img-of-item"
-                  >
-  
-                  <div class="infolabel">new <img class="infolabel__icon" src="/img/icons/clock.svg" alt=""></span></div>
-                  <div class="button-like"><a class="button-like__icon" href=""><img src="/img/icons/heart.svg" alt=""></a></div>
-  
+                  />
+
+                  <div class="infolabel">
+                    new
+                    <img
+                      class="infolabel__icon"
+                      src="/img/icons/clock.svg"
+                      alt=""
+                    />
+                  </div>
+                  <div class="button-like">
+                    <a class="button-like__icon" href=""
+                      ><img src="/img/icons/heart.svg" alt=""
+                    /></a>
+                  </div>
+
                   <div class="card__information">
                     <div class="card__description">
-                      <p class="card__producer title-5">
-                        Carhartt
-                      </p>
-        
+                      <p class="card__producer title-5">Carhartt</p>
+
                       <h4 class="card__title title-4">
                         W' Hooded Casey Jacket
                       </h4>
                     </div>
-        
-                    <div class="card__price"> 
-                      <p class="card__price-cost title-1">$149</p><span class="card__price-cost-sale title-5">$209</span>
+
+                    <div class="card__price">
+                      <p class="card__price-cost title-1">$149</p>
+                      <span class="card__price-cost-sale title-5">$209</span>
                     </div>
                   </div>
                 </div>
-  
+
                 <div class="product__card card">
                   <img
                     class="card__image"
                     src="/img/cards/3/item-4.jpg"
                     alt="img-of-item"
-                  >
-  
-                  <div class="infolabel">new <img class="infolabel__icon" src="/img/icons/clock.svg" alt=""></span></div>
-                  <div class="button-like"><a class="button-like__icon" href=""><img src="/img/icons/heart.svg" alt=""></a></div>
-  
+                  />
+
+                  <div class="infolabel">
+                    new
+                    <img
+                      class="infolabel__icon"
+                      src="/img/icons/clock.svg"
+                      alt=""
+                    />
+                  </div>
+                  <div class="button-like">
+                    <a class="button-like__icon" href=""
+                      ><img src="/img/icons/heart.svg" alt=""
+                    /></a>
+                  </div>
+
                   <div class="card__information">
                     <div class="card__description">
-                      <p class="card__producer title-5">
-                        Nike SB
-                      </p>
-        
+                      <p class="card__producer title-5">Nike SB</p>
+
                       <h4 class="card__title title-4">
                         Knit skate hoodie with a zip
                       </h4>
                     </div>
-        
-                    <div class="card__price"> 
-                      <p class="card__price-cost title-1">$179</p><span class="card__price-cost-sale title-5">$229</span>
+
+                    <div class="card__price">
+                      <p class="card__price-cost title-1">$179</p>
+                      <span class="card__price-cost-sale title-5">$229</span>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
         </section>
 
         <section class="page__sale sale">
@@ -606,6 +713,7 @@
                     <button class="form-sale__button" type="submit">Go</button>
                   </div>
                 </form>
+                s
               </div>
             </div>
           </div>
