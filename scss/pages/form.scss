@@ -1,0 +1,38 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__input {
+    font-family: "TT Firs Neue";
+    font-size: 16px;
+    border-radius: 10px;
+    background: rgb(249, 249, 249);
+    height: 53px;
+    width: 100%;
+    padding: 10px 20px 10px 20px;
+    color: #757575;
+  }
+
+  &__input-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+
+    @media screen and (max-width: 768px) {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+}
+
+.form__select {
+  border-radius: 10px;
+  background: rgb(249, 249, 249);
+  height: 53px;
+  width: 100%;
+  padding: 24px;
+  color: #757575;
+  border: 1px solid #757575;
+}
