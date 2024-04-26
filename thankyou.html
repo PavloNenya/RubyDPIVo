@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="./img/icons/favicon.svg" />
+    <link rel="stylesheet" href="css/style.min.css" />
+    <link rel="stylesheet" href="css/index.min.css" />
+    <link rel="stylesheet" href="css/thankyou.min.css" />
+    <title>Checkout</title>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      @@include('html/_header.htm',{})
+
+      <main class="page">
+        <section class="page__thankyou thankyou">
+          <div class="thankyou__container">
+            <div class="thankyou__body">
+              <div class="thankyou__body-wrapper">
+                <div class="thankyou__infoblock">
+                  <h4 class="thankyou__title">Order success!</h4>
+
+                  <div class="thankyou__infoblock-top">
+                    <div class="thankyou__subtitle">
+                      <p>Your Order #17150810</p>
+                      <p class="thankyou__sub title-5">
+                        Wait for an sms message to your phone with other details
+                      </p>
+                    </div>
+                  </div>
+
+                  <hr class="thankyou__infoblock-line" />
+
+                  <div class="thankyou__infoblock-item">
+                    <img
+                      class="thankyou__infoblock-item-img"
+                      src="./img/checkout/jordan.png"
+                      alt=""
+                    />
+
+                    <div class="thankyou__infoblock-item-information">
+                      <div class="thankyou__infoblock-item-top">
+                        <p class="card__producer title-5">Nike SB</p>
+                        <h4 class="card__title title-4">
+                          Hoodie for skateboarding
+                        </h4>
+                      </div>
+
+                      <div class="thankyou__infoblock-item-bottom">
+                        <h4 class="card__title title-4">$179</h4>
+                        <p class="card__producer title-5">Size: 44</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <hr class="thankyou__infoblock-line" />
+
+                  <div class="thankyou__infoblock-wrapperinfo">
+                    <h4 class="thankyou__infoblock-text">Total:</h4>
+                    <h4 class="thankyou__infoblock-text">$179</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      @@include('html/_footer.htm',{})
+    </div>
+  </body>
+</html>
