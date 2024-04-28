@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="./img/icons/favicon.svg" />
+    <link rel="stylesheet" href="css/style.min.css" />
+    <link rel="stylesheet" href="css/index.min.css" />
+    <link rel="stylesheet" href="css/basket.min.css" />
+    <link rel="stylesheet" href="css/checkout.min.css" />
+    <link rel="stylesheet" href="css/form.min.css" />
+    <title>Basket</title>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      @@include('html/_header.htm',{})
+
+      <main class="page">
+        <section class="page__basket basket">
+          <div class="basket__container">
+            <div class="basket__body">
+              <div class="basket__breadcrumbs">
+                <a class="basket__breadcrumb" href="#">Home</a>
+                <span class="basket__slash">/</span>
+                <a class="basket__breadcrumb" href="#">Men</a>
+                <span class="basket__slash">/</span>
+                <a class="basket__breadcrumb" href="#">Sneakers</a>
+                <span class="basket__slash">/</span>
+                <a class="basket__breadcrumb" href="#"
+                  >Nike Air Jordan 1 High</a
+                >
+                <span class="basket__slash">/</span>
+                <a class="basket__breadcrumb" href="#">Basket</a>
+              </div>
+
+              <div class="basket__title-wrapper">
+                <h4 class="basket__title">Basket</h4>
+                <span class="basket__subtitle title-5">1</span>
+              </div>
+
+              <div class="basket__left">
+                <div class="basket__item">
+                  <img
+                    class="basket__item-img"
+                    src="./img/checkout/jordan.png"
+                    alt=""
+                  />
+
+                  <div class="basket__item-information">
+                    <div class="basket__item-top-wrapper">
+                      <div class="basket__item-top">
+                        <div class="basket__item-top-left">
+                          <p class="card__producer title-5">Jordan</p>
+                          <h4 class="card__title title-4">
+                            Air Jordan I High (White/Black)
+                          </h4>
+                        </div>
+
+                        <div class="basket__item-top-right">
+                          <h4 class="card__title title-4">$179</h4>
+                          <span class="card__price-cost-sale title-5"
+                            >$229</span
+                          >
+                        </div>
+                      </div>
+
+                      <p class="card__unisex">Unisex Shoes</p>
+                      <p class="card__producer title-5">
+                        Size: <span class="card__size">44</span>
+                      </p>
+                    </div>
+
+                    <div class="basket__item-bottom">
+                      <div class="card__counter">
+                        <button class="card__sign">-</button>
+                        <input type="text" class="card__quantity" value="1" />
+                        <button class="card__sign">+</button>
+                      </div>
+
+                      <div class="card__icons">
+                        <a href="./img/icons/likemini.svg"
+                          ><img src="./img/icons/likemini.svg" alt=""
+                        /></a>
+                        <a href="./img/icons/card.svg"
+                          ><img src="./img/icons/card.svg" alt=""
+                        /></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="basket__info">
+                  <h4 class="basket__info-text">Subtotal:</h4>
+                  <h4 class="basket__info-text">$179</h4>
+                </div>
+              </div>
+
+              <div class="basket__right">
+                <div class="checkout__infoblock">
+                  <div class="checkout__infoblock-top">
+                    <h4 class="checkout__title">Basket summary</h4>
+                  </div>
+
+                  <div class="checkout__infoblock-middle">
+                    <div>
+                      <div class="checkout__infoblock-wrapperinfo">
+                        <p class="checkout__infoblock-numofcount title-5">
+                          1 items:
+                        </p>
+                        <p class="checkout__infoblock-price">$179</p>
+                      </div>
+
+                      <div class="checkout__infoblock-wrapperinfo">
+                        <p class="checkout__infoblock-numofcount title-5">
+                          Promocode:
+                        </p>
+                        <p class="checkout__infoblock-price">$0</p>
+                      </div>
+                    </div>
+
+                    <input
+                      type="text"
+                      class="form__input"
+                      name="text-input"
+                      placeholder="Enter promocode"
+                    />
+                  </div>
+
+                  <hr class="checkout__infoblock-line" />
+
+                  <div class="checkout__infoblock-bottom">
+                    <div class="checkout__infoblock-wrapperinfo">
+                      <h4 class="checkout__infoblock-text">Total:</h4>
+                      <h4 class="checkout__infoblock-text">$179</h4>
+                    </div>
+                  </div>
+
+                  <div class="checkout__button">
+                    <a
+                      class="button button_lg button_default button__checkout"
+                      href="#"
+                      >Go to checkout<span class="icon-arrow"></span
+                    ></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <section class="page__goods goods">
+              <div class="goods__container">
+                <div class="goods__body">
+                  <div class="goods__title-block title-block">
+                    <h2 class="title-block__title title-2">
+                      You May Also Like
+                    </h2>
+                    <div class="title-block__button button-wrapper">
+                      <a class="button button_md button_ghost" href="#"
+                        ><span class="icon-arrow"></span>View All</a
+                      >
+                    </div>
+                  </div>
+
+                  <div class="goods__cards-wrapper">
+                    <div class="product__card card">
+                      <a href="/url-до-сторінки-з-товаром-3">
+                        <img
+                          class="card__image"
+                          src="/img/cards/3/item-3.jpg"
+                          alt="img-of-item"
+                        />
+
+                        <div class="infolabel">
+                          new
+                          <img
+                            class="infolabel__icon"
+                            src="/img/icons/clock.svg"
+                            alt=""
+                          />
+                        </div>
+                        <div class="button-like">
+                          <a class="button-like__icon" href="">
+                            <img src="/img/icons/heart.svg" alt="" />
+                          </a>
+                        </div>
+
+                        <div class="card__information">
+                          <div class="card__description">
+                            <p class="card__producer title-5">Carhartt</p>
+
+                            <a
+                              href="/url-до-сторінки-з-товаром-3"
+                              class="card__title title-4"
+                              >W' Hooded Casey Jacket</a
+                            >
+                          </div>
+
+                          <div class="card__price">
+                            <p class="card__price-cost title-1">$149</p>
+                            <span class="card__price-cost-sale title-5"
+                              >$209</span
+                            >
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+
+                    <div class="product__card card">
+                      <a href="/url-до-сторінки-з-товаром-2">
+                        <img
+                          class="card__image"
+                          src="/img/cards/3/item-2.jpg"
+                          alt="img-of-item"
+                        />
+
+                        <div class="infolabel">
+                          new
+                          <img
+                            class="infolabel__icon"
+                            src="/img/icons/clock.svg"
+                            alt=""
+                          />
+                        </div>
+                        <div class="button-like">
+                          <a class="button-like__icon" href="">
+                            <img src="/img/icons/heart.svg" alt="" />
+                          </a>
+                        </div>
+
+                        <div class="card__information">
+                          <div class="card__description">
+                            <p class="card__producer title-5">Converse</p>
+
+                            <a
+                              href="/url-до-сторінки-з-товаром-2"
+                              class="card__title title-4"
+                              >Chuck Taylor All Star</a
+                            >
+                          </div>
+
+                          <div class="card__price">
+                            <p class="card__price-cost title-1">$79</p>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+
+                    <div class="product__card card">
+                      <a href="/url-до-сторінки-з-товаром-1">
+                        <img
+                          class="card__image"
+                          src="/img/cards/3/item-1.jpg"
+                          alt="img-of-item"
+                        />
+
+                        <div class="infolabel">
+                          new
+                          <img
+                            class="infolabel__icon"
+                            src="/img/icons/clock.svg"
+                            alt=""
+                          />
+                        </div>
+                        <div class="button-like">
+                          <a class="button-like__icon" href="">
+                            <img src="/img/icons/heart.svg" alt="" />
+                          </a>
+                        </div>
+
+                        <div class="card__information">
+                          <div class="card__description">
+                            <p class="card__producer title-5">Nike</p>
+
+                            <a
+                              href="/url-до-сторінки-з-товаром-1"
+                              class="card__title title-4"
+                              >Nike Sportswear Tech Fleece</a
+                            >
+                          </div>
+
+                          <div class="card__price">
+                            <p class="card__price-cost title-1">$109</p>
+                            <span class="card__price-cost-sale title-5"
+                              >$229</span
+                            >
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+
+                    <div class="product__card card">
+                      <a href="/url-до-сторінки-з-товаром-4">
+                        <img
+                          class="card__image"
+                          src="/img/cards/3/item-4.jpg"
+                          alt="img-of-item"
+                        />
+
+                        <div class="infolabel">
+                          new
+                          <img
+                            class="infolabel__icon"
+                            src="/img/icons/clock.svg"
+                            alt=""
+                          />
+                        </div>
+                        <div class="button-like">
+                          <a class="button-like__icon" href="">
+                            <img src="/img/icons/heart.svg" alt="" />
+                          </a>
+                        </div>
+
+                        <div class="card__information">
+                          <div class="card__description">
+                            <p class="card__producer title-5">Nike SB</p>
+
+                            <a
+                              href="/url-до-сторінки-з-товаром-4"
+                              class="card__title title-4"
+                              >Knit skate hoodie with a zip</a
+                            >
+                          </div>
+
+                          <div class="card__price">
+                            <p class="card__price-cost title-1">$179</p>
+                            <span class="card__price-cost-sale title-5"
+                              >$229</span
+                            >
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+      </main>
+
+      @@include('html/_footer.htm',{})
+    </div>
+  </body>
+</html>
