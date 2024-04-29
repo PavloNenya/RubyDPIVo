@@ -370,6 +370,25 @@ $itemCount: 3;
     &__price-cost-sale {
         text-decoration: line-through;
     }
+
+    &__sign {
+        cursor: pointer;
+        background-color: var(--color-primary-grey);
+        color: var(--color-system-grey);
+        border-radius: 4px;
+        padding: 4px 10px;
+    }
+
+    &__counter {
+        display: flex;
+        align-items: center;
+        width: fit-content;
+    }
+
+    &__quantity {
+        width: 30px;
+        text-align: center;
+    }
 }
 
 .infolabel {
