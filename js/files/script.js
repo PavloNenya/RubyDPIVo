@@ -51,40 +51,46 @@ let bodyLock = (delay = 500) => {
 
 document.addEventListener('DOMContentLoaded', function () {
     const deadline = new Date(2023, 8, 25);
-    let timerId = null;
 
-    const $days = document.querySelector('.timer__days');
-    const $hours = document.querySelector('.timer__hours');
-    const $minutes = document.querySelector('.timer__minutes');
-    const $seconds = document.querySelector('.timer__seconds');
+    const timerElement = document.querySelector('.timer');
 
-    function countdownTimer() {
-        const diff = deadline - new Date();
-        if (diff <= 0) {
-            clearInterval(timerId);
+    if (timerElement) {
+        let timerId = null;
+        const $days = document.querySelector('.timer__days');
+        const $hours = document.querySelector('.timer__hours');
+        const $minutes = document.querySelector('.timer__minutes');
+        const $seconds = document.querySelector('.timer__seconds');
+
+        function countdownTimer() {
+            const diff = deadline - new Date();
+            if (diff <= 0) {
+                clearInterval(timerId);
+            }
+            const days = diff > 0 ? Math.floor(diff / 1000 / 60 / 60 / 24) : 0;
+            const hours = diff > 0 ? Math.floor(diff / 1000 / 60 / 60) % 24 : 0;
+            const minutes = diff > 0 ? Math.floor(diff / 1000 / 60) % 60 : 0;
+            const seconds = diff > 0 ? Math.floor(diff / 1000) % 60 : 0;
+
+            $days.textContent = days < 10 ? '0' + days : days;
+            $hours.textContent = hours < 10 ? '0' + hours : hours;
+            $minutes.textContent = minutes < 10 ? '0' + minutes : minutes;
+            $seconds.textContent = seconds < 10 ? '0' + seconds : seconds;
         }
-        const days = diff > 0 ? Math.floor(diff / 1000 / 60 / 60 / 24) : 0;
-        const hours = diff > 0 ? Math.floor(diff / 1000 / 60 / 60) % 24 : 0;
-        const minutes = diff > 0 ? Math.floor(diff / 1000 / 60) % 60 : 0;
-        const seconds = diff > 0 ? Math.floor(diff / 1000) % 60 : 0;
 
-        $days.textContent = days < 10 ? '0' + days : days;
-        $hours.textContent = hours < 10 ? '0' + hours : hours;
-        $minutes.textContent = minutes < 10 ? '0' + minutes : minutes;
-        $seconds.textContent = seconds < 10 ? '0' + seconds : seconds;
+        countdownTimer();
+
+        timerId = setInterval(countdownTimer, 1000);
     }
 
     const burger = document.querySelector('.burger');
     const headerNav = document.querySelector('.header__nav');
-    burger.addEventListener('click', () => {
-        burger.classList.toggle('_menu-open');
-        headerNav.classList.toggle('_menu-open');
-        bodyLockToggle();
-    });
-
-    countdownTimer();
-
-    timerId = setInterval(countdownTimer, 1000);
+    if (burger && headerNav) {
+        burger.addEventListener('click', () => {
+            burger.classList.toggle('_menu-open');
+            headerNav.classList.toggle('_menu-open');
+            bodyLockToggle();
+        });
+    }
 
     (function ibg() {
         let ibg = document.querySelectorAll('.ibg');
@@ -97,4 +103,28 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     })();
+
+    const spoilers = document.querySelectorAll('.spoiler');
+    if (spoilers.length > 0) {
+        for (let i = 0; i < spoilers.length; i++) {
+            const spoiler = spoilers[i];
+            const spoilerHeader = spoiler.querySelector('.spoiler__header');
+
+            spoilerHeader.addEventListener('click', () => {
+                spoiler.classList.toggle('_active');
+            });
+        }
+    }
+
+    const productsAside = document.querySelector('.products__aside');
+    const filterButton = document.querySelector('.button-filter');
+    const productsClose = document.querySelector('.products__close');
+    if (filterButton && productsClose && productsAside) {
+        productsClose.addEventListener('click', () => {
+            productsAside.classList.remove('_active');
+        });
+        filterButton.addEventListener('click', () => {
+            productsAside.classList.add('_active');
+        });
+    }
 });

@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charsetS="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sneakpeek</title>
+    <link rel="icon" type="image/x-icon" href="./img/icons/favicon.svg" />
+    <link rel="stylesheet" href="css/style.min.css" />
+    <link rel="stylesheet" href="css/index.min.css" />
+    <link rel="stylesheet" href="css/catalog.min.css" />
+  </head>
+
+  <body class="page__body">
+    <div class="wrapper">
+      @@include('html/_header.htm',{})
+      <main class="page">
+        <section class="page__products products">
+          <div class="products__container">
+            <div class="products__body">
+              <div class="products__path">
+                <a href="#">Home</a>
+                <i class="products__icon icon-arrow-right"></i>
+                <a href="#">Men</a>
+                <i class="products__icon icon-arrow-right"></i>
+                <a href="#">Sneakers</a>
+              </div>
+              <div class="products__inner">
+                <aside class="products__aside">
+                  <div class="products__title-block">
+                    <div class="products__title">Filters</div>
+                    <div class="products__close"></div>
+                  </div>
+                  <div class="products__filter filter spoiler">
+                    <div class="filter__title-block spoiler__header">
+                      <div class="filter__title">Category</div>
+                      <i class="filter__icon icon-arrow-down"></i>
+                    </div>
+                    <ul class="filter__items spoiler__content">
+                      <li class="filter__item checkbox">
+                        <input
+                          class="checkbox__index"
+                          type="checkbox"
+                          id="some"
+                        />
+                        <label class="checkbox__label" for="some"
+                          >Running</label
+                        >
+                      </li>
+                      <li class="filter__item checkbox">
+                        <input
+                          class="checkbox__index"
+                          type="checkbox"
+                          id="checkbox12"
+                        />
+                        <label class="checkbox__label" for="checkbox12"
+                          >Gym</label
+                        >
+                      </li>
+                      <li class="filter__item checkbox">
+                        <input
+                          class="checkbox__index"
+                          type="checkbox"
+                          id="checkbox13"
+                        />
+                        <label class="checkbox__label" for="checkbox13"
+                          >Streetwear</label
+                        >
+                      </li>
+                      <li class="filter__item checkbox">
+                        <input
+                          class="checkbox__index"
+                          type="checkbox"
+                          id="checkbox14"
+                        />
+                        <label class="checkbox__label" for="checkbox14"
+                          >Football</label
+                        >
+                      </li>
+                      <li class="filter__item checkbox">
+                        <input
+                          class="checkbox__index"
+                          type="checkbox"
+                          id="checkbox15"
+                        />
+                        <label class="checkbox__label" for="checkbox15"
+                          >Basketball</label
+                        >
+                      </li>
+                      <li class="filter__item showmore-wrapper">
+                        <button class="showmore">Show more</button>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="products__filter filter spoiler">
+                    <div class="filter__title-block spoiler__header">
+                      <div class="filter__title">Price</div>
+                      <i class="icon-arrow-down"></i>
+                    </div>
+                    <ul class="filter__items spoiler__content">
+                      <li class="filter__item">
+                        <input
+                          class="filter__input"
+                          type="text"
+                          placeholder="From 79$"
+                        />
+                      </li>
+                      <li class="filter__item">
+                        <input
+                          class="filter__input"
+                          type="text"
+                          placeholder="To 219$"
+                        />
+                      </li>
+                      <li class="filter__item">
+                        <div class="filter__line"></div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="products__filter filter spoiler">
+                    <div class="filter__title-block spoiler__header">
+                      <div class="filter__title">Brands</div>
+                      <i class="icon-arrow-down"></i>
+                    </div>
+                    <ul class="filter__items spoiler__content">
+                      <li class="filter__item">
+                        <input
+                          class="filter__input"
+                          type="text"
+                          placeholder="Search brand"
+                        />
+                      </li>
+                      <li class="filter__item">
+                        <input
+                          class="filter__checkbox"
+                          type="checkbox"
+                          id="checkbox21"
+                        />
+                        <label class="filter__checkbox-label" for="checkbox21"
+                          >Nike</label
+                        >
+                      </li>
+                      <li class="filter__item">
+                        <input
+                          class="filter__checkbox"
+                          type="checkbox"
+                          id="checkbox22"
+                        />
+                        <label class="filter__checkbox-label" for="checkbox22"
+                          >Adidas</label
+                        >
+                      </li>
+                      <li class="filter__item">
+                        <input
+                          class="filter__checkbox"
+                          type="checkbox"
+                          id="checkbox23"
+                        />
+                        <label class="filter__checkbox-label" for="checkbox23"
+                          >Jordan</label
+                        >
+                      </li>
+                      <li class="filter__item">
+                        <input
+                          class="filter__checkbox"
+                          type="checkbox"
+                          id="checkbox24"
+                        />
+                        <label class="filter__checkbox-label" for="checkbox24"
+                          >Asics</label
+                        >
+                      </li>
+                      <li class="filter__item">
+                        <input
+                          class="filter__checkbox"
+                          type="checkbox"
+                          id="checkbox25"
+                        />
+                        <label class="filter__checkbox-label" for="checkbox25"
+                          >Puma</label
+                        >
+                      </li>
+                      <li class="filter__item showmore-wrapper">
+                        <button class="showmore">Show more</button>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="products__filter filter spoiler">
+                    <div class="filter__title-block spoiler__header">
+                      <div class="filter__title">Size</div>
+                      <i class="icon-arrow-down"></i>
+                    </div>
+                    <ul class="filter__items sizes spoiler__content">
+                      <li class="filter__item">
+                        <div class="sizes__item">39</div>
+                      </li>
+                      <li class="filter__item">
+                        <div class="sizes__item">40</div>
+                      </li>
+                      <li class="filter__item">
+                        <div class="sizes__item">40.5</div>
+                      </li>
+                      <li class="filter__item">
+                        <div class="sizes__item">41</div>
+                      </li>
+                      <li class="filter__item">
+                        <div class="sizes__item">41.5</div>
+                      </li>
+                      <li class="filter__item">
+                        <div class="sizes__item">42</div>
+                      </li>
+                      <li class="filter__item">
+                        <div class="sizes__item">42.5</div>
+                      </li>
+                      <li class="filter__item">
+                        <div class="sizes__item">43</div>
+                      </li>
+                      <li class="filter__item">
+                        <div class="sizes__item">43.5</div>
+                      </li>
+                      <li class="filter__item showmore-wrapper">
+                        <button class="showmore">Show more</button>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="products__filter filter spoiler">
+                    <div class="filter__title-block spoiler__header">
+                      <div class="filter__title">Material</div>
+                      <i class="icon-arrow-down"></i>
+                    </div>
+                    <ul class="filter__items spoiler__content"></ul>
+                  </div>
+                  <div class="products__filter filter spoiler">
+                    <div class="filter__title-block spoiler__header">
+                      <div class="filter__title">Gender</div>
+                      <i class="icon-arrow-down"></i>
+                    </div>
+                    <ul class="filter__items spoiler__content"></ul>
+                  </div>
+                </aside>
+                <div class="products__main">
+                  <!-- TODO change div to inline element and add general class for text  -->
+                  <div class="products__title">Nike Air Jordan</div>
+                  <div class="products__settings">
+                    <div class="products__categories categories">
+                      <div class="categories__item">
+                        <p class="categories__text">Streetwear</p>
+                        <button class="categories__close"></button>
+                      </div>
+                      <div class="categories__item">
+                        <p class="categories__text">79$ - 219$</p>
+                        <button class="categories__close"></button>
+                      </div>
+                      <div class="categories__item">
+                        <p class="categories__text">Jordan</p>
+                        <button class="categories__close"></button>
+                      </div>
+                      <div class="categories__item">
+                        <p class="categories__text">Size 42.5</p>
+                        <button class="categories__close"></button>
+                      </div>
+                    </div>
+                    <div class="products__params">
+                      <!-- TODO sort options  -->
+                      <!-- <select class="products__options">
+                        <option class="products__option" value="">
+                          Sort by descending price
+                        </option>
+                        <option class="products__option" value="">
+                          Sort by ascending price
+                        </option>
+                        <option class="products__option" value="">
+                          Sort by name
+                        </option>
+                        <option class="products__option" value="">
+                          Sort by price
+                        </option>
+                      </select> -->
+                      <button class="products__button button-reset">
+                        <img src="./img/icons/reset.svg" alt="reset" />
+                      </button>
+                      <button class="products__button button-filter">
+                        <img src="./img/icons/filter.svg" alt="filter" />
+                      </button>
+                    </div>
+                  </div>
+                  <div class="products__content">
+                    <div class="products__cards">
+                      <div class="products__card card">
+                        <a href="/url-до-сторінки-з-товаром-1">
+                          <img
+                            class="card__image"
+                            src="/img/cards/3/item-1.jpg"
+                            alt="img-of-item"
+                          />
+
+                          <div class="infolabel">
+                            new
+                            <img
+                              class="infolabel__icon"
+                              src="/img/icons/clock.svg"
+                              alt=""
+                            />
+                          </div>
+                          <div class="button-like">
+                            <a class="button-like__icon" href="">
+                              <img src="/img/icons/heart.svg" alt="" />
+                            </a>
+                          </div>
+
+                          <div class="card__information">
+                            <div class="card__description">
+                              <p class="card__producer title-5">Nike</p>
+
+                              <a
+                                href="/url-до-сторінки-з-товаром-1"
+                                class="card__title title-4"
+                                >Nike Sportswear Tech Fleece</a
+                              >
+                            </div>
+
+                            <div class="card__price">
+                              <p class="card__price-cost title-1">$109</p>
+                              <span class="card__price-cost-sale title-5"
+                                >$229</span
+                              >
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="products__card card">
+                        <a href="/url-до-сторінки-з-товаром-2">
+                          <img
+                            class="card__image"
+                            src="/img/cards/3/item-2.jpg"
+                            alt="img-of-item"
+                          />
+
+                          <div class="infolabel">
+                            new
+                            <img
+                              class="infolabel__icon"
+                              src="/img/icons/clock.svg"
+                              alt=""
+                            />
+                          </div>
+                          <div class="button-like">
+                            <a class="button-like__icon" href="">
+                              <img src="/img/icons/heart.svg" alt="" />
+                            </a>
+                          </div>
+
+                          <div class="card__information">
+                            <div class="card__description">
+                              <p class="card__producer title-5">Converse</p>
+
+                              <a
+                                href="/url-до-сторінки-з-товаром-2"
+                                class="card__title title-4"
+                                >Chuck Taylor All Star</a
+                              >
+                            </div>
+
+                            <div class="card__price">
+                              <p class="card__price-cost title-1">$79</p>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="products__card card">
+                        <a href="/url-до-сторінки-з-товаром-3">
+                          <img
+                            class="card__image"
+                            src="/img/cards/3/item-3.jpg"
+                            alt="img-of-item"
+                          />
+
+                          <div class="infolabel">
+                            new
+                            <img
+                              class="infolabel__icon"
+                              src="/img/icons/clock.svg"
+                              alt=""
+                            />
+                          </div>
+                          <div class="button-like">
+                            <a class="button-like__icon" href="">
+                              <img src="/img/icons/heart.svg" alt="" />
+                            </a>
+                          </div>
+
+                          <div class="card__information">
+                            <div class="card__description">
+                              <p class="card__producer title-5">Carhartt</p>
+
+                              <a
+                                href="/url-до-сторінки-з-товаром-3"
+                                class="card__title title-4"
+                                >W' Hooded Casey Jacket</a
+                              >
+                            </div>
+
+                            <div class="card__price">
+                              <p class="card__price-cost title-1">$149</p>
+                              <span class="card__price-cost-sale title-5"
+                                >$209</span
+                              >
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="products__card card">
+                        <a href="/url-до-сторінки-з-товаром-4">
+                          <img
+                            class="card__image"
+                            src="/img/cards/3/item-4.jpg"
+                            alt="img-of-item"
+                          />
+
+                          <div class="infolabel">
+                            new
+                            <img
+                              class="infolabel__icon"
+                              src="/img/icons/clock.svg"
+                              alt=""
+                            />
+                          </div>
+                          <div class="button-like">
+                            <a class="button-like__icon" href="">
+                              <img src="/img/icons/heart.svg" alt="" />
+                            </a>
+                          </div>
+
+                          <div class="card__information">
+                            <div class="card__description">
+                              <p class="card__producer title-5">Nike SB</p>
+
+                              <a
+                                href="/url-до-сторінки-з-товаром-4"
+                                class="card__title title-4"
+                                >Knit skate hoodie with a zip</a
+                              >
+                            </div>
+
+                            <div class="card__price">
+                              <p class="card__price-cost title-1">$179</p>
+                              <span class="card__price-cost-sale title-5"
+                                >$229</span
+                              >
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="products__card card">
+                        <a href="/url-до-сторінки-з-товаром-1">
+                          <img
+                            class="card__image"
+                            src="/img/cards/3/item-1.jpg"
+                            alt="img-of-item"
+                          />
+
+                          <div class="infolabel">
+                            new
+                            <img
+                              class="infolabel__icon"
+                              src="/img/icons/clock.svg"
+                              alt=""
+                            />
+                          </div>
+                          <div class="button-like">
+                            <a class="button-like__icon" href="">
+                              <img src="/img/icons/heart.svg" alt="" />
+                            </a>
+                          </div>
+
+                          <div class="card__information">
+                            <div class="card__description">
+                              <p class="card__producer title-5">Nike</p>
+
+                              <a
+                                href="/url-до-сторінки-з-товаром-1"
+                                class="card__title title-4"
+                                >Nike Sportswear Tech Fleece</a
+                              >
+                            </div>
+
+                            <div class="card__price">
+                              <p class="card__price-cost title-1">$109</p>
+                              <span class="card__price-cost-sale title-5"
+                                >$229</span
+                              >
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="products__card card">
+                        <a href="/url-до-сторінки-з-товаром-2">
+                          <img
+                            class="card__image"
+                            src="/img/cards/3/item-2.jpg"
+                            alt="img-of-item"
+                          />
+
+                          <div class="infolabel">
+                            new
+                            <img
+                              class="infolabel__icon"
+                              src="/img/icons/clock.svg"
+                              alt=""
+                            />
+                          </div>
+                          <div class="button-like">
+                            <a class="button-like__icon" href="">
+                              <img src="/img/icons/heart.svg" alt="" />
+                            </a>
+                          </div>
+
+                          <div class="card__information">
+                            <div class="card__description">
+                              <p class="card__producer title-5">Converse</p>
+
+                              <a
+                                href="/url-до-сторінки-з-товаром-2"
+                                class="card__title title-4"
+                                >Chuck Taylor All Star</a
+                              >
+                            </div>
+
+                            <div class="card__price">
+                              <p class="card__price-cost title-1">$79</p>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="products__card card">
+                        <a href="/url-до-сторінки-з-товаром-3">
+                          <img
+                            class="card__image"
+                            src="/img/cards/3/item-3.jpg"
+                            alt="img-of-item"
+                          />
+
+                          <div class="infolabel">
+                            new
+                            <img
+                              class="infolabel__icon"
+                              src="/img/icons/clock.svg"
+                              alt=""
+                            />
+                          </div>
+                          <div class="button-like">
+                            <a class="button-like__icon" href="">
+                              <img src="/img/icons/heart.svg" alt="" />
+                            </a>
+                          </div>
+
+                          <div class="card__information">
+                            <div class="card__description">
+                              <p class="card__producer title-5">Carhartt</p>
+
+                              <a
+                                href="/url-до-сторінки-з-товаром-3"
+                                class="card__title title-4"
+                                >W' Hooded Casey Jacket</a
+                              >
+                            </div>
+
+                            <div class="card__price">
+                              <p class="card__price-cost title-1">$149</p>
+                              <span class="card__price-cost-sale title-5"
+                                >$209</span
+                              >
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="products__card card">
+                        <a href="/url-до-сторінки-з-товаром-4">
+                          <img
+                            class="card__image"
+                            src="/img/cards/3/item-4.jpg"
+                            alt="img-of-item"
+                          />
+
+                          <div class="infolabel">
+                            new
+                            <img
+                              class="infolabel__icon"
+                              src="/img/icons/clock.svg"
+                              alt=""
+                            />
+                          </div>
+                          <div class="button-like">
+                            <a class="button-like__icon" href="">
+                              <img src="/img/icons/heart.svg" alt="" />
+                            </a>
+                          </div>
+
+                          <div class="card__information">
+                            <div class="card__description">
+                              <p class="card__producer title-5">Nike SB</p>
+
+                              <a
+                                href="/url-до-сторінки-з-товаром-4"
+                                class="card__title title-4"
+                                >Knit skate hoodie with a zip</a
+                              >
+                            </div>
+
+                            <div class="card__price">
+                              <p class="card__price-cost title-1">$179</p>
+                              <span class="card__price-cost-sale title-5"
+                                >$229</span
+                              >
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="products__card card">
+                        <a href="/url-до-сторінки-з-товаром-4">
+                          <img
+                            class="card__image"
+                            src="/img/cards/3/item-4.jpg"
+                            alt="img-of-item"
+                          />
+
+                          <div class="infolabel">
+                            new
+                            <img
+                              class="infolabel__icon"
+                              src="/img/icons/clock.svg"
+                              alt=""
+                            />
+                          </div>
+                          <div class="button-like">
+                            <a class="button-like__icon" href="">
+                              <img src="/img/icons/heart.svg" alt="" />
+                            </a>
+                          </div>
+
+                          <div class="card__information">
+                            <div class="card__description">
+                              <p class="card__producer title-5">Nike SB</p>
+
+                              <a
+                                href="/url-до-сторінки-з-товаром-4"
+                                class="card__title title-4"
+                                >Knit skate hoodie with a zip</a
+                              >
+                            </div>
+
+                            <div class="card__price">
+                              <p class="card__price-cost title-1">$179</p>
+                              <span class="card__price-cost-sale title-5"
+                                >$229</span
+                              >
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="products__pagination pagination">
+                      <button>
+                        <i class="pagination__icon icon-arrow-left"></i>
+                      </button>
+                      <p class="pagination__text">Page</p>
+                      <ul class="pagination__items">
+                        <li class="pagination__item">
+                          <a href="#" class="pagination__link">1</a>
+                        </li>
+                        <li class="pagination__item">
+                          <a href="#" class="pagination__link">2</a>
+                        </li>
+                        <li class="pagination__item">
+                          <a href="#" class="pagination__link">3</a>
+                        </li>
+                        <li class="pagination__item">
+                          <a href="#" class="pagination__link">...</a>
+                        </li>
+                        <li class="pagination__item">
+                          <a href="#" class="pagination__link">5</a>
+                        </li>
+                      </ul>
+                      <button><i class="icon-arrow-right"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      @@include('html/_footer.htm',{})
+    </div>
+    <!-- @@include('html/_popup.htm',{}) -->
+    <script type="module" src="js/app.min.js"></script>
+  </body>
+</html>
