@@ -307,5 +307,24 @@ h5,
   }
 }
 
+.breadcrumbs {
+  grid-column: 1 / -1;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  &__breadcrumb {
+    font-size: 12px;
+    display: block;
+  }
+
+  &__slash {
+    color: var(--color-system-grey);
+  }
+}
+
 @import "modules/header.scss";
 @import "modules/footer.scss";
