@@ -381,8 +381,6 @@ $itemCount: 3;
 
 .infolabel {
   position: absolute;
-  top: 16px;
-  left: 16px;
   border-radius: 12px;
   color: var(--color-accent);
   gap: 2px;
@@ -393,9 +391,14 @@ $itemCount: 3;
   display: flex;
   align-items: center;
 
-  &-big {
+  &-left {
+    top: 16px;
+    left: 16px;
+  }
+
+  &-right {
     top: 4%;
-    left: 476px;
+    right: 30px;
   }
 
   &__icon {
