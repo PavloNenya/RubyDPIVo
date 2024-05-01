@@ -7,7 +7,7 @@
     grid-template-columns: repeat(var(--columns), 1fr);
     gap: 16px;
 
-    @media screen and (min-width: 768px) {
+    @include tablet {
       --columns: 12;
     }
 
@@ -24,7 +24,7 @@
     grid-template-columns: repeat(var(--columns), 1fr);
     gap: 16px;
 
-    @media screen and (min-width: 768px) {
+    @include tablet {
       --columns: 12;
     }
 
@@ -92,7 +92,7 @@
       grid-column: 1 / -1;
     }
 
-    @media screen and (min-width: 768px) {
+    @include tablet {
       --columns: 12;
     }
   }
@@ -267,7 +267,7 @@
       grid-template-columns: repeat(var(--columns), 1fr);
       gap: 16px;
 
-      @media screen and (min-width: 768px) {
+      @include tablet {
         --columns: 12;
       }
     }
@@ -326,7 +326,7 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@include phone {
   .product-page__photos img:nth-child(n + 6) {
     display: none;
   }
