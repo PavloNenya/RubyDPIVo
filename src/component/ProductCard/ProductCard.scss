@@ -1,0 +1,85 @@
+.card {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  gap: 16px;
+  box-sizing: border-box;
+
+  &__image {
+    width: 100%;
+    aspect-ratio: 4/5;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+
+  &__image--large {
+    aspect-ratio: 4/4;
+  }
+
+  &__information {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__sign {
+    cursor: pointer;
+    background-color: var(--color-primary-grey);
+    color: var(--color-system-grey);
+    border-radius: 4px;
+    padding: 4px 10px;
+  }
+
+  &__counter {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+  }
+
+  &__quantity {
+    width: 30px;
+    text-align: center;
+  }
+}
+
+.price {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+
+  &__cost {
+    line-height: 1;
+  }
+
+  &__sale {
+    text-decoration: line-through;
+  }
+}
+
+.infolabel {
+  position: absolute;
+  border-radius: 12px;
+  color: var(--color-accent);
+  gap: 2px;
+  padding-inline: 10px;
+  padding-block: 6px;
+  background-color: var(--color-reverse);
+  width: max-content;
+  display: flex;
+  align-items: center;
+
+  &-left {
+    top: 16px;
+    left: 16px;
+  }
+
+  &-right {
+    top: 4%;
+    right: 30px;
+  }
+
+  &__icon {
+    width: 20px;
+    height: 20px;
+  }
+}
