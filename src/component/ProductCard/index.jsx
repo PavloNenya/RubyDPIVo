@@ -1,7 +1,30 @@
 import "../ProductCard/ProductCard.scss";
 import "../../shared/settings.scss";
+import { useContext, useEffect, useState } from "react";
+import { AppContext } from "../../store/context";
+import { getProducts } from "../../api/products";
 
 const ProductCard = () => {
+  // eslint-disable-next-line no-unused-vars
+  const [isLoading, setIsLoading] = useState(false);
+
+  const { products, setProducts, setErrorMessage } = useContext(AppContext);
+
+  useEffect(() => {
+    setIsLoading(true);
+    setProducts([]);
+    setErrorMessage(null);
+
+    getProducts()
+      .then((data) => setProducts(data))
+      .catch(() => setErrorMessage("lol"))
+      .finally(() => setIsLoading(false));
+  }, [setErrorMessage, setProducts]);
+
+  {
+    console.log(products);
+  }
+
   return (
     <div className="goods__card card">
       <a href="/">

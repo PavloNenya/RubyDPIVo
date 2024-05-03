@@ -1,4 +1,4 @@
-const BASE_URL = "https://mate.academy/students-api";
+const BASE_URL = "http://localhost:9091/api";
 
 function wait(delay) {
   return new Promise((resolve) => {
