@@ -1,12 +1,11 @@
-export const ProductCard = () => {
+import "../ProductCard/ProductCard.scss";
+import "../../shared/settings.scss";
+
+const ProductCard = () => {
   return (
     <div className="goods__card card">
       <a href="/">
-        <img
-          className="card__image"
-          src="/img/cards/1/item-1.jpg"
-          alt="img-of-item"
-        />
+        <img className="card__image" src="" alt="img-of-item" />
         <div className="infolabel infolabel-left">
           new
           <img className="infolabel__icon" src="/img/icons/clock.svg" alt="" />
@@ -33,3 +32,5 @@ export const ProductCard = () => {
     </div>
   );
 };
+
+export default ProductCard;

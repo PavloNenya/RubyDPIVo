@@ -1,9 +1,10 @@
-import "./App.css";
+import "./App.scss";
+import ProductSlider from "./component/ProductSlider";
 
 function App() {
   return (
     <>
-      <div className="f">test</div>
+      <ProductSlider />
     </>
   );
 }
