@@ -1,4 +1,4 @@
-import "../ProductCard/ProductCard.scss";
+import "./ProductCard.scss";
 import "../../shared/settings.scss";
 import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../store/context";
