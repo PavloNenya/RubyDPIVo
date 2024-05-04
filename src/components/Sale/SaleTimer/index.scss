@@ -1,0 +1,46 @@
+@import "../../../shared/scss/settings.scss";
+
+$cardMarginFrom: 35.5;
+$cardMarginTo: 17;
+
+.timer {
+  @include adaptiveValue("margin-bottom", 68, 32);
+
+  &__items {
+    display: flex;
+    @include adaptiveValue("font-size", 64, 28);
+    line-height: 87%;
+    letter-spacing: em(0.064, 64);
+  }
+
+  &__item {
+    position: relative;
+    text-align: center;
+
+    &:not(:first-child) {
+      @include adaptiveValue("margin-left", $cardMarginFrom, $cardMarginTo);
+    }
+
+    &:not(:last-child) {
+      @include adaptiveValue("margin-right", $cardMarginFrom, $cardMarginTo);
+    }
+
+    &::before {
+      content: attr(data-title);
+      position: absolute;
+      left: 50%;
+      @include adaptiveValue("bottom", -20, -6);
+      transform: translateX(-50%) translateY(100%);
+      @include adaptiveValue("font-size", 16, 8);
+      line-height: 1;
+      color: var(--color-text-muted);
+    }
+
+    &:not(:last-child)::after {
+      content: ":";
+      position: absolute;
+      @include adaptiveValue("right", (-$cardMarginFrom), (-$cardMarginTo));
+      transform: translateX(50%);
+    }
+  }
+}
