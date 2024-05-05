@@ -1,0 +1,35 @@
+.goods {
+  &__cards {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    overflow-x: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    scroll-snap-align: start;
+    scroll-snap-type: x mandatory;
+  }
+
+  &__cards-wrapper {
+    scroll-snap-type: x mandatory;
+    max-width: 1200px;
+    overflow: hidden;
+  }
+
+  &__btnWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  &__btnSlider {
+    width: 50px;
+    height: 50px;
+    border: 2px solid var(--color-primary-grey);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

@@ -1,34 +1,16 @@
-import "./ProductCard.scss";
-import "../../shared/settings.scss";
-import { useContext, useEffect, useState } from "react";
-import { AppContext } from "../../store/context";
-import { getProducts } from "../../api/products";
+/* eslint-disable react/prop-types */
+import "./index.scss";
+import "../../shared/scss/settings.scss";
 
-const ProductCard = () => {
-  // eslint-disable-next-line no-unused-vars
-  const [isLoading, setIsLoading] = useState(false);
-
-  const { products, setProducts, setErrorMessage } = useContext(AppContext);
-
-  useEffect(() => {
-    setIsLoading(true);
-    setProducts([]);
-    setErrorMessage(null);
-
-    getProducts()
-      .then((data) => setProducts(data))
-      .catch(() => setErrorMessage("lol"))
-      .finally(() => setIsLoading(false));
-  }, [setErrorMessage, setProducts]);
-
-  {
-    console.log(products);
-  }
-
+const ProductCard = ({ product, cardWidth }) => {
   return (
-    <div className="goods__card card">
+    <div className="goods__card card" style={{ width: cardWidth }}>
       <a href="/">
-        <img className="card__image" src="" alt="img-of-item" />
+        <img
+          className="card__image"
+          src="src/assets/1/item-1.jpg"
+          alt="img-of-item"
+        />
         <div className="infolabel infolabel-left">
           new
           <img className="infolabel__icon" src="/img/icons/clock.svg" alt="" />
@@ -42,14 +24,16 @@ const ProductCard = () => {
       </div>
       <div className="card__information">
         <div className="card__description">
-          <p className="card__producer title-5">Nike SB</p>
+          <p className="card__producer title-5">
+            {product.product.producer.name}
+          </p>
           <a href="/" className="card__title title-4">
-            Hoodie for skateboarding
+            {product.product.description}
           </a>
         </div>
         <div className="card__price price">
-          <p className="price__cost title-3">$229</p>
-          <span className="price__sale title-5">$229</span>
+          <p className="price__cost title-3">{product.price}</p>
+          <span className="price__sale title-5">{product.price}</span>
         </div>
       </div>
     </div>
