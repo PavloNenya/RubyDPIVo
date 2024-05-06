@@ -32,8 +32,8 @@ const ProductCard = ({ product, cardWidth }) => {
           </a>
         </div>
         <div className="card__price price">
-          <p className="price__cost title-3">{product.price}</p>
-          <span className="price__sale title-5">{product.price}</span>
+          <p className="price__cost title-3">{product.price}$</p>
+          <span className="price__sale title-5">{product.price}$</span>
         </div>
       </div>
     </div>

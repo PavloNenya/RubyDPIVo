@@ -14,10 +14,34 @@ const ProductSlider = () => {
   const [startIndex, setStartIndex] = useState(0);
   const [cardWidth, setCardWidth] = useState(285);
   const [cardsInView, setCardsinView] = useState(1);
+
+  const [autoPlayInterval] = useState(5000);
+  const [autoPlayActive] = useState(true);
+
   const cardsToMove = 1;
   const gap = 20;
 
   const { products, setProducts, setErrorMessage } = useContext(AppContext);
+
+  useEffect(() => {
+    let intervalId;
+
+    if (autoPlayActive) {
+      intervalId = setInterval(() => {
+        const maxStartIndex = products.length - cardsInView;
+        const newStartIndex = (startIndex + cardsToMove) % (maxStartIndex + 1);
+        setStartIndex(newStartIndex);
+      }, autoPlayInterval);
+    }
+
+    return () => clearInterval(intervalId);
+  }, [
+    autoPlayActive,
+    autoPlayInterval,
+    cardsInView,
+    products.length,
+    startIndex,
+  ]);
 
   useEffect(() => {
     const checkWidth = () => {
