@@ -6,6 +6,10 @@
   box-sizing: border-box;
   // width: 212px;
 
+  &__title {
+    flex-wrap: wrap;
+  }
+
   &__image {
     width: 100%;
     aspect-ratio: 4/5;

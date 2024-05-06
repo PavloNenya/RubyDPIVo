@@ -6,22 +6,21 @@ import { useEffect, useMemo } from "react";
 import { useContext } from "react";
 import { useState } from "react";
 import { AppContext } from "../../store/context";
-import { getProducts } from "../../api/products";
+import SliderIndicator from "../SliderIndicator";
 
 const ProductSlider = () => {
   // eslint-disable-next-line no-unused-vars
-  const [isLoading, setIsLoading] = useState(false);
   const [startIndex, setStartIndex] = useState(0);
   const [cardWidth, setCardWidth] = useState(285);
   const [cardsInView, setCardsinView] = useState(1);
 
-  const [autoPlayInterval] = useState(5000);
+  const [autoPlayInterval] = useState(4000);
   const [autoPlayActive] = useState(true);
 
   const cardsToMove = 1;
   const gap = 20;
 
-  const { products, setProducts, setErrorMessage } = useContext(AppContext);
+  const { products } = useContext(AppContext);
 
   useEffect(() => {
     let intervalId;
@@ -50,7 +49,7 @@ const ProductSlider = () => {
       if (screenWidth <= 639) {
         setCardWidth(212);
       } else if (screenWidth <= 1199) {
-        setCardWidth(260);
+        setCardWidth(270);
         setCardsinView(2);
       } else {
         setCardWidth(285);
@@ -92,17 +91,6 @@ const ProductSlider = () => {
   const leftArrowDis = startIndex === 0;
   const rightArrowDis = startIndex >= products.length - cardsInView;
 
-  useEffect(() => {
-    setIsLoading(true);
-    setProducts([]);
-    setErrorMessage(null);
-
-    getProducts()
-      .then((data) => setProducts(data))
-      .catch(() => setErrorMessage("lol"))
-      .finally(() => setIsLoading(false));
-  }, [setErrorMessage, setProducts]);
-
   return (
     <section className="page__goods goods">
       <div className="goods__container">
@@ -121,15 +109,23 @@ const ProductSlider = () => {
                   onClick={handlePrevClick}
                   disabled={leftArrowDis}
                 >
-                  -
+                  <img
+                    className="goods__toggle"
+                    src="src/assets/togles/scrolling-arrows.svg"
+                    alt=""
+                  />
                 </button>
 
                 <button
-                  className="goods__btnSlider"
+                  className="goods__btnSlider left"
                   onClick={handleNextClick}
                   disabled={rightArrowDis}
                 >
-                  +
+                  <img
+                    className="goods__toggle"
+                    src="src/assets/togles/scrolling-arrows.svg"
+                    alt=""
+                  />
                 </button>
               </div>
             </div>
@@ -145,6 +141,11 @@ const ProductSlider = () => {
               ))}
             </div>
           </div>
+          <SliderIndicator
+            totalCards={products.length}
+            startIndex={startIndex}
+            cardsInView={cardsInView}
+          />
         </div>
       </div>
     </section>

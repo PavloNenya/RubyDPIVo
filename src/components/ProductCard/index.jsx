@@ -8,12 +8,16 @@ const ProductCard = ({ product, cardWidth }) => {
       <a href="/">
         <img
           className="card__image"
-          src="src/assets/1/item-1.jpg"
+          src={`http://localhost:9091/api/images/${product.image}`}
           alt="img-of-item"
         />
         <div className="infolabel infolabel-left">
           new
-          <img className="infolabel__icon" src="/img/icons/clock.svg" alt="" />
+          <img
+            className="infolabel__icon"
+            src={`http://localhost:9091/api/images/${product.image}`}
+            alt=""
+          />
         </div>
       </a>
       <div className="button-like">

@@ -14,7 +14,7 @@ export const ContextProvider = ({ children }) => {
       errorMessage,
       setErrorMessage,
     }),
-    [errorMessage, products, setErrorMessage]
+    [errorMessage, products]
   );
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
