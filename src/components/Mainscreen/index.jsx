@@ -1,24 +1,6 @@
-import { useContext, useEffect, useState } from "react";
 import "./index.scss";
-import { AppContext } from "../../store/context";
-import { getProducts } from "../../api/products";
 
 export const Mainscreen = () => {
-  // eslint-disable-next-line no-unused-vars
-  const [isLoading, setIsLoading] = useState(false);
-  const { setProducts, setErrorMessage } = useContext(AppContext);
-
-  useEffect(() => {
-    setIsLoading(true);
-    setProducts([]);
-    setErrorMessage(null);
-
-    getProducts()
-      .then((data) => setProducts(data))
-      .catch(() => setErrorMessage("lol"))
-      .finally(() => setIsLoading(false));
-  }, [setErrorMessage, setProducts]);
-
   return (
     <section className="page__mainscreen mainscreen">
       <div className="mainscreen__container">
@@ -31,7 +13,7 @@ export const Mainscreen = () => {
           <div className="mainscreen__content ibg">
             <img
               className="mainscreen__main-img"
-              src="img/mainscreen/bg.jpg"
+              src="src/assets/img/mainscreen/bg.jpg"
               alt="bg.jpg"
             />
             <div className="mainscreen__block">
@@ -50,11 +32,12 @@ export const Mainscreen = () => {
             </div>
             <img
               className="mainscreen__banner"
-              src="img/mainscreen/banner.png"
+              src="src/assets/img/mainscreen/banner.png"
               alt="banner.png"
             />
           </div>
-          {/* <div className="mainscreen__swiper swiper">
+
+          <div className="mainscreen__swiper swiper">
             <ul className="mainscreen__items swiper-wrapper">
               <li className="mainscreen__item swiper-slide">
                 <img
@@ -134,7 +117,7 @@ export const Mainscreen = () => {
                 />
               </li>
             </ul>
-          </div> */}
+          </div>
         </div>
       </div>
     </section>

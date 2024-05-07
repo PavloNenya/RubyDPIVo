@@ -10,10 +10,13 @@ export const HomePage = () => {
   return (
     <>
       <Mainscreen />
-      <ProductSlider />
+      <ProductSlider type={"normal"} />
       <SaleTimer />
       <Blog />
+      <ProductSlider type={"sale"} />
       <SaleForm />
     </>
   );
 };
+
+export default HomePage;

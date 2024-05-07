@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import App from "./App";
 import { ContextProvider } from "./store/context";
 import { HomePage } from "./pages/HomePage";
+import ProductPage from "./pages/ProductPage";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <ContextProvider>
@@ -12,6 +13,13 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Routes>
           <Route path="/" element={<App />}>
             <Route index element={<HomePage />} />
+
+            <Route path="men">
+              {/* <Route index element={<CatalogPage />} /> */}
+              <Route path=":productId" element={<ProductPage />} />
+            </Route>
+
+            {/* <Route path="*" element={<PageNotFound />} /> */}
           </Route>
         </Routes>
       </Router>
