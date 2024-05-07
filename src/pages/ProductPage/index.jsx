@@ -1,8 +1,45 @@
+/* eslint-disable react/prop-types */
+import { useState } from "react";
 import { BackBtn } from "../../components/BackBtn";
+import TabsContent from "./Components/Content";
 import ProductSlider from "../../components/ProductSlider";
 import "./index.scss";
 
 export const ProductPage = () => {
+  const [activeTab, setActiveTab] = useState(0);
+
+  // todo after realization catalog by vova
+
+  // const tabs = [
+  //   {
+  //     title: "Description",
+  //     content: <TabsContent text={product.product.description} />,
+  //   },
+  //   {
+  //     title: "Material & Care",
+  //     content: <TabsContent text={product.product.description} />,
+  //   },
+  //   {
+  //     title: "Rewiews (17)",
+  //     content: <TabsContent text={product.product.description} />,
+  //   },
+  // ];
+
+  const tabs = [
+    {
+      title: "Description",
+      content: <TabsContent text="Content 1" />,
+    },
+    {
+      title: "Material & Care",
+      content: <TabsContent text="Content 2" />,
+    },
+    {
+      title: "Rewiews (17)",
+      content: <TabsContent text="Content 3" />,
+    },
+  ];
+
   return (
     <div className="wrapper">
       <main className="page">
@@ -190,46 +227,28 @@ export const ProductPage = () => {
                   <div className="product-page__tabs-content">
                     <div className="product-page__tabs-buttons-wrapper">
                       <div className="product-page__tabs-buttons">
-                        <button className="product-page__tablink product-page__tablink--active">
-                          Description
-                        </button>
-                        <button className="product-page__tablink">
-                          Material &amp; Care
-                        </button>
-                        <button className="product-page__tablink">
-                          Rewiews (17)
-                        </button>
+                        {tabs.map((tab, index) => (
+                          <div
+                            key={index}
+                            className="product-page__tabs-button"
+                          >
+                            <div
+                              className={`${"product-page__tablink"} ${
+                                index === activeTab ? "active" : ""
+                              }`}
+                              onClick={() => setActiveTab(index)}
+                            >
+                              {tab.title}
+                            </div>
+                          </div>
+                        ))}
                       </div>
                       <hr className="product-page__line" />
                     </div>
-                    <div id="Tab1" className="product-page__tabcontent">
-                      <p className="product-page__tabcontent-text">
-                        Feel like no&nbsp;one can beat you&nbsp;— from the first
-                        hole to&nbsp;the last shot. Inspired by&nbsp;some
-                        of&nbsp;the most iconic running shoes of&nbsp;all time,
-                        the Air Jordan 1 G&nbsp;will quickly become a&nbsp;golf
-                        classic. Air cushioning underfoot, a&nbsp;Wings logo
-                        on&nbsp;the heel and an&nbsp;integrated tread pattern
-                        add power to&nbsp;your swing and provide unrivaled
-                        comfort in&nbsp;the modern style of&nbsp;the original
-                        AJ1.
-                      </p>
-                      <div className="product-page__tabcontent-list">
-                        <ul>
-                          <li className="product-page__tabcontent-list-element">
-                            Color Shown: Black/White
-                          </li>
-                          <li className="product-page__tabcontent-list-element">
-                            Style: DQ0660-101
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div id="Tab2" className="product-page__tabcontent" />
-                    <div id="Tab3" className="product-page__tabcontent" />
+
+                    <div className="tab-content">{tabs[activeTab].content}</div>
                   </div>
                 </div>
-
                 <ProductSlider />
               </div>
             </div>

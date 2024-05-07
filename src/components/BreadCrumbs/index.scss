@@ -3,10 +3,17 @@
   flex-direction: row;
   align-items: center;
   max-width: 1200px;
-  margin: 20px auto;
+  margin-top: 56px;
 }
 
 .breadcrumbs > * {
   display: inline-block;
-  margin-right: 10px;
+  margin-right: 4px;
+}
+
+.crumbFirst {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
 }

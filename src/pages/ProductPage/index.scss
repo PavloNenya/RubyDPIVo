@@ -280,6 +280,10 @@
       gap: 72px;
     }
 
+    &-button {
+      position: relative;
+    }
+
     &-buttons-wrapper {
       grid-column: 1 / -1;
 
@@ -310,6 +314,7 @@
   }
 
   &__tablink {
+    cursor: pointer;
     color: var(--color-text-muted);
 
     &--active {
@@ -344,4 +349,18 @@
   .product-page__photos img:nth-child(n + 4) {
     display: none;
   }
+}
+
+.active {
+  color: var(--color-text);
+}
+
+.product-page__tablink.active::after {
+  content: "";
+  position: absolute;
+  top: 36px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-text);
 }

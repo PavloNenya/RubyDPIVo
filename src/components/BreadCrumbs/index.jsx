@@ -1,6 +1,7 @@
 import React from "react";
 import { useLocation, Link } from "react-router-dom";
 import btnBred from "../../assets/buttons/btn-bred.svg";
+import "./index.scss";
 
 export const BreadСrumbs = () => {
   const location = useLocation();
@@ -19,12 +20,12 @@ export const BreadСrumbs = () => {
       return (
         <React.Fragment key={crumb}>
           {index === 0 && (
-            <div className="crumb">
+            <div className="crumbFirst">
               <Link to="/">Home</Link>
+
+              <img src={btnBred} alt="" />
             </div>
           )}
-
-          {!isLast && <img src={btnBred} alt="" />}
 
           <div className="crumb">
             <Link to={currentLink}>{crumbText}</Link>
