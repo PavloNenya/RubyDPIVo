@@ -1,0 +1,12 @@
+.breadcrumbs {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-width: 1200px;
+  margin: 20px auto;
+}
+
+.breadcrumbs > * {
+  display: inline-block;
+  margin-right: 10px;
+}

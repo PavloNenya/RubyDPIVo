@@ -10,24 +10,6 @@ export const ProductPage = () => {
           <div className="product-page__container">
             <div className="product-page__body">
               <div className="product-page__top-wrapper">
-                <div className="breadcrumbs">
-                  <a className="breadcrumbs__breadcrumb" href="#">
-                    Home
-                  </a>
-                  <span className="breadcrumbs__slash">/</span>
-                  <a className="breadcrumbs__breadcrumb" href="#">
-                    Men
-                  </a>
-                  <span className="breadcrumbs__slash">/</span>
-                  <a className="breadcrumbs__breadcrumb" href="#">
-                    Sneakers
-                  </a>
-                  <span className="breadcrumbs__slash">/</span>
-                  <a className="breadcrumbs__breadcrumb" href="#">
-                    Nike Air Jordan 1 High
-                  </a>
-                </div>
-
                 <BackBtn />
 
                 <div className="product-page__top-left">
@@ -242,9 +224,6 @@ export const ProductPage = () => {
                           </li>
                         </ul>
                       </div>
-                      <a className="product-page__tabcontent-link" href="">
-                        View product details
-                      </a>
                     </div>
                     <div id="Tab2" className="product-page__tabcontent" />
                     <div id="Tab3" className="product-page__tabcontent" />
