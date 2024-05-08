@@ -5,6 +5,7 @@ import App from "./App";
 import { ContextProvider } from "./store/context";
 import { HomePage } from "./pages/HomePage";
 import CatalogPage from "./pages/CatalogPage";
+import ProductPage from "./pages/ProductPage";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <ContextProvider>
@@ -17,6 +18,12 @@ ReactDOM.createRoot(document.getElementById("root")).render(
               <Route path="catalog" element={<CatalogPage />}>
                 <Route path=":page" element={<CatalogPage />} />
               </Route>
+              <Route path="men">
+                {/* <Route index element={<CatalogPage />} /> */}
+                <Route path=":productId" element={<ProductPage />} />
+              </Route>
+
+              {/* <Route path="*" element={<PageNotFound />} /> */}
             </Route>
           </Routes>
         </Router>

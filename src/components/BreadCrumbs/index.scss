@@ -1,0 +1,19 @@
+.breadcrumbs {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-width: 1200px;
+  margin-top: 56px;
+}
+
+.breadcrumbs > * {
+  display: inline-block;
+  margin-right: 4px;
+}
+
+.crumbFirst {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+}
