@@ -49,6 +49,10 @@
     @include tablet {
       --columns: 12;
     }
+
+    @media screen and (max-width: 768px) {
+      row-gap: 36px;
+    }
   }
 
   &__description {
@@ -144,6 +148,10 @@
       grid-column: 1 / -1;
     }
 
+    @media screen and (max-width: 768px) {
+      gap: 56px;
+    }
+
     &-top {
       display: flex;
       flex-direction: column;
@@ -188,7 +196,7 @@
       gap: 16px;
 
       @include tablet {
-        --columns: 12;
+        --columns: 6;
       }
     }
 
@@ -293,4 +301,8 @@
   &__btnSlider.left {
     transform: rotate(180deg);
   }
+}
+
+.checked {
+  background-color: var(--color-secondary-grey);
 }

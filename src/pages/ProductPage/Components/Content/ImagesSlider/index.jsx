@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import secondPhoto from "../../../../../assets/img/mainscreen/productsCards/Jordans /1.png";
-import thirdPhoto from "../../../../../assets/img/mainscreen/productsCards/Jordans /2.png";
-import fourPhoto from "../../../../../assets/img/mainscreen/productsCards/Jordans /3.png";
-import fivePhoto from "../../../../../assets/img/mainscreen/productsCards/Jordans /4.png";
+import secondPhoto from "../../../../../assets/img/mainscreen/productsCards/Jordans/1.png";
+import thirdPhoto from "../../../../../assets/img/mainscreen/productsCards/Jordans/2.png";
+import fourPhoto from "../../../../../assets/img/mainscreen/productsCards/Jordans/3.png";
+import fivePhoto from "../../../../../assets/img/mainscreen/productsCards/Jordans/4.png";
 import scrollingArrows from "../../../../../assets/togles/scrollingArrows.svg";
 
 import "./index.scss";

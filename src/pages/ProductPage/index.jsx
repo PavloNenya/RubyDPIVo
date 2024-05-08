@@ -11,6 +11,12 @@ import ImagesSlider from "./Components/Content/ImagesSlider";
 
 export const ProductPage = () => {
   const [activeTab, setActiveTab] = useState(0);
+  const [selectedSize, setSelectedSize] = useState(null);
+  const availableSizes = ["41", "42", "43", "44", "45"];
+
+  const handleSizeClick = (size) => {
+    setSelectedSize(size);
+  };
 
   // todo after realization catalog by vova
 
@@ -78,15 +84,18 @@ export const ProductPage = () => {
 
                   <div className="product-page__interactive">
                     <div className="product-page__interactive-top">
-                      <div className="product-page__sizes">
-                        <p className="product-page__color">Sizes:</p>
-                        <div className="product-page__sizes-wrapper">
-                          <div className="product-page__size checked">41</div>
-                          <div className="product-page__size">42</div>
-                          <div className="product-page__size">43</div>
-                          <div className="product-page__size">44</div>
-                          <div className="product-page__size">45</div>
-                        </div>
+                      <div className="product-page__sizes-wrapper">
+                        {availableSizes.map((size) => (
+                          <div
+                            key={size}
+                            className={`product-page__size ${
+                              selectedSize === size ? "checked" : ""
+                            }`}
+                            onClick={() => handleSizeClick(size)}
+                          >
+                            {size}
+                          </div>
+                        ))}
                       </div>
 
                       <div className="product-page__buttons">
