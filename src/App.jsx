@@ -10,9 +10,10 @@ function App() {
     <>
       <Header />
       {/* fix: we need to add wrapper to all projects */}
-      <BreadСrumbs />
       {/* fix: we need to add wrapper to all projects */}
       <main className="page">
+        <BreadСrumbs />
+
         <Outlet />
       </main>
       <Footer />

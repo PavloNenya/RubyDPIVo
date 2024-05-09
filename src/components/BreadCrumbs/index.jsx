@@ -36,7 +36,13 @@ export const BreadСrumbs = () => {
       );
     });
 
-  return <div className="breadcrumbs">{crumbs}</div>;
+  return (
+    <section className="page__breadcrumbs">
+      <div className="breadcrumbs__container">
+        <div className="breadcrumbs">{crumbs}</div>
+      </div>
+    </section>
+  );
 };
 
 export default BreadСrumbs;

@@ -15,11 +15,14 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Routes>
             <Route path="/" element={<App />}>
               <Route index element={<HomePage />} />
-              <Route path="catalog" element={<CatalogPage />}>
+
+              <Route path="catalog">
+                <Route index element={<CatalogPage />} />
                 <Route path=":page" element={<CatalogPage />} />
               </Route>
-              <Route path="men">
-                {/* <Route index element={<CatalogPage />} /> */}
+
+              <Route path="product">
+                <Route index element={<ProductPage />} />
                 <Route path=":productId" element={<ProductPage />} />
               </Route>
 
@@ -29,5 +32,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         </Router>
       </div>
     </React.StrictMode>
-  </ContextProvider>,
+  </ContextProvider>
 );

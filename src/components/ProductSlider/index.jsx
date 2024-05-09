@@ -12,7 +12,6 @@ const ProductSlider = ({ type }) => {
   // eslint-disable-next-line no-unused-vars
   const [isLoading, setIsLoading] = useState(false);
   const [startIndex, setStartIndex] = useState(0);
-  const [cardWidth, setCardWidth] = useState(285);
   const [cardsInView, setCardsinView] = useState(1);
   const { products, setProducts, setErrorMessage } = useContext(AppContext);
 
@@ -58,12 +57,10 @@ const ProductSlider = ({ type }) => {
       const screenWidth = window.innerWidth;
 
       if (screenWidth <= 639) {
-        setCardWidth(212);
+        setCardsinView(2);
       } else if (screenWidth <= 1199) {
-        setCardWidth(270);
         setCardsinView(2);
       } else {
-        setCardWidth(276);
         setCardsinView(4);
       }
     };
@@ -92,11 +89,10 @@ const ProductSlider = ({ type }) => {
 
   const carouselListStyles = useMemo(
     () => ({
-      width: `${(cardWidth + gap) * products.length + gap}px`,
-      transform: `translateX(-${startIndex * (cardWidth + gap)}px)`,
+      transform: `translateX(-${startIndex * (285 + gap)}px)`,
       transition: "transform 0.5s ease",
     }),
-    [cardWidth, products.length, startIndex]
+    [products.length, startIndex]
   );
 
   const leftArrowDis = startIndex === 0;
@@ -138,11 +134,7 @@ const ProductSlider = ({ type }) => {
           <div className="goods__cards-wrapper">
             <div className="goods__cards" style={carouselListStyles}>
               {products.map((product) => (
-                <ProductCard
-                  key={product.id}
-                  product={product}
-                  cardWidth={cardWidth}
-                />
+                <ProductCard key={product.id} product={product} />
               ))}
             </div>
           </div>
