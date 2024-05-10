@@ -39,13 +39,6 @@ const CatalogPage = () => {
     <section className="page__products products">
       <div className="products__container">
         <div className="products__body">
-          <div className="products__path">
-            <a href="#">Home</a>
-            <i className="products__icon icon-arrow-right"></i>
-            <a href="#">Men</a>
-            <i className="products__icon icon-arrow-right"></i>
-            <a href="#">Sneakers</a>
-          </div>
           <div className="products__inner">
             <Aside setSelectedFilters={setSelectedFilters} />
             <div className="products__main">

@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { BackBtn } from "../../components/BackBtn";
 import TabsContent from "./Components/Content";
 import ProductSlider from "../../components/ProductSlider";
@@ -7,46 +8,45 @@ import btn from "../../assets/img/mainscreen/productsCards/button-2.svg";
 import btn2 from "../../assets/img/mainscreen/productsCards/button.svg";
 
 import "./index.scss";
-import ImagesSlider from "./Components/Content/ImagesSlider";
+
+// import ImagesSlider from "./Components/Content/ImagesSlider";
+import { getProductInstance } from "../../api/productInstance";
 
 export const ProductPage = () => {
   const [activeTab, setActiveTab] = useState(0);
   const [selectedSize, setSelectedSize] = useState(null);
   const availableSizes = ["41", "42", "43", "44", "45"];
 
+  const [productInstance, setProductInstance] = useState({});
+
+  const { productId } = useParams();
+
+  useEffect(() => {
+    getProductInstance(productId).then((data) => {
+      setProductInstance(data);
+    });
+  }, []);
+
   const handleSizeClick = (size) => {
     setSelectedSize(size);
   };
 
-  // todo after realization catalog by vova
-
-  // const tabs = [
-  //   {
-  //     title: "Description",
-  //     content: <TabsContent text={product.product.description} />,
-  //   },
-  //   {
-  //     title: "Material & Care",
-  //     content: <TabsContent text={product.product.description} />,
-  //   },
-  //   {
-  //     title: "Rewiews (17)",
-  //     content: <TabsContent text={product.product.description} />,
-  //   },
-  // ];
+  {
+    console.log(productInstance);
+  }
 
   const tabs = [
     {
       title: "Description",
-      content: <TabsContent text="Content 1" />,
+      // content: <TabsContent text={productInstance.product.description} />,
     },
     {
       title: "Material & Care",
-      content: <TabsContent text="Content 2" />,
+      content: <TabsContent text={"Tabs 2"} />,
     },
     {
       title: "Rewiews (17)",
-      content: <TabsContent text="Content 3" />,
+      content: <TabsContent text={"Tabs 3"} />,
     },
   ];
 
@@ -59,12 +59,12 @@ export const ProductPage = () => {
               <div className="product-page__top-wrapper">
                 <BackBtn />
 
-                <ImagesSlider />
+                {/* <ImagesSlider productsInstances={productInstance} /> */}
 
                 <div className="product-page__top-right">
                   <div className="product-page__information">
                     <div className="product-page__description">
-                      <p className="product-page__producer title-5">Jordan</p>
+                      <p className="product-page__producer title-5">{""}</p>
                       <a
                         href="/url-до-сторінки-з-товаром-4"
                         className="product-page__title"
@@ -75,9 +75,9 @@ export const ProductPage = () => {
                     </div>
 
                     <div className="product-page__price">
-                      <p className="product-page__price-cost">$179</p>
+                      <p className="product-page__price-cost">{}</p>
                       <span className="product-page__price-cost-sale title-5">
-                        $229
+                        {}
                       </span>
                     </div>
                   </div>

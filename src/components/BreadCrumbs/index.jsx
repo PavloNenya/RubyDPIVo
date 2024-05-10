@@ -37,11 +37,11 @@ export const BreadСrumbs = () => {
     });
 
   return (
-    <section className="page__breadcrumbs">
+    <div className="page__breadcrumbs">
       <div className="breadcrumbs__container">
         <div className="breadcrumbs">{crumbs}</div>
       </div>
-    </section>
+    </div>
   );
 };
 

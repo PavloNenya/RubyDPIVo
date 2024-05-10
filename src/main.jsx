@@ -6,6 +6,7 @@ import { ContextProvider } from "./store/context";
 import { HomePage } from "./pages/HomePage";
 import CatalogPage from "./pages/CatalogPage";
 import ProductPage from "./pages/ProductPage";
+import BasketPage from "./pages/BasketPage";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <ContextProvider>
@@ -19,12 +20,14 @@ ReactDOM.createRoot(document.getElementById("root")).render(
               <Route path="catalog">
                 <Route index element={<CatalogPage />} />
                 <Route path=":page" element={<CatalogPage />} />
+
+                <Route path="product">
+                  <Route index element={<ProductPage />} />
+                  <Route path=":productId" element={<ProductPage />} />
+                </Route>
               </Route>
 
-              <Route path="product">
-                <Route index element={<ProductPage />} />
-                <Route path=":productId" element={<ProductPage />} />
-              </Route>
+              <Route path="basket" element={<BasketPage />} />
 
               {/* <Route path="*" element={<PageNotFound />} /> */}
             </Route>

@@ -5,6 +5,7 @@ export const AppContext = createContext({});
 
 export const ContextProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
+  const [selectedProduct, setSelectedProduct] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
 
   const value = useMemo(
@@ -13,8 +14,10 @@ export const ContextProvider = ({ children }) => {
       setProducts,
       errorMessage,
       setErrorMessage,
+      selectedProduct,
+      setSelectedProduct,
     }),
-    [errorMessage, products]
+    [errorMessage, products, selectedProduct]
   );
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
