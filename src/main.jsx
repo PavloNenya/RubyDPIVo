@@ -21,8 +21,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                 <Route index element={<CatalogPage />} />
                 <Route path=":page" element={<CatalogPage />} />
 
-                <Route path="product">
-                  <Route index element={<ProductPage />} />
+                <Route path="product" element={<ProductPage />}>
                   <Route path=":productId" element={<ProductPage />} />
                 </Route>
               </Route>

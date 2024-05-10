@@ -5,37 +5,13 @@ import scrollingArrows from "../../../../../assets/togles/scrollingArrows.svg";
 
 import "./index.scss";
 
-export const ImagesSlider = ({ productsInstances }) => {
+export const ImagesSlider = ({ images }) => {
+  {
+    console.log(images);
+  }
+
   const [selectedImg, setSelectedImg] = useState(images[0]);
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const images = [
-    <img
-      src={`http://localhost:9091/api/images/${productsInstances.images[0]}`}
-      alt="img-of-item"
-    />,
-    <img
-      src={`http://localhost:9091/api/images/${productsInstances.images[1]}`}
-      alt="img-of-item"
-    />,
-    <img
-      src={`http://localhost:9091/api/images/${productsInstances.images[2]}`}
-      alt="img-of-item"
-    />,
-    <img
-      src={`http://localhost:9091/api/images/${productsInstances.images[3]}`}
-      alt="img-of-item"
-    />,
-    <img
-      src={`http://localhost:9091/api/images/${productsInstances.images[4]}`}
-      alt="img-of-item"
-    />,
-    <img
-      src={`http://localhost:9091/api/images/${productsInstances.images[5]}`}
-      alt="img-of-item"
-    />,
-  ];
 
   const handleImageClick = (index) => {
     setSelectedImg(images[index]);
@@ -63,14 +39,13 @@ export const ImagesSlider = ({ productsInstances }) => {
   return (
     <div className="product-page__top-left">
       <div className="product-page__photos">
-        {console.log(images)}
         {images.map((image, index) => (
           <img
             key={index}
             className={`product-page__mini-photo ${
               index === currentIndex ? "selected" : ""
             }`}
-            src={image}
+            src={`http://localhost:9091/api/images/${image}`}
             alt={`mini-photo-${index}`}
             onClick={() => handleImageClick(index)}
           />
@@ -101,7 +76,7 @@ export const ImagesSlider = ({ productsInstances }) => {
 
         <img
           className="product-page__main-photo"
-          src={selectedImg}
+          src={`http://localhost:9091/api/images/${selectedImg}`}
           alt="main-photo"
         />
       </div>

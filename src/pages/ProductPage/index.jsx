@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 import { BackBtn } from "../../components/BackBtn";
 import TabsContent from "./Components/Content";
@@ -9,12 +9,17 @@ import btn2 from "../../assets/img/mainscreen/productsCards/button.svg";
 
 import "./index.scss";
 
-// import ImagesSlider from "./Components/Content/ImagesSlider";
+import ImagesSlider from "./Components/Content/ImagesSlider";
 import { getProductInstance } from "../../api/productInstance";
+
+function generateRandomNumber(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 export const ProductPage = () => {
   const [activeTab, setActiveTab] = useState(0);
   const [selectedSize, setSelectedSize] = useState(null);
+  const [rndNum, setRndNum] = useState(null);
   const availableSizes = ["41", "42", "43", "44", "45"];
 
   const [productInstance, setProductInstance] = useState({});
@@ -25,20 +30,27 @@ export const ProductPage = () => {
     getProductInstance(productId).then((data) => {
       setProductInstance(data);
     });
-  }, []);
+  }, [productId]);
+
+  useEffect(() => {
+    const randomNumber = generateRandomNumber(1000000, 9999999);
+    setRndNum(randomNumber);
+  }, [setRndNum]);
 
   const handleSizeClick = (size) => {
     setSelectedSize(size);
   };
 
-  {
-    console.log(productInstance);
-  }
+  const images = useMemo(
+    () =>
+      Array.isArray(productInstance?.images) ? [...productInstance.images] : [],
+    [productInstance]
+  );
 
   const tabs = [
     {
       title: "Description",
-      // content: <TabsContent text={productInstance.product.description} />,
+      content: <TabsContent text={productInstance?.product?.description} />,
     },
     {
       title: "Material & Care",
@@ -59,25 +71,33 @@ export const ProductPage = () => {
               <div className="product-page__top-wrapper">
                 <BackBtn />
 
-                {/* <ImagesSlider productsInstances={productInstance} /> */}
+                <ImagesSlider images={images} />
 
                 <div className="product-page__top-right">
                   <div className="product-page__information">
                     <div className="product-page__description">
-                      <p className="product-page__producer title-5">{""}</p>
+                      <p className="product-page__producer title-5">
+                        {productInstance?.product?.producer?.name}
+                      </p>
                       <a
                         href="/url-до-сторінки-з-товаром-4"
                         className="product-page__title"
                       >
-                        Air Jordan I High (White/Black)
+                        {productInstance?.product?.name}
                       </a>
-                      <p className="product-page__sex">Unisex Shoes</p>
+                      <p className="product-page__sex">
+                        {productInstance?.product?.category?.name}
+                      </p>
                     </div>
 
                     <div className="product-page__price">
-                      <p className="product-page__price-cost">{}</p>
+                      <p className="product-page__price-cost">
+                        {productInstance?.product?.price &&
+                          `${productInstance.product.price}$`}
+                      </p>
                       <span className="product-page__price-cost-sale title-5">
-                        {}
+                        {productInstance?.product?.price &&
+                          `${productInstance.product.price + 120}$`}
                       </span>
                     </div>
                   </div>
@@ -155,7 +175,7 @@ export const ProductPage = () => {
                     </div>
 
                     <p className="product-page__serial-number title-5">
-                      Product code: 17150810
+                      Product code: {rndNum}
                     </p>
                   </div>
                 </div>
