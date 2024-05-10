@@ -1,23 +1,24 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
+import { getProducts } from "../../api/products";
+
 import Aside from "../../components/Catalog/Aside";
+import Pagination from "../../components/Catalog/Pagination";
+import ProductCard from "../../components/ProductCard";
 
 import "./index.scss";
-import ProductCard from "../../components/ProductCard";
-import { getProducts } from "../../api/products";
 
 const CatalogPage = () => {
   const { page } = useParams();
   const [products, setProducts] = useState([]);
   const [selectedFilters, setSelectedFilters] = useState({});
+  const sortOptions = ["ascending", "descending", "name"];
 
   const handleCategoryClose = (filterType, itemName) => {
     setSelectedFilters((prevSelectedFilters) => {
       const updatedFilters = { ...prevSelectedFilters };
-      updatedFilters[filterType] = updatedFilters[filterType].filter(
-        (item) => item !== itemName
-      );
+      updatedFilters[filterType] = updatedFilters[filterType].filter((item) => item !== itemName);
       return updatedFilters;
     });
   };
@@ -29,11 +30,17 @@ const CatalogPage = () => {
     }
   };
 
-  useEffect(() => {
-    setProducts([]);
+  const handleReset = () => {
+    setSelectedFilters({});
 
-    getProducts().then((data) => setProducts(data));
-  }, [page]);
+    Object.keys(selectedFilters).forEach((filterType) => {
+      selectedFilters[filterType].forEach((itemName) => {
+        handleCheckboxToggle(itemName);
+      });
+    });
+  };
+
+  useEffect(() => {}, [page]);
 
   return (
     <section className="page__products products">
@@ -47,10 +54,7 @@ const CatalogPage = () => {
                 <ul className="products__categories categories">
                   {Object.keys(selectedFilters).map((filterType) =>
                     selectedFilters[filterType].map((itemName, index) => (
-                      <li
-                        className="categories__item"
-                        key={`${filterType}-${index}`}
-                      >
+                      <li className="categories__item" key={`${filterType}-${index}`}>
                         <p className="categories__text">{itemName}</p>
                         <button
                           className="categories__close"
@@ -60,26 +64,18 @@ const CatalogPage = () => {
                           }}
                         ></button>
                       </li>
-                    ))
+                    )),
                   )}
                 </ul>
                 <div className="products__params">
-                  {/* TODO select */}
                   <select className="products__options">
-                    <option className="products__option" value="">
-                      Sort by descending price
-                    </option>
-                    <option className="products__option" value="">
-                      Sort by ascending price
-                    </option>
-                    <option className="products__option" value="">
-                      Sort by name
-                    </option>
-                    <option className="products__option" value="">
-                      Sort by price
-                    </option>
+                    {sortOptions.map((item) => (
+                      <option className="products__option" value={item} key={item}>
+                        Sort by {item}
+                      </option>
+                    ))}
                   </select>
-                  <button className="products__button button-reset">
+                  <button className="products__button button-reset" onClick={handleReset}>
                     <img src="./img/icons/reset.svg" alt="reset" />
                   </button>
                   <button className="products__button button-filter">
@@ -95,39 +91,7 @@ const CatalogPage = () => {
                     </Link>
                   ))}
                 </div>
-                <div className="products__pagination pagination">
-                  <Link to={`/catalog/${parseInt(page) - 1}`}>
-                    <button className="pagination__button left">
-                      <i className="pagination__icon icon-arrow-down"></i>
-                    </button>
-                  </Link>
-                  <p className="pagination__text">Page</p>
-                  <ul className="pagination__items">
-                    <li className="pagination__item">
-                      <Link to="/catalog/1" className="pagination__link">
-                        1
-                      </Link>
-                    </li>
-                    <li className="pagination__item">
-                      <Link to="/catalog/2" className="pagination__link">
-                        2
-                      </Link>
-                    </li>
-                    <li className="pagination__item">
-                      <Link to="/catalog/3" className="pagination__link">
-                        3
-                      </Link>
-                    </li>
-                  </ul>
-                  <Link
-                    to={`/catalog/${parseInt(page) + 1}`}
-                    onClick={console.log(page)}
-                  >
-                    <button className="pagination__button right">
-                      <i className="pagination__icon icon-arrow-down"></i>
-                    </button>
-                  </Link>
-                </div>
+                <Pagination />
               </div>
             </div>
           </div>
