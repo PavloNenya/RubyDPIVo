@@ -61,8 +61,10 @@ const ProductSlider = ({ type }) => {
         setCardWidth(212);
       } else if (screenWidth <= 1199) {
         setCardsinView(2);
+        setCardWidth(280);
       } else {
         setCardsinView(4);
+        setCardWidth(285);
       }
     };
 

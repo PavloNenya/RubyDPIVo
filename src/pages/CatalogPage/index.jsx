@@ -90,7 +90,7 @@ const CatalogPage = () => {
               <div className="products__content">
                 <div className="products__cards">
                   {products.map((product) => (
-                    <Link to={`product/${page}`} key={product.id}>
+                    <Link to={`product/${product.id}`} key={product.id}>
                       <ProductCard product={product} />
                     </Link>
                   ))}
