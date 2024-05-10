@@ -1,24 +1,41 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/jsx-key */
 import { useEffect, useState } from "react";
-import secondPhoto from "../../../../../assets/img/mainscreen/productsCards/Jordans/1.png";
-import thirdPhoto from "../../../../../assets/img/mainscreen/productsCards/Jordans/2.png";
-import fourPhoto from "../../../../../assets/img/mainscreen/productsCards/Jordans/3.png";
-import fivePhoto from "../../../../../assets/img/mainscreen/productsCards/Jordans/4.png";
 import scrollingArrows from "../../../../../assets/togles/scrollingArrows.svg";
 
 import "./index.scss";
 
-const images = [
-  secondPhoto,
-  thirdPhoto,
-  fivePhoto,
-  fourPhoto,
-  thirdPhoto,
-  secondPhoto,
-];
-
-export const ImagesSlider = () => {
+export const ImagesSlider = ({ productsInstances }) => {
   const [selectedImg, setSelectedImg] = useState(images[0]);
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const images = [
+    <img
+      src={`http://localhost:9091/api/images/${productsInstances.images[0]}`}
+      alt="img-of-item"
+    />,
+    <img
+      src={`http://localhost:9091/api/images/${productsInstances.images[1]}`}
+      alt="img-of-item"
+    />,
+    <img
+      src={`http://localhost:9091/api/images/${productsInstances.images[2]}`}
+      alt="img-of-item"
+    />,
+    <img
+      src={`http://localhost:9091/api/images/${productsInstances.images[3]}`}
+      alt="img-of-item"
+    />,
+    <img
+      src={`http://localhost:9091/api/images/${productsInstances.images[4]}`}
+      alt="img-of-item"
+    />,
+    <img
+      src={`http://localhost:9091/api/images/${productsInstances.images[5]}`}
+      alt="img-of-item"
+    />,
+  ];
 
   const handleImageClick = (index) => {
     setSelectedImg(images[index]);
@@ -41,7 +58,7 @@ export const ImagesSlider = () => {
 
   useEffect(() => {
     setSelectedImg(images[0]);
-  }, []);
+  }, [images]);
 
   return (
     <div className="product-page__top-left">

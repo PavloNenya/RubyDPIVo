@@ -6,12 +6,13 @@ import ProductCard from "../ProductCard";
 import { AppContext } from "../../store/context";
 import SliderIndicator from "../SliderIndicator";
 import { getProducts } from "../../api/products";
-import scrollingArrows from "../../assets/togles/scrollingArrows.svg";
+import scrollingArrows from "../..//assets/togles/scrollingArrows.svg";
 
 const ProductSlider = ({ type }) => {
   // eslint-disable-next-line no-unused-vars
   const [isLoading, setIsLoading] = useState(false);
   const [startIndex, setStartIndex] = useState(0);
+  const [cardWidth, setCardWidth] = useState(285);
   const [cardsInView, setCardsinView] = useState(1);
   const { products, setProducts, setErrorMessage } = useContext(AppContext);
 
@@ -57,7 +58,7 @@ const ProductSlider = ({ type }) => {
       const screenWidth = window.innerWidth;
 
       if (screenWidth <= 639) {
-        setCardsinView(2);
+        setCardWidth(212);
       } else if (screenWidth <= 1199) {
         setCardsinView(2);
       } else {
@@ -89,10 +90,11 @@ const ProductSlider = ({ type }) => {
 
   const carouselListStyles = useMemo(
     () => ({
-      transform: `translateX(-${startIndex * (285 + gap)}px)`,
+      width: `${(cardWidth + gap) * products.length + gap}px`,
+      transform: `translateX(-${startIndex * (cardWidth + gap)}px)`,
       transition: "transform 0.5s ease",
     }),
-    [products.length, startIndex]
+    [cardWidth, products.length, startIndex]
   );
 
   const leftArrowDis = startIndex === 0;
@@ -134,7 +136,11 @@ const ProductSlider = ({ type }) => {
           <div className="goods__cards-wrapper">
             <div className="goods__cards" style={carouselListStyles}>
               {products.map((product) => (
-                <ProductCard key={product.id} product={product} />
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                  cardWidth={cardWidth}
+                />
               ))}
             </div>
           </div>

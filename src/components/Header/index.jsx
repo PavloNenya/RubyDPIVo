@@ -46,7 +46,7 @@ export const Header = () => {
               <a className="logo__link" href="#">
                 <img
                   className="logo__img"
-                  src="img/icons/main-logo.svg"
+                  src={`http://localhost:9091/api/images?name=main-logo.svg`}
                   alt="logo"
                 />
               </a>

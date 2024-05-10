@@ -2,34 +2,37 @@
 import "./index.scss";
 import "../../shared/scss/settings.scss";
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, cardWidth = 285 }) => {
   return (
-    <div className="goods__card card">
+    <div className="goods__card card" style={{ width: cardWidth }}>
       <img
         className="card__image"
-        src={`http://localhost:9091/api/images/${product.image}`}
+        src={`http://localhost:9091/api/images/${product.main_photo_id}`}
         alt="img-of-item"
       />
       <div className="infolabel infolabel-left">
         new
         <img
           className="infolabel__icon"
-          src={`http://localhost:9091/api/images/${product.image}`}
+          src={`http://localhost:9091/api/images?name=clock-svg.svg`}
           alt=""
         />
       </div>
+
       <div className="button-like">
         <button className="button-like__icon">
-          <img src="/img/icons/heart.svg" alt="" />
+          <img
+            src={`http://localhost:9091/api/images?name=heart-svg.svg`}
+            alt=""
+          />
         </button>
       </div>
+
       <div className="card__information">
         <div className="card__description">
-          <p className="card__producer title-5">
-            {product.product.producer.name}
-          </p>
+          <p className="card__producer title-5">{product.producer.name}</p>
           <div href="/" className="card__title title-4">
-            {product.product.description}
+            {product.description}
           </div>
         </div>
         <div className="card__price price">
