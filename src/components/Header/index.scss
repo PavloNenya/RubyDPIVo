@@ -50,7 +50,7 @@
   }
 
   &__search {
-    padding-bottom: 4px;
+    padding: 4px 0;
     border-bottom: 1px solid var(--color-secondary-grey);
 
     &:focus {
@@ -63,12 +63,13 @@
     position: absolute;
     top: 50%;
     right: 2px;
-    max-width: 24px;
-    max-height: 24px;
+    max-width: 28px;
+    max-height: 28px;
     transform: translateY(-50%);
 
     .icon-search {
-      font-size: 22px;
+      width: 24px;
+      height: 24px;
     }
   }
 

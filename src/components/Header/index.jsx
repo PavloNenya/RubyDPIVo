@@ -1,5 +1,10 @@
 import "./index.scss";
 
+import search from "../../assets/icons/search.svg";
+import cart from "../../assets/icons/cart.svg";
+import account from "../../assets/icons/account.svg";
+import likes from "../../assets/icons/likes.svg";
+
 export const Header = () => {
   return (
     <header className="header">
@@ -44,22 +49,13 @@ export const Header = () => {
           <div className="header__main">
             <div className="header__logo logo">
               <a className="logo__link" href="#">
-                <img
-                  className="logo__img"
-                  src={`http://localhost:9091/api/images?name=main-logo.svg`}
-                  alt="logo"
-                />
+                <img className="logo__img" src={`http://localhost:9091/api/images?name=main-logo.svg`} alt="logo" />
               </a>
             </div>
             <form className="header__form">
-              <input
-                className="header__search"
-                type="text"
-                name="search"
-                placeholder="Search"
-              />
+              <input className="header__search" type="text" name="search" placeholder="Search" />
               <button className="header__button" type="submit">
-                <i className="icon-search"></i>
+                <img className="icon-search" src={search} alt="search" />
               </button>
             </form>
             <div className="header__burger burger">
@@ -67,13 +63,13 @@ export const Header = () => {
             </div>
             <div className="header__items">
               <a href="#" className="header__item">
-                <i className="icon-user"></i>
+                <img src={account} alt="account" />
               </a>
               <a href="#" className="header__item">
-                <i className="icon-heart"></i>
+                <img src={likes} alt="likes" />
               </a>
               <a href="#" className="header__item">
-                <i className="icon-shopping-cart"></i>
+                <img src={cart} alt="cart" />
               </a>
             </div>
           </div>

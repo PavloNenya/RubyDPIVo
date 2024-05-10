@@ -1,17 +1,17 @@
-@import '../../shared/scss/settings.scss';
+@import "../../../shared/scss/settings.scss";
 
 .mainscreen {
   &__title {
     padding: 10px;
 
     &::after {
-      content: '';
+      content: "";
       display: inline-block;
       width: percent(63, 330);
       padding-bottom: percent(63, 330);
       margin-left: 10px;
       transform: rotate(-10.562deg);
-      background-image: url('../img/mainscreen/banner.png');
+      background-image: url("../img/mainscreen/banner.png");
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
@@ -30,11 +30,11 @@
 
   &__content {
     position: relative;
-    @include adaptiveValue('margin-bottom', 50, 26);
+    @include adaptiveValue("margin-bottom", 50, 26);
     padding-top: percent(517, 1224);
-    @include adaptiveValue('padding-bottom', 30, 18);
-    @include adaptiveValue('padding-right', 60, 18);
-    @include adaptiveValue('padding-left', 60, 18);
+    @include adaptiveValue("padding-bottom", 30, 18);
+    @include adaptiveValue("padding-right", 60, 18);
+    @include adaptiveValue("padding-left", 60, 18);
     border-radius: 5px;
   }
 
@@ -46,7 +46,7 @@
   }
 
   &__text {
-    @include adaptiveValue('max-width', 357, 190);
+    @include adaptiveValue("max-width", 357, 190);
   }
 
   &__swiper {
@@ -61,10 +61,10 @@
   }
 
   &__item {
-    @include adaptiveValue('min-width', 120, 83);
-    @include adaptiveValue('min-height', 90, 60);
-    @include adaptiveValue('max-width', 120, 83);
-    @include adaptiveValue('max-height', 90, 60);
+    @include adaptiveValue("min-width", 120, 83);
+    @include adaptiveValue("min-height", 90, 60);
+    @include adaptiveValue("max-width", 120, 83);
+    @include adaptiveValue("max-height", 90, 60);
   }
 
   &__img {
@@ -79,7 +79,7 @@
     position: absolute;
     top: percent(120, 600);
     right: percent(63, 1200);
-    @include adaptiveValue('width', 183, 70, $containerWidth, 480);
+    @include adaptiveValue("width", 183, 70, $containerWidth, 480);
     transform: rotate(-10.562deg);
 
     @include phone-landscape {

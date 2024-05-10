@@ -107,6 +107,13 @@
     @include hover {
       color: var(--color-text-reverse);
       background-color: var(--color-background-edge);
+
+      .social__icon path {
+        fill: var(--color-text-reverse);
+      }
     }
+  }
+
+  &__icon {
   }
 }

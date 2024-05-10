@@ -178,6 +178,7 @@ h5,
   justify-content: center;
   align-items: center;
   text-align: center;
+  gap: 5px;
   @include adaptiveValue("font-size", 16, 12);
   font-weight: 600;
   border-radius: 12px;
@@ -260,6 +261,11 @@ h5,
 
   &_authorization {
     width: 100%;
+  }
+
+  &__icon {
+    width: 20px;
+    height: 20px;
   }
 }
 
