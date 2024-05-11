@@ -6,7 +6,7 @@ import ProductCard from "../ProductCard";
 import { AppContext } from "../../store/context";
 import SliderIndicator from "../SliderIndicator";
 import { getProducts } from "../../api/products";
-import scrollingArrows from "../..//assets/togles/scrollingArrows.svg";
+import scrollingArrows from "../../assets/img/icons/scrollingArrows.svg";
 
 const ProductSlider = ({ type }) => {
   // eslint-disable-next-line no-unused-vars
@@ -45,13 +45,7 @@ const ProductSlider = ({ type }) => {
     }
 
     return () => clearInterval(intervalId);
-  }, [
-    autoPlayActive,
-    autoPlayInterval,
-    cardsInView,
-    products.length,
-    startIndex,
-  ]);
+  }, [autoPlayActive, autoPlayInterval, cardsInView, products.length, startIndex]);
 
   useEffect(() => {
     const checkWidth = () => {
@@ -96,18 +90,13 @@ const ProductSlider = ({ type }) => {
       transform: `translateX(-${startIndex * (cardWidth + gap)}px)`,
       transition: "transform 0.5s ease",
     }),
-    [cardWidth, products.length, startIndex]
+    [cardWidth, products.length, startIndex],
   );
 
   const leftArrowDis = startIndex === 0;
   const rightArrowDis = startIndex >= products.length - cardsInView;
 
-  const titleOfBlock =
-    type === "normal"
-      ? "New Collection"
-      : type === "sale"
-      ? "Best Seller"
-      : "You May Also Like";
+  const titleOfBlock = type === "normal" ? "New Collection" : type === "sale" ? "Best Seller" : "You May Also Like";
 
   return (
     <section className="page__goods goods">
@@ -117,19 +106,11 @@ const ProductSlider = ({ type }) => {
             <h2 className="title-block__title title-2">{titleOfBlock}</h2>
             <div className="title-block__button button-wrapper">
               <div className="goods__btnWrapper">
-                <button
-                  className="goods__btnSlider"
-                  onClick={handlePrevClick}
-                  disabled={leftArrowDis}
-                >
+                <button className="goods__btnSlider" onClick={handlePrevClick} disabled={leftArrowDis}>
                   <img className="goods__toggle" src={scrollingArrows} alt="" />
                 </button>
 
-                <button
-                  className="goods__btnSlider left"
-                  onClick={handleNextClick}
-                  disabled={rightArrowDis}
-                >
+                <button className="goods__btnSlider left" onClick={handleNextClick} disabled={rightArrowDis}>
                   <img className="goods__toggle" src={scrollingArrows} alt="" />
                 </button>
               </div>
@@ -138,19 +119,11 @@ const ProductSlider = ({ type }) => {
           <div className="goods__cards-wrapper">
             <div className="goods__cards" style={carouselListStyles}>
               {products.map((product) => (
-                <ProductCard
-                  key={product.id}
-                  product={product}
-                  cardWidth={cardWidth}
-                />
+                <ProductCard key={product.id} product={product} cardWidth={cardWidth} />
               ))}
             </div>
           </div>
-          <SliderIndicator
-            totalCards={products.length}
-            startIndex={startIndex}
-            cardsInView={cardsInView}
-          />
+          <SliderIndicator totalCards={products.length} startIndex={startIndex} cardsInView={cardsInView} />
         </div>
       </div>
     </section>

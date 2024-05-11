@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation, Link } from "react-router-dom";
-import btnBred from "../../assets/buttons/btn-bred.svg";
+import btnBred from "../../assets/img/icons/btn-bread.svg";
 import "./index.scss";
 
 export const BreadСrumbs = () => {

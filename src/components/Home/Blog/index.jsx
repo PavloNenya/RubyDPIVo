@@ -1,5 +1,17 @@
 import "./index.scss";
 
+import arrowBlack from "../../../assets/img/icons/arrow-black.svg";
+import arrowWhite from "../../../assets/img/icons/arrow-white.svg";
+import play from "../../../assets/img/icons/play.svg";
+
+import icon1 from "../../../assets/img/blog/icons/icons-1.png";
+import icon2 from "../../../assets/img/blog/icons/icons-2.png";
+import icon3 from "../../../assets/img/blog/icons/icons-3.png";
+
+import blog1 from "../../../assets/img/blog/blog-1.jpg";
+import blog2 from "../../../assets/img/blog/blog-2.jpg";
+import blog3 from "../../../assets/img/blog/blog-3.jpg";
+
 export const Blog = () => {
   return (
     <section className="page__blog blog">
@@ -9,18 +21,18 @@ export const Blog = () => {
             <h2 className="title-block__title title-2">Our Blog</h2>
             <div className="title-block__button button-wrapper">
               <a className="button button_md button_ghost" href="#">
-                <img className="button__icon" src="img/icons/arrow-black.svg" alt="arrow" />
+                <img className="button__icon" src={arrowBlack} alt="arrow" />
                 <p>View All</p>
               </a>
             </div>
           </div>
           <div className="blog__items">
             <div className="blog__item ibg">
-              <img src="img/blog/blog-1.jpg" alt="blog-1" />
+              <img src={blog1} alt="blog-1" />
               <div className="blog__button button-wrapper">
                 <a className="button button_lg button_transparent" href="#">
                   <p>2023 Lookbook</p>
-                  <img className="button__icon" src="img/icons/arrow-white.svg" alt="arrow" />
+                  <img className="button__icon" src={arrowWhite} alt="arrow" />
                 </a>
               </div>
               <div className="blog__content">
@@ -30,10 +42,10 @@ export const Blog = () => {
               <div className="blog__line"></div>
             </div>
             <div className="blog__item ibg">
-              <img src="img/blog/blog-2.jpg" alt="blog-2" />
+              <img src={blog2} alt="blog-2" />
               <div className="blog__button button-wrapper">
                 <a className="button button_lg button_transparent" href="#">
-                  <img className="button__icon" src="img/icons/play.svg" alt="arrow" />
+                  <img className="button__icon" src={play} alt="arrow" />
                   Watch Trending
                 </a>
               </div>
@@ -44,7 +56,7 @@ export const Blog = () => {
               <div className="blog__line"></div>
             </div>
             <div className="blog__item ibg">
-              <img src="img/blog/blog-3.jpg" alt="blog-3" />
+              <img src={blog3} alt="blog-3" />
               <div className="blog__button button-wrapper">
                 <a className="button button_lg button_reverse" href="#">
                   <span>Subscribe</span>
@@ -57,13 +69,13 @@ export const Blog = () => {
               </div>
               <ul className="blog__icons icons">
                 <li className="icons__item">
-                  <img src="img/blog/icons/icons-1.png" alt="icons-1" />
+                  <img src={icon1} alt="icons-1" />
                 </li>
                 <li className="icons__item">
-                  <img src="img/blog/icons/icons-2.png" alt="icons-2" />
+                  <img src={icon2} alt="icons-2" />
                 </li>
                 <li className="icons__item">
-                  <img src="img/blog/icons/icons-3.png" alt="icons-3" />
+                  <img src={icon3} alt="icons-3" />
                 </li>
               </ul>
               <div className="blog__line blog__line_small"></div>

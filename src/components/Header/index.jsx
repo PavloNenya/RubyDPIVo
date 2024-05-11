@@ -1,9 +1,10 @@
 import "./index.scss";
 
-import search from "../../assets/icons/search.svg";
-import cart from "../../assets/icons/cart.svg";
-import account from "../../assets/icons/account.svg";
-import likes from "../../assets/icons/likes.svg";
+import search from "../../assets/img/icons/search.svg";
+import cart from "../../assets/img/icons/cart.svg";
+import account from "../../assets/img/icons/account.svg";
+import likes from "../../assets/img/icons/likes.svg";
+import btnBackWhite from "../../assets/img/icons/btn-back-white.svg";
 
 export const Header = () => {
   return (
@@ -29,7 +30,7 @@ export const Header = () => {
                   Esp
                 </option>
               </select>
-              <i className="select__icon icon-arrow-down"></i>
+              <img className="select__icon" src={btnBackWhite} alt="btn-back" />
             </div>
             <div className="header__select select">
               <select className="select__items" name="help" id="dynamicSelect">
@@ -39,7 +40,7 @@ export const Header = () => {
                 <option className="select__item">Help</option>
                 <option className="select__item">Help</option>
               </select>
-              <i className="select__icon icon-arrow-down"></i>
+              <img className="select__icon" src={btnBackWhite} alt="btn-back" />
             </div>
           </div>
         </div>

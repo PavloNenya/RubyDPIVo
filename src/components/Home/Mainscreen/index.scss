@@ -49,15 +49,12 @@
     @include adaptiveValue("max-width", 357, 190);
   }
 
-  &__swiper {
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
-  }
-
   &__items {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
   }
 
   &__item {

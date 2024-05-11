@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-key */
 import { useEffect, useState } from "react";
-import scrollingArrows from "../../../../../assets/togles/scrollingArrows.svg";
+import scrollingArrows from "../../../../../assets/img/icons/scrollingArrows.svg";
 
 import "./index.scss";
 
@@ -42,9 +42,7 @@ export const ImagesSlider = ({ images }) => {
         {images.map((image, index) => (
           <img
             key={index}
-            className={`product-page__mini-photo ${
-              index === currentIndex ? "selected" : ""
-            }`}
+            className={`product-page__mini-photo ${index === currentIndex ? "selected" : ""}`}
             src={`http://localhost:9091/api/images/${image}`}
             alt={`mini-photo-${index}`}
             onClick={() => handleImageClick(index)}
@@ -59,17 +57,11 @@ export const ImagesSlider = ({ images }) => {
         </div>
 
         <div className="product-page__togles">
-          <button
-            className="product-page__toggle-button"
-            onClick={handlePrevClick}
-          >
+          <button className="product-page__toggle-button" onClick={handlePrevClick}>
             <img className="product-page__togle" src={scrollingArrows} alt="" />
           </button>
 
-          <button
-            className="product-page__toggle-button left"
-            onClick={handleNextClick}
-          >
+          <button className="product-page__toggle-button left" onClick={handleNextClick}>
             <img className="product-page__togle" src={scrollingArrows} alt="" />
           </button>
         </div>

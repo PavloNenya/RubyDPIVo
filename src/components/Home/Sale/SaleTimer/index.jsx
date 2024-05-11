@@ -1,12 +1,15 @@
 import "./index.scss";
 
+import sale from "../../../../assets/img/sale/sale-1.jpg";
+import arrowWhote from "../../../../assets/img/icons/arrow-white.svg";
+
 export const SaleTimer = () => {
   return (
     <section className="page__sale sale">
       <div className="sale__container">
         <div className="sale__body">
           <div className="sale__img-wrapper">
-            <img className="sale__img" src="img/sale/sale-1.jpg" alt="sale-1.jpg" />
+            <img className="sale__img" src={sale} alt="sale-1.jpg" />
           </div>
           <div className="sale__content">
             <div className="sale__block">
@@ -35,7 +38,7 @@ export const SaleTimer = () => {
             <div className="sale__button button-wrapper">
               <a className="button button_lg button_default" href="#">
                 <p>buy now</p>
-                <img className="button__icon" src="img/icons/arrow-white.svg" alt="arrow" />
+                <img className="button__icon" src={arrowWhote} alt="arrow" />
               </a>
             </div>
           </div>
