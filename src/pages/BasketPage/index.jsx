@@ -5,8 +5,10 @@ import "./index.scss";
 import { AppContext } from "../../store/context";
 
 const BasketPage = () => {
-  const { selectedProduct, setSelectedProduct, selectedSize } =
-    useContext(AppContext);
+  const { selectedProduct, setSelectedProduct } = useContext(AppContext);
+
+  console.log(selectedProduct);
+  console.log(selectedProduct?.selectedSize);
 
   const handlePlusCounter = (productId) => {
     setSelectedProduct((prevSelectedProducts) => {
@@ -71,10 +73,6 @@ const BasketPage = () => {
     }
   }, [setSelectedProduct]);
 
-  {
-    console.log(selectedProduct);
-  }
-
   return (
     <main className="page">
       <section className="page__basket basket">
@@ -118,7 +116,9 @@ const BasketPage = () => {
                         <p className="card__unisex">{product.category.name}</p>
                         <p className="card__producer title-5">
                           Size:
-                          <span className="card__size">{selectedSize}</span>
+                          <span className="card__size">
+                            {` ${product.selectedSize.size_name}`}
+                          </span>
                         </p>
                       </div>
                       <div className="basket__item-bottom">

@@ -19,15 +19,19 @@ function generateRandomNumber(min, max) {
 
 export const ProductPage = () => {
   const [activeTab, setActiveTab] = useState(0);
-  const [selectedSize, setSelectedSize] = useState({});
   const [rndNum, setRndNum] = useState(null);
   const [productInstance, setProductInstance] = useState({});
   const [isClicked, setIsClicked] = useState(false);
   const [productInstancesAndSizes, setProductInstancesAndSizes] = useState([]);
   const [firstEffectCompleted, setFirstEffectCompleted] = useState(false);
 
-  const { products, selectedProduct, setSelectedProduct } =
-    useContext(AppContext);
+  const {
+    products,
+    selectedProduct,
+    setSelectedProduct,
+    selectedSize,
+    setSelectedSize,
+  } = useContext(AppContext);
 
   const { productId } = useParams();
 
@@ -82,7 +86,11 @@ export const ProductPage = () => {
     if (existingProductIndex !== -1) {
       updatedSelectedProduct[existingProductIndex].quantity++;
     } else {
-      updatedSelectedProduct.push({ ...products[productId], quantity: 1 });
+      updatedSelectedProduct.push({
+        ...products[productId],
+        quantity: 1,
+        selectedSize,
+      });
     }
 
     setSelectedProduct(updatedSelectedProduct);
