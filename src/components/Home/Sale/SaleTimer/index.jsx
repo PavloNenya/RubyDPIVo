@@ -1,9 +1,47 @@
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+
 import "./index.scss";
 
 import sale from "../../../../assets/img/sale/sale-1.jpg";
-import arrowWhote from "../../../../assets/img/icons/arrow-white.svg";
+import arrowWhite from "../../../../assets/img/icons/arrow-white.svg";
 
 export const SaleTimer = () => {
+  const calculateTimeLeft = () => {
+    const difference = +new Date("2024-06-01") - +new Date();
+    let timeLeft = {};
+
+    if (difference > 0) {
+      timeLeft = {
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        seconds: Math.floor((difference / 1000) % 60),
+      };
+    }
+
+    return timeLeft;
+  };
+
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setTimeLeft(calculateTimeLeft());
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  });
+
+  const timerComponents = Object.keys(timeLeft).map((interval) => {
+    console.log(interval);
+    return (
+      <div key={interval} className={`timer__item timer__${interval}`} data-title={interval}>
+        {timeLeft[interval] < 10 ? `0${timeLeft[interval]}` : timeLeft[interval]}
+      </div>
+    );
+  });
+
   return (
     <section className="page__sale sale">
       <div className="sale__container">
@@ -20,26 +58,13 @@ export const SaleTimer = () => {
               </p>
             </div>
             <div className="sale__timer timer">
-              <div className="timer__items">
-                <div className="timer__item timer__days" data-title="days">
-                  00
-                </div>
-                <div className="timer__item timer__hours" data-title="hours">
-                  00
-                </div>
-                <div className="timer__item timer__minutes" data-title="minutes">
-                  00
-                </div>
-                <div className="timer__item timer__seconds" data-title="seconds">
-                  00
-                </div>
-              </div>
+              <div className="timer__items">{timerComponents}</div>
             </div>
             <div className="sale__button button-wrapper">
-              <a className="button button_lg button_default" href="#">
+              <Link className="button button_lg button_default" to="/catalog/1/sale">
                 <p>buy now</p>
-                <img className="button__icon" src={arrowWhote} alt="arrow" />
-              </a>
+                <img className="button__icon" src={arrowWhite} alt="arrow" />
+              </Link>
             </div>
           </div>
         </div>
