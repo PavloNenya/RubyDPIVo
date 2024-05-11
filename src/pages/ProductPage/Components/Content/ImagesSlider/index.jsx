@@ -1,14 +1,12 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-key */
 import { useEffect, useState } from "react";
+import arrowSlider from "../../../../../assets/img/icons/scrollingArrows.svg";
+import clockIcon from "../../../../../assets/img/icons/clock.svg";
 
 import "./index.scss";
 
 export const ImagesSlider = ({ images }) => {
-  {
-    console.log(images);
-  }
-
   const [selectedImg, setSelectedImg] = useState(images[0]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -38,7 +36,7 @@ export const ImagesSlider = ({ images }) => {
   return (
     <div className="product-page__top-left">
       <div className="product-page__photos">
-        {images.map((image, index) => (
+        {images.slice(0, 6).map((image, index) => (
           <img
             key={index}
             className={`product-page__mini-photo ${
@@ -49,12 +47,17 @@ export const ImagesSlider = ({ images }) => {
             onClick={() => handleImageClick(index)}
           />
         ))}
+        {images.length > 5 && (
+          <div className="product-page__more-photos">
+            +{images.length - 6} more
+          </div>
+        )}
       </div>
 
       <div className="product-page__main-photo-wrapper">
         <div className="infolabel infolabel-right">
           new
-          <img className="infolabel__icon" src="/img/icons/clock.svg" alt="" />
+          <img className="infolabel__icon" src={clockIcon} alt="" />
         </div>
 
         <div className="product-page__togles">
@@ -62,22 +65,14 @@ export const ImagesSlider = ({ images }) => {
             className="product-page__toggle-button"
             onClick={handlePrevClick}
           >
-            <img
-              className="product-page__togle"
-              src="img/icons/scrollingArrows.svg"
-              alt=""
-            />
+            <img className="product-page__togle" src={arrowSlider} alt="" />
           </button>
 
           <button
             className="product-page__toggle-button left"
             onClick={handleNextClick}
           >
-            <img
-              className="product-page__togle"
-              src="img/icons/scrollingArrows.svg"
-              alt=""
-            />
+            <img className="product-page__togle" src={arrowSlider} alt="" />
           </button>
         </div>
 
