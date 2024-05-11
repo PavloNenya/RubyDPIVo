@@ -5,6 +5,7 @@ import cart from "../../assets/img/icons/cart.svg";
 import account from "../../assets/img/icons/account.svg";
 import likes from "../../assets/img/icons/likes.svg";
 import btnBackWhite from "../../assets/img/icons/btn-back-white.svg";
+import { Link } from "react-router-dom";
 
 export const Header = () => {
   return (
@@ -32,16 +33,7 @@ export const Header = () => {
               </select>
               <img className="select__icon" src={btnBackWhite} alt="btn-back" />
             </div>
-            <div className="header__select select">
-              <select className="select__items" name="help" id="dynamicSelect">
-                <option className="select__item">Help</option>
-                <option className="select__item">Help</option>
-                <option className="select__item">Help</option>
-                <option className="select__item">Help</option>
-                <option className="select__item">Help</option>
-              </select>
-              <img className="select__icon" src={btnBackWhite} alt="btn-back" />
-            </div>
+            <Link to="/help">Help</Link>
           </div>
         </div>
       </div>
@@ -49,9 +41,9 @@ export const Header = () => {
         <div className="header__body">
           <div className="header__main">
             <div className="header__logo logo">
-              <a className="logo__link" href="#">
+              <Link className="logo__link" to="/">
                 <img className="logo__img" src={`http://localhost:9091/api/images?name=main-logo.svg`} alt="logo" />
-              </a>
+              </Link>
             </div>
             <form className="header__form">
               <input className="header__search" type="text" name="search" placeholder="Search" />
@@ -66,45 +58,40 @@ export const Header = () => {
               <a href="#" className="header__item">
                 <img src={account} alt="account" />
               </a>
-              <a href="#" className="header__item">
+              <Link to="/favourites" className="header__item">
                 <img src={likes} alt="likes" />
-              </a>
-              <a href="#" className="header__item">
+              </Link>
+              <Link to="/basket" className="header__item">
                 <img src={cart} alt="cart" />
-              </a>
+              </Link>
             </div>
           </div>
           <nav className="header__nav">
             <ul className="header__menu menu">
               <li className="menu__item">
-                <a href="#" className="menu__link">
+                <Link to="/catalog/1/new" className="menu__link">
                   New arrives
-                </a>
+                </Link>
               </li>
               <li className="menu__item">
-                <a href="#" className="menu__link">
+                <Link to="/catalog/1/men" className="menu__link">
                   Men
-                </a>
+                </Link>
               </li>
               <li className="menu__item">
-                <a href="#" className="menu__link">
+                <Link to="/catalog/1/woman" className="menu__link">
                   Woman
-                </a>
+                </Link>
               </li>
               <li className="menu__item">
-                <a href="#" className="menu__link">
+                <Link to="/catalog/1/kids" className="menu__link">
                   Kids
-                </a>
+                </Link>
               </li>
               <li className="menu__item">
-                <a href="#" className="menu__link">
-                  Brands
-                </a>
-              </li>
-              <li className="menu__item">
-                <a href="#" className="menu__link">
+                <Link to="/catalog/1/sale" className="menu__link">
                   Sale
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>
