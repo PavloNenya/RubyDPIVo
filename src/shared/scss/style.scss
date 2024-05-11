@@ -7,7 +7,7 @@
 @import "./base/null.scss";
 
 body {
-  .lock & {
+  &._lock {
     overflow: hidden;
     touch-action: none;
   }

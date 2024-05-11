@@ -1,3 +1,6 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
+
 import "./index.scss";
 
 import search from "../../assets/img/icons/search.svg";
@@ -5,9 +8,15 @@ import cart from "../../assets/img/icons/cart.svg";
 import account from "../../assets/img/icons/account.svg";
 import likes from "../../assets/img/icons/likes.svg";
 import btnBackWhite from "../../assets/img/icons/btn-back-white.svg";
-import { Link } from "react-router-dom";
 
 export const Header = () => {
+  const [burger, setBurger] = useState(false);
+
+  const handleBurger = () => {
+    setBurger(!burger);
+    document.body.classList.toggle("_lock");
+  };
+
   return (
     <header className="header">
       <div className="header__top">
@@ -51,7 +60,7 @@ export const Header = () => {
                 <img className="icon-search" src={search} alt="search" />
               </button>
             </form>
-            <div className="header__burger burger">
+            <div className={`header__burger burger${burger ? " _menu-open" : ""}`} onClick={handleBurger}>
               <div className="burger__line"></div>
             </div>
             <div className="header__items">
@@ -66,7 +75,7 @@ export const Header = () => {
               </Link>
             </div>
           </div>
-          <nav className="header__nav">
+          <nav className={`header__nav${burger ? " _menu-open" : ""}`}>
             <ul className="header__menu menu">
               <li className="menu__item">
                 <Link to="/catalog/1/new" className="menu__link">
