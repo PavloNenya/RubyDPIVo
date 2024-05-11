@@ -6,6 +6,8 @@ import { getGenders } from "../../../api/genders";
 
 import PropTypes from "prop-types";
 
+import btnBack from "../../../assets/img/icons/btn-back.svg";
+
 const Aside = ({ setSelectedFilters }) => {
   const [categories, setCategories] = useState([]);
   const [producers, setProducers] = useState([]);
@@ -97,7 +99,7 @@ const Aside = ({ setSelectedFilters }) => {
             onClick={() => handlerAction(filterType, setActiveSpoiler, spoilerToggle)}
           >
             <h3 className="filter__title title-3">{filterType}</h3>
-            <i className="filter__icon icon-arrow-down"></i>
+            <img className="filter__arrow" src={btnBack} alt="btn-back" />
           </div>
           <ul className="filter__items spoiler__content">
             {filterType == "Price"

@@ -9,6 +9,9 @@ import ProductCard from "../../components/ProductCard";
 
 import "./index.scss";
 
+import reset from "../../assets/img/icons/reset.svg";
+import filter from "../../assets/img/icons/filter.svg";
+
 const CatalogPage = () => {
   const { page } = useParams();
   const [products, setProducts] = useState([]);
@@ -76,10 +79,10 @@ const CatalogPage = () => {
                     ))}
                   </select>
                   <button className="products__button button-reset" onClick={handleReset}>
-                    <img src="./img/icons/reset.svg" alt="reset" />
+                    <img src={reset} alt="reset" />
                   </button>
                   <button className="products__button button-filter">
-                    <img src="./img/icons/filter.svg" alt="filter" />
+                    <img src={filter} alt="filter" />
                   </button>
                 </div>
               </div>

@@ -256,6 +256,13 @@
       right: 0;
     }
   }
+
+  &__arrow {
+    width: 12px;
+    height: 12px;
+    transform: rotate(-90deg);
+    transition: transform 0.3s ease;
+  }
 }
 
 .checkbox {
@@ -308,8 +315,8 @@
   }
 
   &._active {
-    .icon-arrow-down {
-      transform: rotate(-180deg);
+    .filter__arrow {
+      transform: rotate(90deg);
     }
 
     .spoiler__content {
