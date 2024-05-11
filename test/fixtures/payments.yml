@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  payment_date: 2024-05-11
+  payment_method: MyString
+  amount: 1
+  user: one
+
+two:
+  payment_date: 2024-05-11
+  payment_method: MyString
+  amount: 1
+  user: two

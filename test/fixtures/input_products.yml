@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  quantity: 1
+  cost: 1.5
+  date_received: 2024-05-11
+  product_instance: one
+
+two:
+  quantity: 1
+  cost: 1.5
+  date_received: 2024-05-11
+  product_instance: two
