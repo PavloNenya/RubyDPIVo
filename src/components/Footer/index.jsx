@@ -1,5 +1,7 @@
 import "./index.scss";
 
+import logo from "../../assets/img/logo.svg";
+
 export const Footer = () => {
   return (
     <footer className="footer">
@@ -8,7 +10,7 @@ export const Footer = () => {
           <div className="footer__brand">
             <div className="footer__logo logo">
               <a className="logo__link" href="#">
-                <img className="logo__img" src={`http://localhost:9091/api/images?name=main-logo.svg`} alt="logo" />
+                <img className="logo__img" src={logo} alt="logo" />
               </a>
             </div>
             <ul className="footer__social social">

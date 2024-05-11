@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import "./index.scss";
 
+import logo from "../../assets/img/logo.svg";
 import search from "../../assets/img/icons/search.svg";
 import cart from "../../assets/img/icons/cart.svg";
 import account from "../../assets/img/icons/account.svg";
@@ -51,7 +52,7 @@ export const Header = () => {
           <div className="header__main">
             <div className="header__logo logo">
               <Link className="logo__link" to="/">
-                <img className="logo__img" src={`http://localhost:9091/api/images?name=main-logo.svg`} alt="logo" />
+                <img className="logo__img" src={logo} alt="logo" />
               </Link>
             </div>
             <form className="header__form">
