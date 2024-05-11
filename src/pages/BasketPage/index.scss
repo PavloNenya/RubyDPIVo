@@ -21,6 +21,12 @@
     gap: 8px;
   }
 
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
   &__title {
     font-size: 24px;
     color: var(--color-text);
@@ -124,6 +130,12 @@
 }
 
 .checkout {
+  &__title {
+    font-size: 24px;
+    color: var(--color-text);
+    text-transform: none;
+  }
+
   &__infoblock {
     grid-column: 1 / 8;
 
@@ -259,6 +271,34 @@
       color: var(--color-text);
       text-transform: none;
       font-weight: 600;
+    }
+  }
+}
+
+.card {
+  &__icons {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+  }
+}
+
+.form__input {
+  font-family: "TT Firs Neue";
+  font-size: 16px;
+  border-radius: 10px;
+  background: rgb(249, 249, 249);
+  height: 53px;
+  width: 100%;
+  padding: 10px 20px 10px 20px;
+  color: #757575;
+}
+
+.button {
+  &.button_authorization {
+    &.clicked {
+      background-color: var(--color-primary-grey);
+      color: var(--color-text);
     }
   }
 }
