@@ -1,18 +1,19 @@
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 
 import "./shared/scss/style.scss";
 import BreadСrumbs from "./components/BreadCrumbs";
 
 function App() {
+  const location = useLocation();
+  const isNotHomePage = location.pathname !== "/";
+
   return (
     <>
       <Header />
-      {/* fix: we need to add wrapper to all projects */}
-      {/* fix: we need to add wrapper to all projects */}
       <main className="page">
-        <BreadСrumbs />
+        {isNotHomePage && <BreadСrumbs />}
 
         <Outlet />
       </main>

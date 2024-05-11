@@ -34,5 +34,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         </Router>
       </div>
     </React.StrictMode>
-  </ContextProvider>
+  </ContextProvider>,
 );
