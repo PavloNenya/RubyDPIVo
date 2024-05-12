@@ -6,7 +6,7 @@ class CreateProducts < ActiveRecord::Migration[7.1]
       t.references :producer, null: false, foreign_key: true
       t.string :description
       t.float :price
-      t.integer :main_image_id
+      t.integer :main_photo_id
       t.references :gender, null: false, foreign_key: true
     end
   end
