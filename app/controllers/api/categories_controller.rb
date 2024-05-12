@@ -30,4 +30,10 @@ class Api::CategoriesController < ApplicationController
       render json: @category.errors, status: :unprocessable_entity
     end
   end
+
+  def delete
+    @category = Category.find(params[:id])
+    @category.destroy
+    head :no_content
+  end
 end

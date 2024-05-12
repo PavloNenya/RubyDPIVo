@@ -14,4 +14,10 @@ class Api::GenderController < ApplicationController
       render json: @gender.errors, status: :unprocessable_entity
     end
   end
+
+  def delete
+    @gender = Gender.find(params[:id])
+    @gender.destroy
+    head :no_content
+  end
 end

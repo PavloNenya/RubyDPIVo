@@ -7,4 +7,10 @@ class Api::UserProfileController < ApplicationController
 
   def create
   end
+
+  def delete
+    @user = UserProfile.find(params[:id])
+    @user.destroy
+    head :no_content
+  end
 end

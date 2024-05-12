@@ -30,4 +30,10 @@ class Api::RolesController < ApplicationController
       render json: @role.errors, status: :unprocessable_entity
     end
   end
+
+  def delete
+    @role = Role.find(params[:id])
+    @role.destroy
+    head :no_content
+  end
 end

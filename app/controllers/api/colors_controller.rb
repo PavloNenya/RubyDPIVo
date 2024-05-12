@@ -30,4 +30,10 @@ class Api::ColorsController < ApplicationController
       render json: @color.errors, status: :unprocessable_entity
     end
   end
+
+  def delete
+    @color = Color.find(params[:id])
+    @color.destroy
+    head :no_content
+  end
 end

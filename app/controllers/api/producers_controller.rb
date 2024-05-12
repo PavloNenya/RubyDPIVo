@@ -21,4 +21,10 @@ class Api::ProducersController < ApplicationController
       render json: { error: "Producer not found" }, status: :not_found
     end
   end
+
+  def delete
+    @producer = Producer.find(params[:id])
+    @producer.destroy
+    head :no_content
+  end
 end

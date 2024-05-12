@@ -94,4 +94,10 @@ class Api::ProductController < ApplicationController
       render json: { error: "Product not found" }, status: :not_found
     end
   end
+
+  def delete
+    @product = Product.find(params[:id])
+    @product.destroy
+    head :no_content
+  end
 end

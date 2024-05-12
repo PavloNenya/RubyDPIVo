@@ -30,4 +30,10 @@ class Api::SizesController < ApplicationController
       render json: @size.errors, status: :unprocessable_entity
     end
   end
+
+  def delete
+    @size = Size.find(params[:id])
+    @size.destroy
+    head :no_content
+  end
 end
