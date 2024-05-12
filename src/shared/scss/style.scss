@@ -342,3 +342,42 @@ h5,
     color: var(--color-system-grey);
   }
 }
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__input-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  &__input {
+    font-family: "TT Firs Neue";
+    font-size: 16px;
+    border-radius: 10px;
+    background: rgb(249, 249, 249);
+    height: 53px;
+    width: 100%;
+    padding: 10px 20px 10px 20px;
+    color: #757575;
+  }
+
+  &__input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .error-input {
+    color: rgb(220, 21, 21);
+    border: 2px solid transparent;
+    border-color: rgb(220, 21, 21);
+  }
+
+  .error {
+    color: rgb(220, 21, 21);
+  }
+}
