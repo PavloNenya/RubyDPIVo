@@ -3,12 +3,10 @@ import ProductSlider from "../../components/ProductSlider";
 import Cookies from "js-cookie";
 import "./index.scss";
 import { AppContext } from "../../store/context";
+import delIcon from "../../assets/img/icons/del.svg";
 
 const BasketPage = () => {
   const { selectedProduct, setSelectedProduct } = useContext(AppContext);
-
-  console.log(selectedProduct);
-  console.log(selectedProduct?.selectedSize);
 
   const handlePlusCounter = (productId) => {
     setSelectedProduct((prevSelectedProducts) => {
@@ -146,7 +144,7 @@ const BasketPage = () => {
                             className="card__icons"
                             onClick={() => handleRemoveProduct(product.id)}
                           >
-                            <img src="./img/icons/card.svg" alt="" />
+                            <img src={delIcon} alt="" />
                           </button>
                         </div>
                       </div>

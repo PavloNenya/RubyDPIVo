@@ -89,10 +89,6 @@ export const ProductPage = () => {
     [productById.images]
   );
 
-  console.log(productId);
-  console.log(products[productId]);
-  console.log(images);
-
   const tabs = [
     {
       title: "Description",
