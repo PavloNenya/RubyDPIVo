@@ -1,5 +1,5 @@
 import { client } from "../utils/fetchClient";
 
-export const getProductInstance = (id) => {
-  return client.get(`/products/instances/${id}`);
+export const getProductById = (id) => {
+  return client.get(`/products/${id}`);
 };
