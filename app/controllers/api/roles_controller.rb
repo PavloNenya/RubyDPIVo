@@ -21,4 +21,13 @@ class Api::RolesController < ApplicationController
       render json: { error: "Role not found" }, status: :not_found
     end
   end
+
+  def create
+    @role = Role.create(name:  NameDTO.new(name: params[:name]).name)
+    if @role.save
+      render json: @role, status: :created
+    else
+      render json: @role.errors, status: :unprocessable_entity
+    end
+  end
 end

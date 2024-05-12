@@ -22,4 +22,12 @@ class Api::SizesController < ApplicationController
     end
   end
 
+  def create
+    @size = Size.create(name:  NameDTO.new(name: params[:name]).name)
+    if @size.save
+      render json: @size, status: :created
+    else
+      render json: @size.errors, status: :unprocessable_entity
+    end
+  end
 end

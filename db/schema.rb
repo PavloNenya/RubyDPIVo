@@ -91,7 +91,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_11_164035) do
     t.bigint "producer_id", null: false
     t.string "description"
     t.float "price"
-    t.integer "main_image_id"
+    t.integer "main_photo_id"
     t.bigint "gender_id", null: false
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["gender_id"], name: "index_products_on_gender_id"

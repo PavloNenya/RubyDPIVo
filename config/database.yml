@@ -2,8 +2,8 @@ default: &default
   adapter: postgresql
   encoding: unicode
   database: dev_dpivo
-  username: root
-  password: root
+  username: postgres
+  password: postgres
   host: localhost
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000

@@ -21,4 +21,13 @@ class Api::ColorsController < ApplicationController
       render json: { error: "Color not found" }, status: :not_found
     end
   end
+
+  def create
+    @color = Color.create(name: NameDTO.new(name: params[:name]).name)
+    if @color.save
+      render json: @color, status: :created
+    else
+      render json: @color.errors, status: :unprocessable_entity
+    end
+  end
 end

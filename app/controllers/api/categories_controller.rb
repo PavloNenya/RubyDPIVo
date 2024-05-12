@@ -21,4 +21,13 @@ class Api::CategoriesController < ApplicationController
       render json: { error: "Category not found" }, status: :not_found
     end
   end
+
+  def create
+    @category = Category.create(name: NameDTO.new(name: params[:name]).name)
+    if @category.save
+      render json: @category, status: :created
+    else
+      render json: @category.errors, status: :unprocessable_entity
+    end
+  end
 end
