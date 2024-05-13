@@ -3,6 +3,10 @@ import "./index.scss";
 import { AppContext } from "../../store/context";
 import Cookies from "js-cookie";
 import { useForm } from "react-hook-form";
+import cardsIcons from "../../assets/img/checkout/cards.svg";
+import novaIcon from "../../assets/img/checkout/nova.svg";
+import ukrIcon from "../../assets/img/checkout/ukr.svg";
+import meestIcon from "../../assets/img/checkout/meest.svg";
 
 export const CheckoutPage = () => {
   const [step, setStep] = useState(1);
@@ -63,8 +67,6 @@ export const CheckoutPage = () => {
     return false;
   };
 
-  console.log(document.getElementById("firstName"));
-
   const isStep2Valid = () => {
     return selectedShippingProvider !== "";
   };
@@ -81,11 +83,21 @@ export const CheckoutPage = () => {
       selectedPostOffice,
     };
 
+    const dataFromItems = [];
+
+    selectedProduct.forEach((product) => {
+      dataFromItems.push({
+        product_instance_id: product.selectedSize.product_instance_id,
+        quantity: product.quantity,
+      });
+    });
+
     const mergedData = {
       ...formData,
       ...data,
-      ...selectedProduct,
     };
+
+    mergedData.products = dataFromItems;
 
     console.log(mergedData);
   };
@@ -264,7 +276,7 @@ export const CheckoutPage = () => {
                         />
                         <img
                           className="checkout__post-img"
-                          src="./img/checkout/nova.png"
+                          src={novaIcon}
                           alt=""
                         />
                         <div className="checkout__post-information-wrapper">
@@ -293,7 +305,7 @@ export const CheckoutPage = () => {
                         />
                         <img
                           className="checkout__post-img"
-                          src="./img/checkout/ukr.png"
+                          src={ukrIcon}
                           alt=""
                         />
                         <div className="checkout__post-information-wrapper">
@@ -322,7 +334,7 @@ export const CheckoutPage = () => {
                         />
                         <img
                           className="checkout__post-img"
-                          src="./img/checkout/meest.png"
+                          src={meestIcon}
                           alt=""
                         />
                         <div className="checkout__post-information-wrapper">
