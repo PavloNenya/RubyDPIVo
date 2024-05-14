@@ -5,14 +5,12 @@ import { Blog } from "../../components/Home/Blog";
 
 import "./index.scss";
 import ProductSlider from "../../components/ProductSlider";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { AppContext } from "../../store/context";
-import { getProducts } from "../../api/products";
 import categories from "../../utils/categories";
 
 export const HomePage = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const { products, setProducts, setErrorMessage } = useContext(AppContext);
+  const { products } = useContext(AppContext);
 
   useEffect(() => {
     (function ibg() {
@@ -25,17 +23,6 @@ export const HomePage = () => {
       }
     })();
   }, []);
-
-  useEffect(() => {
-    setIsLoading(true);
-    setProducts([]);
-    setErrorMessage(null);
-
-    getProducts()
-      .then((data) => setProducts(data))
-      .catch(() => setErrorMessage("lol"))
-      .finally(() => setIsLoading(false));
-  }, [setErrorMessage, setProducts]);
 
   return (
     <>
