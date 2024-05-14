@@ -3,7 +3,6 @@ import "./index.scss";
 import { AppContext } from "../../store/context";
 import Cookies from "js-cookie";
 import { useForm } from "react-hook-form";
-import cardsIcons from "../../assets/img/checkout/cards.svg";
 import novaIcon from "../../assets/img/checkout/nova.svg";
 import ukrIcon from "../../assets/img/checkout/ukr.svg";
 import meestIcon from "../../assets/img/checkout/meest.svg";
