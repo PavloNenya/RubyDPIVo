@@ -256,7 +256,7 @@ export const ProductPage = () => {
                     <div className="tab-content">{tabs[activeTab].content}</div>
                   </div>
                 </div>
-                <ProductSlider />
+                <ProductSlider products={products} />
               </div>
             </div>
           </div>

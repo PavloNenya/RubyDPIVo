@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import "./index.scss";
 import { AppContext } from "../../store/context";
@@ -484,7 +485,7 @@ export const CheckoutPage = () => {
                       </button>
                       <button
                         className="checkout__button-step"
-                        type="button"
+                        type="submit"
                         onClick={() => isStep3Valid() && setFinish(true)}
                       >
                         Finish
@@ -494,13 +495,13 @@ export const CheckoutPage = () => {
                 )}
 
                 {finish && (
-                  <button
-                    type="submit"
+                  <Link
+                    to="/thankyou"
                     className="button button_lg button_default button__checkout"
                   >
                     Buy Now
                     <span className="icon-arrow" />
-                  </button>
+                  </Link>
                 )}
               </form>
             </div>

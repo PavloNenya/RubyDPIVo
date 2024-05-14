@@ -4,9 +4,11 @@ import Cookies from "js-cookie";
 import "./index.scss";
 import { AppContext } from "../../store/context";
 import delIcon from "../../assets/img/icons/del.svg";
+import { Link } from "react-router-dom";
 
 const BasketPage = () => {
-  const { selectedProduct, setSelectedProduct } = useContext(AppContext);
+  const { products, selectedProduct, setSelectedProduct } =
+    useContext(AppContext);
 
   const handlePlusCounter = (productId) => {
     setSelectedProduct((prevSelectedProducts) => {
@@ -197,19 +199,20 @@ const BasketPage = () => {
                   </div>
                 </div>
                 <div className="checkout__button">
-                  <a
+                  <Link
+                    to="/checkout"
                     className="button button_lg button_default button__checkout"
                     href="#"
                   >
                     Go to checkout
                     <span className="icon-arrow" />
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
           </div>
 
-          <ProductSlider />
+          <ProductSlider products={products} />
         </div>
       </section>
     </main>
