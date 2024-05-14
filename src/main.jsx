@@ -8,6 +8,8 @@ import { HomePage } from "./pages/HomePage";
 import CatalogPage from "./pages/CatalogPage";
 import ProductPage from "./pages/ProductPage";
 import BasketPage from "./pages/BasketPage";
+import CheckoutPage from "./pages/CheckoutPage";
+import ThankyouPage from "./pages/ThankyouPage";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <ContextProvider>
@@ -31,6 +33,10 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                 </Route>
 
                 <Route path="basket" element={<BasketPage />} />
+
+                <Route path="checkout" element={<CheckoutPage />} />
+
+                <Route path="thankyou" element={<ThankyouPage />} />
 
                 {/* <Route path="*" element={<PageNotFound />} /> */}
               </Route>

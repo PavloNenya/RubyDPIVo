@@ -3,9 +3,11 @@ import ProductSlider from "../../components/ProductSlider";
 import Cookies from "js-cookie";
 import "./index.scss";
 import { AppContext } from "../../store/context";
+import delIcon from "../../assets/img/icons/del.svg";
+import { Link } from "react-router-dom";
 
 const BasketPage = () => {
-  const { selectedProduct, setSelectedProduct, selectedSize } =
+  const { products, selectedProduct, setSelectedProduct } =
     useContext(AppContext);
 
   const handlePlusCounter = (productId) => {
@@ -71,10 +73,6 @@ const BasketPage = () => {
     }
   }, [setSelectedProduct]);
 
-  {
-    console.log(selectedProduct);
-  }
-
   return (
     <main className="page">
       <section className="page__basket basket">
@@ -118,7 +116,9 @@ const BasketPage = () => {
                         <p className="card__unisex">{product.category.name}</p>
                         <p className="card__producer title-5">
                           Size:
-                          <span className="card__size">{selectedSize}</span>
+                          <span className="card__size">
+                            {` ${product.selectedSize.size_name}`}
+                          </span>
                         </p>
                       </div>
                       <div className="basket__item-bottom">
@@ -146,7 +146,7 @@ const BasketPage = () => {
                             className="card__icons"
                             onClick={() => handleRemoveProduct(product.id)}
                           >
-                            <img src="./img/icons/card.svg" alt="" />
+                            <img src={delIcon} alt="" />
                           </button>
                         </div>
                       </div>
@@ -199,19 +199,20 @@ const BasketPage = () => {
                   </div>
                 </div>
                 <div className="checkout__button">
-                  <a
+                  <Link
+                    to="/checkout"
                     className="button button_lg button_default button__checkout"
                     href="#"
                   >
                     Go to checkout
                     <span className="icon-arrow" />
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
           </div>
 
-          <ProductSlider />
+          <ProductSlider products={products} />
         </div>
       </section>
     </main>

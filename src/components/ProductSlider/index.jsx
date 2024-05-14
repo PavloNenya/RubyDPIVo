@@ -1,37 +1,22 @@
 /* eslint-disable react/prop-types */
 // import Carousel from "react-multi-carousel";
 import "./index.scss";
-import { useEffect, useMemo, useContext, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import ProductCard from "../ProductCard";
-import { AppContext } from "../../store/context";
 import SliderIndicator from "../SliderIndicator";
-import { getProducts } from "../../api/products";
 import scrollingArrows from "../../assets/img/icons/scrollingArrows.svg";
 
-const ProductSlider = ({ type }) => {
+const ProductSlider = ({ type, products }) => {
   // eslint-disable-next-line no-unused-vars
-  const [isLoading, setIsLoading] = useState(false);
   const [startIndex, setStartIndex] = useState(0);
   const [cardWidth, setCardWidth] = useState(285);
   const [cardsInView, setCardsinView] = useState(1);
-  const { products, setProducts, setErrorMessage } = useContext(AppContext);
 
   const [autoPlayInterval] = useState(4000);
   const [autoPlayActive] = useState(true);
 
   const cardsToMove = 1;
   const gap = 20;
-
-  useEffect(() => {
-    setIsLoading(true);
-    setProducts([]);
-    setErrorMessage(null);
-
-    getProducts()
-      .then((data) => setProducts(data))
-      .catch(() => setErrorMessage("lol"))
-      .finally(() => setIsLoading(false));
-  }, [setErrorMessage, setProducts]);
 
   useEffect(() => {
     let intervalId;
@@ -45,7 +30,13 @@ const ProductSlider = ({ type }) => {
     }
 
     return () => clearInterval(intervalId);
-  }, [autoPlayActive, autoPlayInterval, cardsInView, products.length, startIndex]);
+  }, [
+    autoPlayActive,
+    autoPlayInterval,
+    cardsInView,
+    products.length,
+    startIndex,
+  ]);
 
   useEffect(() => {
     const checkWidth = () => {
@@ -90,13 +81,20 @@ const ProductSlider = ({ type }) => {
       transform: `translateX(-${startIndex * (cardWidth + gap)}px)`,
       transition: "transform 0.5s ease",
     }),
-    [cardWidth, products.length, startIndex],
+    [cardWidth, products.length, startIndex]
   );
 
   const leftArrowDis = startIndex === 0;
   const rightArrowDis = startIndex >= products.length - cardsInView;
 
-  const titleOfBlock = type === "normal" ? "New Collection" : type === "sale" ? "Best Seller" : "You May Also Like";
+  const titleOfBlock =
+    type === "normal"
+      ? "New Collection"
+      : type === "sale"
+      ? "Best Seller"
+      : type === "category"
+      ? "Categories"
+      : "You May Also Like";
 
   return (
     <section className="page__goods goods">
@@ -106,11 +104,19 @@ const ProductSlider = ({ type }) => {
             <h2 className="title-block__title title-2">{titleOfBlock}</h2>
             <div className="title-block__button button-wrapper">
               <div className="goods__btnWrapper">
-                <button className="goods__btnSlider" onClick={handlePrevClick} disabled={leftArrowDis}>
+                <button
+                  className="goods__btnSlider"
+                  onClick={handlePrevClick}
+                  disabled={leftArrowDis}
+                >
                   <img className="goods__toggle" src={scrollingArrows} alt="" />
                 </button>
 
-                <button className="goods__btnSlider left" onClick={handleNextClick} disabled={rightArrowDis}>
+                <button
+                  className="goods__btnSlider left"
+                  onClick={handleNextClick}
+                  disabled={rightArrowDis}
+                >
                   <img className="goods__toggle" src={scrollingArrows} alt="" />
                 </button>
               </div>
@@ -119,11 +125,20 @@ const ProductSlider = ({ type }) => {
           <div className="goods__cards-wrapper">
             <div className="goods__cards" style={carouselListStyles}>
               {products.map((product) => (
-                <ProductCard key={product.id} product={product} cardWidth={cardWidth} />
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                  cardWidth={cardWidth}
+                  type={type}
+                />
               ))}
             </div>
           </div>
-          <SliderIndicator totalCards={products.length} startIndex={startIndex} cardsInView={cardsInView} />
+          <SliderIndicator
+            totalCards={products.length}
+            startIndex={startIndex}
+            cardsInView={cardsInView}
+          />
         </div>
       </div>
     </section>

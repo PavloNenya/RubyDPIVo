@@ -6,10 +6,12 @@
   box-sizing: border-box;
   // width: 212px;
 
-  &__title {
+  .card__title {
     flex-wrap: wrap;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
-
   &__image {
     width: 100%;
     aspect-ratio: 4/5;

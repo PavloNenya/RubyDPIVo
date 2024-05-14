@@ -9,7 +9,7 @@ import ProductSlider from "../../components/ProductSlider";
 import "./index.scss";
 
 import ImagesSlider from "./Components/Content/ImagesSlider";
-import { getProductInstance } from "../../api/productInstance";
+import { getProductById } from "../../api/productInstance";
 import { AppContext } from "../../store/context";
 import { getProductInstancesAndSizes } from "../../api/sizesOfProduct";
 
@@ -19,39 +19,30 @@ function generateRandomNumber(min, max) {
 
 export const ProductPage = () => {
   const [activeTab, setActiveTab] = useState(0);
-  const [selectedSize, setSelectedSize] = useState({});
   const [rndNum, setRndNum] = useState(null);
-  const [productInstance, setProductInstance] = useState({});
   const [isClicked, setIsClicked] = useState(false);
   const [productInstancesAndSizes, setProductInstancesAndSizes] = useState([]);
-  const [firstEffectCompleted, setFirstEffectCompleted] = useState(false);
+  const [productById, setProductById] = useState({});
 
-  const { products, selectedProduct, setSelectedProduct } =
-    useContext(AppContext);
+  const {
+    products,
+    selectedProduct,
+    setSelectedProduct,
+    selectedSize,
+    setSelectedSize,
+  } = useContext(AppContext);
 
   const { productId } = useParams();
 
   useEffect(() => {
     getProductInstancesAndSizes(productId).then((data) => {
       setProductInstancesAndSizes(data);
-      setFirstEffectCompleted(true);
     });
   }, [productId]);
 
   useEffect(() => {
-    if (firstEffectCompleted) {
-      getProductInstance(productInstancesAndSizes[0].product_instance_id).then(
-        (data) => {
-          setProductInstance(data);
-        }
-      );
-    }
-  }, [
-    firstEffectCompleted,
-    productId,
-    productInstancesAndSizes,
-    productInstancesAndSizes.product_instance_id,
-  ]);
+    getProductById(productId).then((data) => setProductById(data));
+  }, [productId]);
 
   useEffect(() => {
     const randomNumber = generateRandomNumber(1000000, 9999999);
@@ -82,7 +73,11 @@ export const ProductPage = () => {
     if (existingProductIndex !== -1) {
       updatedSelectedProduct[existingProductIndex].quantity++;
     } else {
-      updatedSelectedProduct.push({ ...products[productId], quantity: 1 });
+      updatedSelectedProduct.push({
+        ...products[productId],
+        quantity: 1,
+        selectedSize,
+      });
     }
 
     setSelectedProduct(updatedSelectedProduct);
@@ -90,19 +85,14 @@ export const ProductPage = () => {
   };
 
   const images = useMemo(
-    () =>
-      Array.isArray(products[productId]?.images)
-        ? [...products[productId].images]
-        : [],
-    [productId, products]
+    () => (Array.isArray(productById?.images) ? [...productById.images] : []),
+    [productById.images]
   );
-
-  console.log(products[productId]);
 
   const tabs = [
     {
       title: "Description",
-      content: <TabsContent text={productInstance?.product?.description} />,
+      content: <TabsContent text={productById?.description} />,
     },
     {
       title: "Material & Care",
@@ -129,27 +119,25 @@ export const ProductPage = () => {
                   <div className="product-page__information">
                     <div className="product-page__description">
                       <p className="product-page__producer title-5">
-                        {productInstance?.product?.producer?.name}
+                        {productById?.producer?.name}
                       </p>
                       <a
                         href="/url-до-сторінки-з-товаром-4"
                         className="product-page__title"
                       >
-                        {productInstance?.product?.name}
+                        {productById?.name}
                       </a>
                       <p className="product-page__sex">
-                        {productInstance?.product?.category?.name}
+                        {productById?.category?.name}
                       </p>
                     </div>
 
                     <div className="product-page__price">
                       <p className="product-page__price-cost">
-                        {productInstance?.product?.price &&
-                          `${productInstance.product.price}$`}
+                        {productById?.price && `${productById.price}$`}
                       </p>
                       <span className="product-page__price-cost-sale title-5">
-                        {productInstance?.product?.price &&
-                          `${productInstance.product.price + 120}$`}
+                        {productById?.price && `${productById.price + 120}$`}
                       </span>
                     </div>
                   </div>
@@ -268,7 +256,7 @@ export const ProductPage = () => {
                     <div className="tab-content">{tabs[activeTab].content}</div>
                   </div>
                 </div>
-                <ProductSlider />
+                <ProductSlider products={products} />
               </div>
             </div>
           </div>
