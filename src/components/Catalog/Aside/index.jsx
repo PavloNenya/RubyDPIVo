@@ -1,45 +1,33 @@
-import { useState, useEffect } from "react";
-import { getCategories } from "../../../api/categories";
-import { getSizes } from "../../../api/sizes";
-import { getProducers } from "../../../api/producers";
-import { getGenders } from "../../../api/genders";
+import { useState, useContext } from "react";
 
-import PropTypes from "prop-types";
+import { CatalogContext } from "../../../store/catalogContext";
 
 import btnBack from "../../../assets/img/icons/btn-back.svg";
 
-const Aside = ({ setSelectedFilters }) => {
-  const [categories, setCategories] = useState([]);
-  const [producers, setProducers] = useState([]);
-  const [sizes, setSizes] = useState([]);
-  const [genders, setGenders] = useState([]);
+const Aside = () => {
   const [activeSpoiler, setActiveSpoiler] = useState({});
+
+  const { filterData, setSelectedFilters } = useContext(CatalogContext);
 
   const initialCount = 4;
   const [filterCount, setFilterCount] = useState({
-    Category: initialCount,
-    Brands: initialCount,
-    Gender: initialCount,
-    Sizes: initialCount,
+    categories: initialCount,
+    producers: initialCount,
+    genders: initialCount,
+    sizes: initialCount,
   });
 
-  const filterData = {
-    Price: [
-      <li className="filter__item" key={1}>
-        <input className="filter__input" type="text" placeholder="From 79$" />
-      </li>,
-      <li className="filter__item" key={2}>
-        <input className="filter__input" type="text" placeholder="To 219$" />
-      </li>,
-      <li className="filter__item" key={3}>
-        <div className="filter__line"></div>
-      </li>,
-    ],
-    Category: categories,
-    Brands: producers,
-    Gender: genders,
-    Sizes: sizes,
-  };
+  const priceFields = [
+    <li className="filter__item" key={1}>
+      <input className="filter__input" type="text" placeholder="From 79$" />
+    </li>,
+    <li className="filter__item" key={2}>
+      <input className="filter__input" type="text" placeholder="To 219$" />
+    </li>,
+    <li className="filter__item" key={3}>
+      <div className="filter__line"></div>
+    </li>,
+  ];
 
   const handlerAction = (filterType, setAction, action) => {
     setAction((prevState) => ({
@@ -51,37 +39,22 @@ const Aside = ({ setSelectedFilters }) => {
   const spoilerToggle = (filterType, prevState) => !prevState[filterType];
   const showmore = (filterType, prevState) => prevState[filterType].length;
 
-  const handleCheckboxChange = (filterType, itemName, isChecked) => {
+  const handleCheckboxChange = (filterType, index, isChecked) => {
     setSelectedFilters((prevSelectedFilters) => {
       if (isChecked) {
         return {
           ...prevSelectedFilters,
-          [filterType]: [...(prevSelectedFilters[filterType] || []), itemName],
+          [filterType + "_ids"]: [...(prevSelectedFilters[filterType + "_ids"] || []), index],
         };
       } else {
-        const updatedFilter = (prevSelectedFilters[filterType] || []).filter((item) => item !== itemName);
+        const updatedFilter = (prevSelectedFilters[filterType + "_ids"] || []).filter((item) => item !== index);
         return {
           ...prevSelectedFilters,
-          [filterType]: updatedFilter,
+          [filterType + "_ids"]: updatedFilter,
         };
       }
     });
   };
-
-  useEffect(() => {
-    getCategories().then((data) => {
-      setCategories(data);
-    });
-    getSizes().then((data) => {
-      setSizes(data);
-    });
-    getProducers().then((data) => {
-      setProducers(data);
-    });
-    getGenders().then((data) => {
-      setGenders(data);
-    });
-  }, []);
 
   return (
     <aside className="products__aside">
@@ -89,7 +62,7 @@ const Aside = ({ setSelectedFilters }) => {
         <h2 className="products__title title-3">Filters</h2>
         <div className="products__close"></div>
       </div>
-      {Object.keys(filterData).map((filterType) => (
+      {Object.entries(Object.assign({ price: priceFields }, filterData)).map(([filterType, filterArray], index) => (
         <div
           className={`products__filter filter spoiler ${activeSpoiler[filterType] ? "_active" : ""}`}
           key={filterType}
@@ -102,15 +75,15 @@ const Aside = ({ setSelectedFilters }) => {
             <img className="filter__arrow" src={btnBack} alt="btn-back" />
           </div>
           <ul className="filter__items spoiler__content">
-            {filterType == "Price"
-              ? filterData[filterType].map((item) => item)
-              : filterData[filterType].slice(0, filterCount[filterType]).map((item) => (
+            {index == 0
+              ? filterArray.map((item) => item)
+              : filterData[filterType].slice(0, filterCount[filterType]).map((item, index) => (
                   <li className="filter__item checkbox" key={item.id}>
                     <input
                       className="checkbox__index"
                       type="checkbox"
                       id={item.name}
-                      onChange={(e) => handleCheckboxChange(filterType, item.name, e.target.checked)}
+                      onChange={(e) => handleCheckboxChange(filterType, index, e.target.checked)}
                     />
                     <label className="checkbox__label" htmlFor={item.name}>
                       {item.name}
@@ -129,10 +102,6 @@ const Aside = ({ setSelectedFilters }) => {
       ))}
     </aside>
   );
-};
-
-Aside.propTypes = {
-  setSelectedFilters: PropTypes.func.isRequired,
 };
 
 export default Aside;

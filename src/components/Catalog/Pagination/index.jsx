@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
+import propTypes from "prop-types";
 
-const Pagination = () => {
-  const { page } = useParams();
+const Pagination = ({ totalPages }) => {
+  const { page, type } = useParams();
   const navigate = useNavigate();
-  const [totalPages, setTotalPages] = useState(10);
 
   useEffect(() => {
     if (page < 1 || page > totalPages) {
@@ -22,7 +22,7 @@ const Pagination = () => {
       <p className="pagination__text">Page</p>
       <ul className="pagination__items">
         <li className="pagination__item">
-          <Link to="/catalog/1" className="pagination__link">
+          <Link to={`/catalog/1${type ?? ""}`} className="pagination__link">
             1
           </Link>
         </li>
@@ -69,6 +69,10 @@ const Pagination = () => {
       </Link>
     </div>
   );
+};
+
+Pagination.propTypes = {
+  totalPages: propTypes.number.isRequired,
 };
 
 export default Pagination;

@@ -1,100 +1,66 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Link, useParams } from "react-router-dom";
+import { CatalogContext } from "../../store/catalogContext";
 
-import { getProducts } from "../../api/products";
+import { getCategories } from "../../api/categories";
+import { getSizes } from "../../api/sizes";
+import { getProducers } from "../../api/producers";
+import { getGenders } from "../../api/genders";
+import { getProductsByPage } from "../../api/products";
 
 import Aside from "../../components/Catalog/Aside";
 import Pagination from "../../components/Catalog/Pagination";
 import ProductCard from "../../components/ProductCard";
+import Categories from "../../components/Catalog/Categories";
 
 import "./index.scss";
 
-import reset from "../../assets/img/icons/reset.svg";
-import filter from "../../assets/img/icons/filter.svg";
-
 const CatalogPage = () => {
-  const { page } = useParams();
+  const { page, type } = useParams();
+  const [isLoading, setIsLoading] = useState(false);
   const [products, setProducts] = useState([]);
-  const [selectedFilters, setSelectedFilters] = useState({});
-  const sortOptions = ["ascending", "descending", "name"];
+  const [totalPages, setTotalPages] = useState(1);
 
-  const handleCategoryClose = (filterType, itemName) => {
-    setSelectedFilters((prevSelectedFilters) => {
-      const updatedFilters = { ...prevSelectedFilters };
-      updatedFilters[filterType] = updatedFilters[filterType].filter((item) => item !== itemName);
-      return updatedFilters;
+  const { selectedFilters, setSizes, setGenders, setCategories, setProducers } = useContext(CatalogContext);
+
+  useEffect(() => {
+    getCategories().then((data) => setCategories(data));
+    getProducers().then((data) => setProducers(data));
+    getSizes().then((data) => setSizes(data));
+    getGenders().then((data) => setGenders(data));
+  }, [setCategories, setGenders, setProducers, setSizes]);
+
+  useEffect(() => {
+    setProducts([]);
+    setIsLoading(true);
+
+    getProductsByPage(page, selectedFilters).then((data) => {
+      console.log(data);
+      setProducts(data?.content);
+      setTotalPages(data?.totalPages);
+      setIsLoading(false);
     });
-  };
-
-  const handleCheckboxToggle = (itemName) => {
-    const checkbox = document.getElementById(itemName);
-    if (checkbox) {
-      checkbox.checked = false;
-    }
-  };
-
-  const handleReset = () => {
-    setSelectedFilters({});
-
-    Object.keys(selectedFilters).forEach((filterType) => {
-      selectedFilters[filterType].forEach((itemName) => {
-        handleCheckboxToggle(itemName);
-      });
-    });
-  };
-
-  useEffect(() => {}, [page]);
+  }, [page, selectedFilters]);
 
   return (
     <section className="page__products products">
       <div className="products__container">
         <div className="products__body">
           <div className="products__inner">
-            <Aside setSelectedFilters={setSelectedFilters} />
+            <Aside />
             <div className="products__main">
               <h1 className="products__title title-3">Nike Air Jordan</h1>
-              <div className="products__settings">
-                <ul className="products__categories categories">
-                  {Object.keys(selectedFilters).map((filterType) =>
-                    selectedFilters[filterType].map((itemName, index) => (
-                      <li className="categories__item" key={`${filterType}-${index}`}>
-                        <p className="categories__text">{itemName}</p>
-                        <button
-                          className="categories__close"
-                          onClick={() => {
-                            handleCategoryClose(filterType, itemName);
-                            handleCheckboxToggle(itemName);
-                          }}
-                        ></button>
-                      </li>
-                    )),
-                  )}
-                </ul>
-                <div className="products__params">
-                  <select className="products__options">
-                    {sortOptions.map((item) => (
-                      <option className="products__option" value={item} key={item}>
-                        Sort by {item}
-                      </option>
-                    ))}
-                  </select>
-                  <button className="products__button button-reset" onClick={handleReset}>
-                    <img src={reset} alt="reset" />
-                  </button>
-                  <button className="products__button button-filter">
-                    <img src={filter} alt="filter" />
-                  </button>
-                </div>
-              </div>
+              <Categories />
               <div className="products__content">
                 <div className="products__cards">
-                  {products.map((product) => (
-                    <Link to={`product/${product.id}`} key={product.id}>
-                      <ProductCard product={product} />
-                    </Link>
-                  ))}
+                  {!isLoading &&
+                    products.map((product) => (
+                      <Link to={`/catalog/product/${product.id}`} key={product.id}>
+                        <ProductCard product={product} />
+                      </Link>
+                    ))}
                 </div>
-                <Pagination />
+                <Pagination totalPages={totalPages} />
               </div>
             </div>
           </div>
