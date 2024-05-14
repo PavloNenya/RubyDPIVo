@@ -16,9 +16,8 @@ Rails.application.routes.draw do
     get 'gender', to: 'gender#index'
     post 'gender/create', to: 'gender#create'
     delete 'gender/:id', to: 'gender#delete'
-    get 'user/index'
-    get 'user/show'
-    get 'user/create'
+    get 'users/:id', to: 'user#show'
+    get 'users', to: 'user#index'
     get 'carts/:id', to: 'shopping_cart#show'
     get 'carts', to: 'shopping_cart#index'
     get 'carts/name/:name', to: 'shopping_cart#name'
@@ -30,7 +29,7 @@ Rails.application.routes.draw do
     get 'products/name/:name', to: 'product#name'
     put 'products/:id', to: 'product#update'
     post 'products', to: 'product#create'
-    delete 'products/:id', to: 'products#delete'
+    delete 'products/:id', to: 'product#delete'
     get 'producers/:id', to: 'producers#show'
     get 'producers/name/:name', to: 'producers#name'
     get 'categories/:id', to: 'categories#show'
@@ -54,6 +53,12 @@ Rails.application.routes.draw do
     resources :colors, only: [:index]
     resources :roles, only: [:index]
     resources :sizes, only: [:index]
+    devise_scope :user do
+      post 'users', to: 'user#create'
+      post 'users/login', to: 'user#login'
+    end
+    devise_for :users, path_names: { sign_up: 'register', sign_in: 'login' }
+    delete 'logout', to: 'sessions#destroy'
   end
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
