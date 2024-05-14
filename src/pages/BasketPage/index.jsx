@@ -11,24 +11,29 @@ const BasketPage = () => {
     useContext(AppContext);
 
   const handlePlusCounter = (productId) => {
-    setSelectedProduct((prevSelectedProducts) => {
-      return prevSelectedProducts.map((product) => {
-        if (product.id === productId) {
-          return { ...product, quantity: product.quantity + 1 };
-        }
-        return product;
-      });
+    const updatedSelectedProducts = selectedProduct.map((product) => {
+      if (product.id === productId) {
+        return { ...product, quantity: product.quantity + 1 };
+      }
+      return product;
     });
+
+    setSelectedProduct(updatedSelectedProducts);
+    Cookies.set("selectedProduct", JSON.stringify(updatedSelectedProducts));
   };
 
   const handleMinusCounter = (productId) => {
     setSelectedProduct((prevSelectedProducts) => {
-      return prevSelectedProducts.map((product) => {
+      const updatedSelectedProducts = prevSelectedProducts.map((product) => {
         if (product.id === productId && product.quantity > 0) {
           return { ...product, quantity: product.quantity - 1 };
         }
         return product;
       });
+
+      Cookies.set("selectedProduct", JSON.stringify(updatedSelectedProducts));
+
+      return updatedSelectedProducts;
     });
   };
 
