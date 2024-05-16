@@ -11,6 +11,7 @@ import BasketPage from "./pages/BasketPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import ThankyouPage from "./pages/ThankyouPage";
 import PageNotFound from "./pages/PageNotFound";
+import FavoritePage from "./pages/FavoritePage";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <ContextProvider>
@@ -32,6 +33,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                     <Route path=":productId" element={<ProductPage />} />
                   </Route>
                 </Route>
+
+                <Route path="favorite" element={<FavoritePage />} />
 
                 <Route path="basket" element={<BasketPage />} />
 
