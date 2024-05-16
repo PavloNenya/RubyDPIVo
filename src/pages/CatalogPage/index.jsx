@@ -14,6 +14,7 @@ import ProductCard from "../../components/ProductCard";
 import Categories from "../../components/Catalog/Categories";
 
 import "./index.scss";
+import CardSkeleton from "../../components/Skeletons/CardSkeleton";
 
 const CatalogPage = () => {
   const { page, type } = useParams();
@@ -21,21 +22,23 @@ const CatalogPage = () => {
   const [products, setProducts] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
 
-  const { selectedFilters, setSizes, setGenders, setCategories, setProducers } = useContext(CatalogContext);
+  const { selectedFilters, setSizes, setGenders, setCategories, setProducers, setIsFilterDataLoading } =
+    useContext(CatalogContext);
 
   useEffect(() => {
+    setIsFilterDataLoading(true);
     getCategories().then((data) => setCategories(data));
     getProducers().then((data) => setProducers(data));
     getSizes().then((data) => setSizes(data));
     getGenders().then((data) => setGenders(data));
-  }, [setCategories, setGenders, setProducers, setSizes]);
+    setIsFilterDataLoading(false);
+  }, [setCategories, setGenders, setIsFilterDataLoading, setProducers, setSizes]);
 
   useEffect(() => {
     setProducts([]);
     setIsLoading(true);
 
     getProductsByPage(page, selectedFilters).then((data) => {
-      console.log(data);
       setProducts(data?.content);
       setTotalPages(data?.totalPages);
       setIsLoading(false);
@@ -53,12 +56,15 @@ const CatalogPage = () => {
               <Categories />
               <div className="products__content">
                 <div className="products__cards">
-                  {!isLoading &&
-                    products.map((product) => (
-                      <Link to={`/catalog/product/${product.id}`} key={product.id}>
-                        <ProductCard product={product} />
-                      </Link>
-                    ))}
+                  {isLoading
+                    ? Array(12)
+                        .fill(0)
+                        .map((_, index) => <CardSkeleton key={index} />)
+                    : products.map((product) => (
+                        <Link className="products__card" to={`/catalog/product/${product.id}`} key={product.id}>
+                          <ProductCard product={product} />
+                        </Link>
+                      ))}
                 </div>
                 <Pagination totalPages={totalPages} />
               </div>

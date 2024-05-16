@@ -32,8 +32,10 @@ export const ContextProvider = ({ children }) => {
       setSelectedProduct,
       selectedSize,
       setSelectedSize,
+      isLoading,
+      setIsLoading,
     }),
-    [errorMessage, products, selectedProduct, selectedSize]
+    [errorMessage, isLoading, products, selectedProduct, selectedSize],
   );
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

@@ -1,13 +1,17 @@
-/* eslint-disable react/prop-types */
-// import Carousel from "react-multi-carousel";
-import "./index.scss";
-import { useEffect, useMemo, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
+import PropTypes from "prop-types";
+
 import ProductCard from "../ProductCard";
 import SliderIndicator from "../SliderIndicator";
+import CardSkeleton from "../Skeletons/CardSkeleton";
+
 import scrollingArrows from "../../assets/img/icons/scrollingArrows.svg";
 
+import { AppContext } from "../../store/context";
+
+import "./index.scss";
+
 const ProductSlider = ({ type, products }) => {
-  // eslint-disable-next-line no-unused-vars
   const [startIndex, setStartIndex] = useState(0);
   const [cardWidth, setCardWidth] = useState(285);
   const [cardsInView, setCardsinView] = useState(1);
@@ -17,6 +21,8 @@ const ProductSlider = ({ type, products }) => {
 
   const cardsToMove = 1;
   const gap = 20;
+
+  const { isLoading } = useContext(AppContext);
 
   useEffect(() => {
     let intervalId;
@@ -30,13 +36,7 @@ const ProductSlider = ({ type, products }) => {
     }
 
     return () => clearInterval(intervalId);
-  }, [
-    autoPlayActive,
-    autoPlayInterval,
-    cardsInView,
-    products.length,
-    startIndex,
-  ]);
+  }, [autoPlayActive, autoPlayInterval, cardsInView, products.length, startIndex]);
 
   useEffect(() => {
     const checkWidth = () => {
@@ -81,7 +81,7 @@ const ProductSlider = ({ type, products }) => {
       transform: `translateX(-${startIndex * (cardWidth + gap)}px)`,
       transition: "transform 0.5s ease",
     }),
-    [cardWidth, products.length, startIndex]
+    [cardWidth, products.length, startIndex],
   );
 
   const leftArrowDis = startIndex === 0;
@@ -104,19 +104,11 @@ const ProductSlider = ({ type, products }) => {
             <h2 className="title-block__title title-2">{titleOfBlock}</h2>
             <div className="title-block__button button-wrapper">
               <div className="goods__btnWrapper">
-                <button
-                  className="goods__btnSlider"
-                  onClick={handlePrevClick}
-                  disabled={leftArrowDis}
-                >
+                <button className="goods__btnSlider" onClick={handlePrevClick} disabled={leftArrowDis}>
                   <img className="goods__toggle" src={scrollingArrows} alt="" />
                 </button>
 
-                <button
-                  className="goods__btnSlider left"
-                  onClick={handleNextClick}
-                  disabled={rightArrowDis}
-                >
+                <button className="goods__btnSlider left" onClick={handleNextClick} disabled={rightArrowDis}>
                   <img className="goods__toggle" src={scrollingArrows} alt="" />
                 </button>
               </div>
@@ -124,25 +116,25 @@ const ProductSlider = ({ type, products }) => {
           </div>
           <div className="goods__cards-wrapper">
             <div className="goods__cards" style={carouselListStyles}>
-              {products.map((product) => (
-                <ProductCard
-                  key={product.id}
-                  product={product}
-                  cardWidth={cardWidth}
-                  type={type}
-                />
-              ))}
+              {isLoading
+                ? Array(12)
+                    .fill(0)
+                    .map((_, index) => <CardSkeleton key={index} cardWidth={cardWidth} type={"goods"} />)
+                : products.map((product) => (
+                    <ProductCard key={product.id} product={product} cardWidth={cardWidth} type={type} />
+                  ))}
             </div>
           </div>
-          <SliderIndicator
-            totalCards={products.length}
-            startIndex={startIndex}
-            cardsInView={cardsInView}
-          />
+          <SliderIndicator totalCards={products.length} startIndex={startIndex} cardsInView={cardsInView} />
         </div>
       </div>
     </section>
   );
+};
+
+ProductSlider.propTypes = {
+  type: PropTypes.string,
+  products: PropTypes.array,
 };
 
 export default ProductSlider;

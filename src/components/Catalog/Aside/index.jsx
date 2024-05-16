@@ -3,11 +3,12 @@ import { useState, useContext } from "react";
 import { CatalogContext } from "../../../store/catalogContext";
 
 import btnBack from "../../../assets/img/icons/btn-back.svg";
+import Skeleton from "react-loading-skeleton";
 
 const Aside = () => {
   const [activeSpoiler, setActiveSpoiler] = useState({});
 
-  const { filterData, setSelectedFilters } = useContext(CatalogContext);
+  const { filterData, setSelectedFilters, isFilterDataLoading } = useContext(CatalogContext);
 
   const initialCount = 4;
   const [filterCount, setFilterCount] = useState({
@@ -75,7 +76,11 @@ const Aside = () => {
             <img className="filter__arrow" src={btnBack} alt="btn-back" />
           </div>
           <ul className="filter__items spoiler__content">
-            {index == 0
+            {isFilterDataLoading
+              ? Array(4)
+                  .fill(0)
+                  .map((_, index) => <Skeleton style={{ marginBottom: 5 }} height={20} key={index} />)
+              : index == 0
               ? filterArray.map((item) => item)
               : filterData[filterType].slice(0, filterCount[filterType]).map((item, index) => (
                   <li className="filter__item checkbox" key={item.id}>

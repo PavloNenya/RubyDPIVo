@@ -8,6 +8,7 @@ export const CatalogContextProvider = ({ children }) => {
   const [producers, setProducers] = useState([]);
   const [sizes, setSizes] = useState([]);
   const [genders, setGenders] = useState([]);
+  const [isFilterDataLoading, setIsFilterDataLoading] = useState(false);
   const [selectedFilters, setSelectedFilters] = useState({
     category_ids: [],
     producer_ids: [],
@@ -33,8 +34,10 @@ export const CatalogContextProvider = ({ children }) => {
       selectedFilters,
       setSelectedFilters,
       filterData,
+      isFilterDataLoading,
+      setIsFilterDataLoading,
     };
-  }, [categories, genders, producers, sizes, selectedFilters]);
+  }, [categories, producers, genders, sizes, selectedFilters, isFilterDataLoading]);
 
   return <CatalogContext.Provider value={value}>{children}</CatalogContext.Provider>;
 };
