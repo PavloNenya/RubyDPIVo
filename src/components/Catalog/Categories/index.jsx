@@ -49,8 +49,8 @@ const Categories = () => {
     }));
 
     Object.keys(filterData).forEach((filterType) => {
-      selectedFilters[filterType + "_ids"].forEach((item) => {
-        handleCheckboxToggle(filterData[filterType][item].name);
+      selectedFilters[filterType + "_ids"].forEach((_, index) => {
+        handleCheckboxToggle(filterData[filterType][index].name);
       });
     });
   };
