@@ -21,7 +21,8 @@ const CatalogPage = () => {
   const [products, setProducts] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
 
-  const { selectedFilters, setSizes, setGenders, setCategories, setProducers } = useContext(CatalogContext);
+  const { selectedFilters, setSizes, setGenders, setCategories, setProducers } =
+    useContext(CatalogContext);
 
   useEffect(() => {
     getCategories().then((data) => setCategories(data));
@@ -55,7 +56,10 @@ const CatalogPage = () => {
                 <div className="products__cards">
                   {!isLoading &&
                     products.map((product) => (
-                      <Link to={`/catalog/product/${product.id}`} key={product.id}>
+                      <Link
+                        to={`/catalog/product/${product.id}`}
+                        key={product.id}
+                      >
                         <ProductCard product={product} />
                       </Link>
                     ))}
