@@ -7,7 +7,8 @@ import BreadСrumbs from "./components/BreadCrumbs";
 
 function App() {
   const location = useLocation();
-  const isNotHomePage = location.pathname !== "/";
+  const isNotHomePage =
+    location.pathname !== "/" && location.pathname !== "/404";
 
   return (
     <>

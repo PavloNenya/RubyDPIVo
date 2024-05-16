@@ -1,0 +1,41 @@
+@import "../../shared/scss/settings.scss";
+
+.notfound {
+  &__container {
+    max-width: 36rem;
+    box-sizing: content-box;
+    margin: 0 auto;
+    padding: 0 0.9375rem;
+  }
+
+  &__maincontent {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  &__logo {
+    height: 36px;
+    width: 183px;
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .authorization__input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+@include phone {
+  .authorization__button {
+    width: 100%;
+  }
+}

@@ -10,6 +10,7 @@ import ProductPage from "./pages/ProductPage";
 import BasketPage from "./pages/BasketPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import ThankyouPage from "./pages/ThankyouPage";
+import PageNotFound from "./pages/PageNotFound";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <ContextProvider>
@@ -38,12 +39,12 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 
                 <Route path="thankyou" element={<ThankyouPage />} />
 
-                {/* <Route path="*" element={<PageNotFound />} /> */}
+                <Route path="*" element={<PageNotFound />} />
               </Route>
             </Routes>
           </Router>
         </div>
       </React.StrictMode>
     </CatalogContextProvider>
-  </ContextProvider>,
+  </ContextProvider>
 );
