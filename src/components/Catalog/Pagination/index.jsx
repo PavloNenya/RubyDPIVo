@@ -15,24 +15,26 @@ const Pagination = ({ totalPages }) => {
   }, [navigate, page, totalPages]);
 
   return (
-    <div className="products__pagination pagination">
-      <Link to={page < 2 ? "" : `/catalog/${page - 1}`}>
-        <button className="pagination__button left">
-          <img className="pagination__icon" src={btnBack} alt="..." />
-        </button>
-      </Link>
-      <p className="pagination__text">Page</p>
-      <ul className="pagination__items">
-        <li className="pagination__item">
-          {page} / {totalPages}
-        </li>
-      </ul>
-      <Link to={page == totalPages ? "" : `/catalog/${parseInt(page) + 1}`}>
-        <button className="pagination__button right">
-          <img className="pagination__icon" src={btnBack} alt="..." />
-        </button>
-      </Link>
-    </div>
+    totalPages != 0 && (
+      <div className="products__pagination pagination">
+        <Link to={page < 2 ? "" : `/catalog/${page - 1}`}>
+          <button className="pagination__button left">
+            <img className="pagination__icon" src={btnBack} alt="..." />
+          </button>
+        </Link>
+        <p className="pagination__text">Page</p>
+        <ul className="pagination__items">
+          <li className="pagination__item">
+            {page} / {totalPages}
+          </li>
+        </ul>
+        <Link to={page == totalPages ? "" : `/catalog/${parseInt(page) + 1}`}>
+          <button className="pagination__button right">
+            <img className="pagination__icon" src={btnBack} alt="..." />
+          </button>
+        </Link>
+      </div>
+    )
   );
 };
 
