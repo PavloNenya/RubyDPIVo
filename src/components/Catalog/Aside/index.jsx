@@ -4,6 +4,7 @@ import { CatalogContext } from "../../../store/catalogContext";
 
 import btnBack from "../../../assets/img/icons/btn-back.svg";
 import Skeleton from "react-loading-skeleton";
+import PriceRange from "../PriceRange";
 
 const Aside = () => {
   const [activeSpoiler, setActiveSpoiler] = useState({});
@@ -12,23 +13,11 @@ const Aside = () => {
 
   const initialCount = 4;
   const [filterCount, setFilterCount] = useState({
-    categories: initialCount,
-    producers: initialCount,
-    genders: initialCount,
-    sizes: initialCount,
+    category: initialCount,
+    producer: initialCount,
+    gender: initialCount,
+    size: initialCount,
   });
-
-  const priceFields = [
-    <li className="filter__item" key={1}>
-      <input className="filter__input" type="text" placeholder="From 79$" />
-    </li>,
-    <li className="filter__item" key={2}>
-      <input className="filter__input" type="text" placeholder="To 219$" />
-    </li>,
-    <li className="filter__item" key={3}>
-      <div className="filter__line"></div>
-    </li>,
-  ];
 
   const handlerAction = (filterType, setAction, action) => {
     setAction((prevState) => ({
@@ -63,7 +52,7 @@ const Aside = () => {
         <h2 className="products__title title-3">Filters</h2>
         <div className="products__close"></div>
       </div>
-      {Object.entries(Object.assign({ price: priceFields }, filterData)).map(([filterType, filterArray], index) => (
+      {Object.entries(Object.assign({ price: 1 }, filterData)).map(([filterType], index) => (
         <div
           className={`products__filter filter spoiler ${activeSpoiler[filterType] ? "_active" : ""}`}
           key={filterType}
@@ -76,25 +65,27 @@ const Aside = () => {
             <img className="filter__arrow" src={btnBack} alt="btn-back" />
           </div>
           <ul className="filter__items spoiler__content">
-            {isFilterDataLoading
-              ? Array(4)
-                  .fill(0)
-                  .map((_, index) => <Skeleton style={{ marginBottom: 5 }} height={20} key={index} />)
-              : index == 0
-              ? filterArray.map((item) => item)
-              : filterData[filterType].slice(0, filterCount[filterType]).map((item, index) => (
-                  <li className="filter__item checkbox" key={item.id}>
-                    <input
-                      className="checkbox__index"
-                      type="checkbox"
-                      id={item.name}
-                      onChange={(e) => handleCheckboxChange(filterType, index, e.target.checked)}
-                    />
-                    <label className="checkbox__label" htmlFor={item.name}>
-                      {item.name}
-                    </label>
-                  </li>
-                ))}
+            {isFilterDataLoading ? (
+              Array(4)
+                .fill(0)
+                .map((_, index) => <Skeleton style={{ marginBottom: 5 }} height={20} key={index} />)
+            ) : index == 0 ? (
+              <PriceRange min={0} max={10000} />
+            ) : (
+              filterData[filterType].slice(0, filterCount[filterType]).map((item, index) => (
+                <li className="filter__item checkbox" key={item.id}>
+                  <input
+                    className="checkbox__index"
+                    type="checkbox"
+                    id={item.name}
+                    onChange={(e) => handleCheckboxChange(filterType, index + 1, e.target.checked)}
+                  />
+                  <label className="checkbox__label" htmlFor={item.name}>
+                    {item.name}
+                  </label>
+                </li>
+              ))
+            )}
             {filterCount[filterType] <= 4 && filterData[filterType].length > 4 && (
               <li className="filter__item showmore-wrapper">
                 <button className="showmore" onClick={() => handlerAction(filterType, setFilterCount, showmore)}>
