@@ -11,7 +11,7 @@ import arrowIcon from "../../assets/img/icons/arrow.svg";
 
 const photosOfCategory = [shoesImg, tshirtsImg, hoodiesImg, jeensImg, accesImg];
 
-const ProductCard = ({ type, product, cardWidth = 285 }) => {
+const ProductCard = ({ type, product, cardWidth }) => {
   return (
     <div className="goods__card card" style={{ width: cardWidth }}>
       <img
@@ -27,11 +27,7 @@ const ProductCard = ({ type, product, cardWidth = 285 }) => {
         {type !== "category" ? "new" : product?.infolabel}
         <img
           className="infolabel__icon"
-          src={
-            type !== "category"
-              ? `http://localhost:9091/api/images?name=clock-svg.svg`
-              : arrowIcon
-          }
+          src={type !== "category" ? `http://localhost:9091/api/images?name=clock-svg.svg` : arrowIcon}
           alt=""
         />
       </div>
@@ -39,10 +35,7 @@ const ProductCard = ({ type, product, cardWidth = 285 }) => {
       {type !== "category" ? (
         <div className="button-like">
           <button className="button-like__icon">
-            <img
-              src={`http://localhost:9091/api/images?name=heart-svg.svg`}
-              alt=""
-            />
+            <img src={`http://localhost:9091/api/images?name=heart-svg.svg`} alt="" />
           </button>
         </div>
       ) : null}
@@ -52,9 +45,7 @@ const ProductCard = ({ type, product, cardWidth = 285 }) => {
           <div href="/" className="card__title title-4">
             {product.description}
           </div>
-          {type !== "category" ? (
-            <p className="card__producer title-5">{product.producer.name}</p>
-          ) : null}
+          {type !== "category" ? <p className="card__producer title-5">{product.producer.name}</p> : null}
         </div>
 
         {type !== "category" ? (
