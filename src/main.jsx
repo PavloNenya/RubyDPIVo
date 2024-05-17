@@ -1,10 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import App from "./App";
+
 import { ContextProvider } from "./store/context";
 import { CatalogContextProvider } from "./store/catalogContext";
-import { HomePage } from "./pages/HomePage";
+
+import App from "./App";
+import HomePage from "./pages/HomePage";
 import CatalogPage from "./pages/CatalogPage";
 import ProductPage from "./pages/ProductPage";
 import BasketPage from "./pages/BasketPage";
@@ -12,6 +14,8 @@ import CheckoutPage from "./pages/CheckoutPage";
 import ThankyouPage from "./pages/ThankyouPage";
 import PageNotFound from "./pages/PageNotFound";
 import FavoritePage from "./pages/FavoritePage";
+import RegistrationPage from "./pages/RegistrationPage";
+import SignUpPage from "./pages/SignUpPage";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <ContextProvider>
@@ -41,6 +45,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                 <Route path="checkout" element={<CheckoutPage />} />
 
                 <Route path="thankyou" element={<ThankyouPage />} />
+
+                <Route path="signup" element={<RegistrationPage />} />
+                <Route path="signin" element={<SignUpPage />} />
 
                 <Route path="*" element={<PageNotFound />} />
               </Route>

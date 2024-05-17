@@ -1,18 +1,14 @@
-export const RegistrationPage = () => {
+import "./index.scss";
+
+const RegistrationPage = () => {
   return (
     <section className="page__authorization authorization">
       <div className="authorization__container">
         <div className="authorization__body">
           <div className="authorization__maincontent">
             <div className="authorization__header">
-              <img
-                className="authorization__logo"
-                src="img/icons/logo.svg"
-                alt="logo.svg"
-              />
-              <h2 className="authorization__title title-2">
-                Enter your email address to login or register.
-              </h2>
+              <img className="authorization__logo" src="img/icons/logo.svg" alt="logo.svg" />
+              <h2 className="authorization__title title-2">Enter your email address to login or register.</h2>
             </div>
             <div className="authorization__dropdown-wrapper">
               <label htmlFor="dropdown">Country:</label>
@@ -22,12 +18,7 @@ export const RegistrationPage = () => {
                 <option value="value3">Moldova</option>
               </select>
             </div>
-            <input
-              type="text"
-              className="authorization__input"
-              name="text-input"
-              placeholder="E-mail*"
-            />
+            <input type="text" className="authorization__input" name="text-input" placeholder="E-mail*" />
           </div>
           <div className="authorization__footer">
             <div className="authorization__checkbox-line">
@@ -41,8 +32,7 @@ export const RegistrationPage = () => {
                   defaultValue="checkboxValue"
                 />
                 <label htmlFor="myCheckbox">
-                  I have read and agree to the terms &amp; conotions and privacy
-                  policy
+                  I have read and agree to the terms &amp; conotions and privacy policy
                 </label>
               </div>
             </div>
@@ -58,3 +48,5 @@ export const RegistrationPage = () => {
     </section>
   );
 };
+
+export default RegistrationPage;

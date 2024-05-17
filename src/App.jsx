@@ -1,20 +1,20 @@
-import { Header } from "./components/Header";
-import { Footer } from "./components/Footer";
 import { Outlet, useLocation } from "react-router-dom";
 
-import "./shared/scss/style.scss";
+import { Header } from "./components/Header";
+import { Footer } from "./components/Footer";
 import BreadСrumbs from "./components/BreadCrumbs";
+
+import "./shared/scss/style.scss";
 
 function App() {
   const location = useLocation();
-  const isNotHomePage =
-    location.pathname !== "/" && location.pathname !== "/404";
+  const isBreadCrumbsVisible = location.pathname !== "/" && location.pathname !== "/404";
 
   return (
     <>
       <Header />
       <main className="page">
-        {isNotHomePage && <BreadСrumbs />}
+        {isBreadCrumbsVisible && <BreadСrumbs />}
 
         <Outlet />
       </main>
