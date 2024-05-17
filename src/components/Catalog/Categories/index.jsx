@@ -27,8 +27,11 @@ const Categories = () => {
 
   const handleCategoryClose = (filterType, index) => {
     setSelectedFilters((prevSelectedFilters) => {
-      const updatedFilter = (prevSelectedFilters[filterType] || []).filter((item) => item !== index);
-      return updatedFilter;
+      const updatedFilter = prevSelectedFilters[filterType].filter((item) => item !== index);
+      return {
+        ...prevSelectedFilters,
+        [filterType]: updatedFilter,
+      };
     });
   };
 
@@ -73,12 +76,12 @@ const Categories = () => {
             Array.isArray(filterArray) &&
             filterArray.map((item, arrayIndex) => (
               <li className="categories__item" key={`${filterType}-${arrayIndex}`}>
-                <p className="categories__text">{filterData[filterType.slice(0, -4)][item].name}</p>
+                <p className="categories__text">{filterData[filterType.slice(0, -4)][item - 1].name}</p>
                 <button
                   className="categories__close"
                   onClick={() => {
-                    handleCategoryClose(filterType, filterData[item]);
-                    handleCheckboxToggle(filterData[filterType.slice(0, -4)][item].name);
+                    handleCategoryClose(filterType, filterData[filterType.slice(0, -4)][item - 1].id);
+                    handleCheckboxToggle(filterData[filterType.slice(0, -4)][item - 1].name);
                   }}
                 ></button>
               </li>

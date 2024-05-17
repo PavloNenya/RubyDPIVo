@@ -70,7 +70,8 @@ const Aside = () => {
                 .fill(0)
                 .map((_, index) => <Skeleton style={{ marginBottom: 5 }} height={20} key={index} />)
             ) : index == 0 ? (
-              <PriceRange min={0} max={10000} />
+              // <PriceRange min={0} max={10000} />
+              <div></div>
             ) : (
               filterData[filterType].slice(0, filterCount[filterType]).map((item, index) => (
                 <li className="filter__item checkbox" key={item.id}>
