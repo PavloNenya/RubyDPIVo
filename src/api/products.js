@@ -1,7 +1,7 @@
 import { client } from "../utils/fetchClient";
 
 export const getProducts = () => {
-  return client.get(`/products`);
+  return client.get(`/products?page=1`);
 };
 
 export const getProductsByPage = (page, data) => {

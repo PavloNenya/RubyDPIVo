@@ -9,10 +9,37 @@ import jeensImg from "../../assets/img/categories/jeans.png";
 import accesImg from "../../assets/img/categories/acces.png";
 import arrowIcon from "../../assets/img/icons/arrow.svg";
 import clockIcon from "../../assets/img/icons/clock.svg";
+import { useContext } from "react";
+import { AppContext } from "../../store/context";
+import { addFavorite, deleteFavorite } from "../../api/favorite";
 
 const photosOfCategory = [shoesImg, tshirtsImg, hoodiesImg, jeensImg, accesImg];
 
 const ProductCard = ({ type, product, cardWidth }) => {
+  const { likedProducts, setLikedProducts } = useContext(AppContext);
+
+  const handleButtonFavorite = () => {
+    const productId = product.id;
+
+    const isProductLiked = likedProducts.some(
+      (product) => product.id === productId
+    );
+
+    if (isProductLiked) {
+      const updatedLikedProducts = likedProducts.filter(
+        (product) => product.id !== productId
+      );
+
+      deleteFavorite(productId);
+      setLikedProducts(updatedLikedProducts);
+    } else {
+      const updatedLikedProducts = [...likedProducts, product];
+
+      addFavorite(product);
+      setLikedProducts(updatedLikedProducts);
+    }
+  };
+
   return (
     <div className="goods__card card" style={{ width: cardWidth }}>
       <img
@@ -35,7 +62,7 @@ const ProductCard = ({ type, product, cardWidth }) => {
 
       {type !== "category" ? (
         <div className="button-like">
-          <button className="button-like__icon">
+          <button onClick={handleButtonFavorite} className="button-like__icon">
             <img
               src={`http://localhost:9091/api/images?name=heart-svg.svg`}
               alt=""
