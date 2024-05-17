@@ -19,6 +19,7 @@ function generateRandomNumber(min, max) {
 
 export const ProductPage = () => {
   const [activeTab, setActiveTab] = useState(0);
+  const [zeroSizes, setZeroSizes] = useState(true);
   const [rndNum, setRndNum] = useState(null);
   const [isClicked, setIsClicked] = useState(false);
   const [productInstancesAndSizes, setProductInstancesAndSizes] = useState([]);
@@ -145,17 +146,27 @@ export const ProductPage = () => {
                   <div className="product-page__interactive">
                     <div className="product-page__interactive-top">
                       <div className="product-page__sizes-wrapper">
-                        {productInstancesAndSizes.map((size) => (
+                        {productInstancesAndSizes.map((productInstanceInfo) => (
                           <div
-                            key={size.size_name}
+                            key={productInstanceInfo.size_name}
                             className={`product-page__size ${
-                              selectedSize.size_name === size.size_name
+                              selectedSize.size_name ===
+                              productInstanceInfo.size_name
                                 ? "checked"
                                 : ""
+                            } ${
+                              productInstanceInfo.present === 823
+                                ? "disabled"
+                                : ""
                             }`}
-                            onClick={() => handleSizeClick(size)}
+                            onClick={() => {
+                              if (productInstanceInfo.present !== 823) {
+                                setZeroSizes(false);
+                                handleSizeClick(productInstanceInfo);
+                              }
+                            }}
                           >
-                            {size.size_name}
+                            {productInstanceInfo.size_name}
                           </div>
                         ))}
                       </div>
@@ -165,10 +176,10 @@ export const ProductPage = () => {
                           className={`button button_lg button_default button_authorization ${
                             isClicked ? "clicked" : ""
                           }`}
-                          onClick={() => {
-                            handleAddButtonItem();
-                            setIsClicked(true);
-                          }}
+                          onClick={() =>
+                            !zeroSizes &&
+                            (handleAddButtonItem(), setIsClicked(true))
+                          }
                         >
                           {isClicked ? "Added to cart" : "Buy Now"}
 
