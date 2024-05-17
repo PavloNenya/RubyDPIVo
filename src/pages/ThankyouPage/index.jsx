@@ -1,9 +1,12 @@
 import { useContext, useEffect } from "react";
-import "./index.scss";
-import { AppContext } from "../../store/context";
-import Cookies from "js-cookie";
 import { Link } from "react-router-dom";
+import Cookies from "js-cookie";
+
+import { AppContext } from "../../store/context";
+
 import backToHome from "../../assets/img/checkout/backToHome.svg";
+
+import "./index.scss";
 
 export const ThankyouPage = () => {
   const { selectedProduct, setSelectedProduct } = useContext(AppContext);
@@ -39,9 +42,7 @@ export const ThankyouPage = () => {
                 <div className="thankyou__infoblock-top">
                   <div className="thankyou__subtitle">
                     <p>Your Order #17150810</p>
-                    <p className="thankyou__sub title-5">
-                      Wait for an sms message to your phone with other details
-                    </p>
+                    <p className="thankyou__sub title-5">Wait for an sms message to your phone with other details</p>
                   </div>
                 </div>
 
@@ -59,18 +60,12 @@ export const ThankyouPage = () => {
                     />
                     <div className="thankyou__infoblock-item-information">
                       <div className="thankyou__infoblock-item-top">
-                        <p className="card__producer title-5">
-                          {product.producer.name}
-                        </p>
+                        <p className="card__producer title-5">{product.producer.name}</p>
                         <h4 className="card__title title-4">{product.name}</h4>
                       </div>
                       <div className="thankyou__infoblock-item-bottom">
-                        <h4 className="card__title title-4">
-                          ${product.price}
-                        </h4>
-                        <p className="card__producer title-5">
-                          Size:{` ${product.selectedSize.size_name}`}
-                        </p>
+                        <h4 className="card__title title-4">${product.price}</h4>
+                        <p className="card__producer title-5">Size:{` ${product.selectedSize.size_name}`}</p>
                       </div>
                     </div>
                   </div>
@@ -78,9 +73,7 @@ export const ThankyouPage = () => {
                 <hr className="thankyou__infoblock-line" />
                 <div className="thankyou__infoblock-wrapperinfo">
                   <h4 className="thankyou__infoblock-text">Total:</h4>
-                  <h4 className="thankyou__infoblock-text">
-                    ${handleTotalSum()}
-                  </h4>
+                  <h4 className="thankyou__infoblock-text">${handleTotalSum()}</h4>
                 </div>
               </div>
             </div>

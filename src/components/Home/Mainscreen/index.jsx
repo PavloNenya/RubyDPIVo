@@ -1,9 +1,9 @@
-import "./index.scss";
-
 import bg from "../../../assets/img/mainscreen/bg.jpg";
 import banner from "../../../assets/img/mainscreen/banner.png";
 
-export const Mainscreen = () => {
+import "./index.scss";
+
+const Mainscreen = () => {
   return (
     <section className="page__mainscreen mainscreen">
       <div className="mainscreen__container">
@@ -45,3 +45,5 @@ export const Mainscreen = () => {
     </section>
   );
 };
+
+export default Mainscreen;

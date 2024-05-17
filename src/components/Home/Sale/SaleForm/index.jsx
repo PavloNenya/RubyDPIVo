@@ -1,8 +1,8 @@
-import "./index.scss";
-
 import sale from "../../../../assets/img/sale/sale-1.jpg";
 
-export const SaleForm = () => {
+import "./index.scss";
+
+const SaleForm = () => {
   return (
     <section className="page__sale sale">
       <div className="sale__container">
@@ -32,3 +32,5 @@ export const SaleForm = () => {
     </section>
   );
 };
+
+export default SaleForm;

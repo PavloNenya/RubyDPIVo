@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import "./index.scss";
-
 import sale from "../../../../assets/img/sale/sale-1.jpg";
 import arrowWhite from "../../../../assets/img/icons/arrow-white.svg";
 
-export const SaleTimer = () => {
+import "./index.scss";
+
+const SaleTimer = () => {
   const calculateTimeLeft = () => {
     const difference = +new Date("2024-06-01") - +new Date();
     let timeLeft = {};
@@ -72,3 +72,5 @@ export const SaleTimer = () => {
     </section>
   );
 };
+
+export default SaleTimer;

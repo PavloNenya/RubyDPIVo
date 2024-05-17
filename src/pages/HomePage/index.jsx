@@ -1,15 +1,17 @@
-import { Mainscreen } from "../../components/Home/Mainscreen";
-import { SaleForm } from "../../components/Home/Sale/SaleForm";
-import { SaleTimer } from "../../components/Home/Sale/SaleTimer";
-import { Blog } from "../../components/Home/Blog";
-
-import "./index.scss";
-import ProductSlider from "../../components/ProductSlider";
 import { useContext, useEffect } from "react";
+
 import { AppContext } from "../../store/context";
 import categories from "../../utils/categories";
 
-export const HomePage = () => {
+import Mainscreen from "../../components/Home/Mainscreen";
+import SaleForm from "../../components/Home/Sale/SaleForm";
+import SaleTimer from "../../components/Home/Sale/SaleTimer";
+import Blog from "../../components/Home/Blog";
+import ProductSlider from "../../components/ProductSlider";
+
+import "./index.scss";
+
+const HomePage = () => {
   const { products } = useContext(AppContext);
 
   useEffect(() => {
@@ -17,8 +19,7 @@ export const HomePage = () => {
       let ibg = document.querySelectorAll(".ibg");
       for (var i = 0; i < ibg.length; i++) {
         if (ibg[i].querySelector("img")) {
-          ibg[i].style.backgroundImage =
-            "url(" + ibg[i].querySelector("img").getAttribute("src") + ")";
+          ibg[i].style.backgroundImage = "url(" + ibg[i].querySelector("img").getAttribute("src") + ")";
         }
       }
     })();

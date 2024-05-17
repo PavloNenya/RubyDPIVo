@@ -1,5 +1,3 @@
-import "./index.scss";
-
 import arrowBlack from "../../../assets/img/icons/arrow-black.svg";
 import arrowWhite from "../../../assets/img/icons/arrow-white.svg";
 import play from "../../../assets/img/icons/play.svg";
@@ -12,7 +10,9 @@ import blog1 from "../../../assets/img/blog/blog-1.jpg";
 import blog2 from "../../../assets/img/blog/blog-2.jpg";
 import blog3 from "../../../assets/img/blog/blog-3.jpg";
 
-export const Blog = () => {
+import "./index.scss";
+
+const Blog = () => {
   return (
     <section className="page__blog blog">
       <div className="blog__container">
@@ -86,3 +86,5 @@ export const Blog = () => {
     </section>
   );
 };
+
+export default Blog;
