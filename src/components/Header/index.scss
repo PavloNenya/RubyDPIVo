@@ -59,6 +59,28 @@
     }
   }
 
+  &__logo-basket {
+    position: relative;
+  }
+
+  &__infoitem {
+    position: absolute;
+    display: flex;
+    bottom: -6px;
+    left: 8px;
+    justify-content: center;
+    align-items: center;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+
+    &-text {
+      font-size: 12px;
+      color: white;
+    }
+  }
+
   &__button {
     position: absolute;
     top: 50%;

@@ -5,7 +5,7 @@ import { getProducts } from "../api/products";
 export const AppContext = createContext({});
 
 export const ContextProvider = ({ children }) => {
-  const [isLoading, setIsLoading] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [products, setProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
@@ -13,6 +13,7 @@ export const ContextProvider = ({ children }) => {
   const [likedProducts, setLikedProducts] = useState([]);
 
   useEffect(() => {
+    setIsLoading(true);
     setProducts([]);
     setErrorMessage(null);
 
@@ -20,7 +21,8 @@ export const ContextProvider = ({ children }) => {
       .then((data) => {
         setProducts(data);
       })
-      .catch(() => setErrorMessage("Error retrieving products"));
+      .catch(() => setErrorMessage("Error retrieving products"))
+      .finally(() => setIsLoading(false));
   }, [setErrorMessage, setProducts]);
 
   const value = useMemo(
@@ -38,7 +40,14 @@ export const ContextProvider = ({ children }) => {
       likedProducts,
       setLikedProducts,
     }),
-    [errorMessage, likedProducts, products, selectedProduct, selectedSize]
+    [
+      errorMessage,
+      isLoading,
+      likedProducts,
+      products,
+      selectedProduct,
+      selectedSize,
+    ]
   );
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

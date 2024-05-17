@@ -31,8 +31,12 @@ const FavoritePage = () => {
             </div>
             <div className="products__content">
               <div className="products__cards">
-                {products.map((product) => (
-                  <Link to={`/catalog/product/${product.id}`} key={product.id}>
+                {likedProducts.map((product) => (
+                  <Link
+                    className="products__card"
+                    to={`/catalog/product/${product.id}`}
+                    key={product.id}
+                  >
                     <ProductCard product={product} />
                   </Link>
                 ))}
