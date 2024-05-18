@@ -77,6 +77,14 @@ export const CheckoutPage = () => {
     return isChecked;
   };
 
+  const handleRemoveProducts = () => {
+    setSelectedProduct(() => {
+      Cookies.set("selectedProduct", JSON.stringify([]));
+
+      return [];
+    });
+  };
+
   const onSubmit = (data) => {
     const formData = {
       selectedShippingProvider,
@@ -98,7 +106,7 @@ export const CheckoutPage = () => {
     };
 
     mergedData.products = dataFromItems;
-
+    handleRemoveProducts();
     console.log(mergedData);
   };
 

@@ -12,7 +12,7 @@ const BasketPage = () => {
 
   const handlePlusCounter = (productId) => {
     const updatedSelectedProducts = selectedProduct.map((product) => {
-      if (product.id === productId) {
+      if (product.productById?.id === productId) {
         return { ...product, quantity: product.quantity + 1 };
       }
       return product;
@@ -25,7 +25,7 @@ const BasketPage = () => {
   const handleMinusCounter = (productId) => {
     setSelectedProduct((prevSelectedProducts) => {
       const updatedSelectedProducts = prevSelectedProducts.map((product) => {
-        if (product.id === productId && product.quantity > 0) {
+        if (product.productById?.id === productId && product.quantity > 0) {
           return { ...product, quantity: product.quantity - 1 };
         }
         return product;
@@ -40,7 +40,7 @@ const BasketPage = () => {
   const handleRemoveProduct = (productId) => {
     setSelectedProduct((prevSelectedProducts) => {
       const updatedSelectedProducts = prevSelectedProducts.filter(
-        (product) => product.id !== productId
+        (product) => product.productById?.id !== productId
       );
 
       Cookies.set("selectedProduct", JSON.stringify(updatedSelectedProducts));
@@ -52,7 +52,7 @@ const BasketPage = () => {
     let resSum = 0;
 
     selectedProduct.forEach((product) => {
-      resSum += product.price * product.quantity;
+      resSum += product.productById?.price * product.quantity;
     });
 
     return resSum;
@@ -94,7 +94,7 @@ const BasketPage = () => {
                 <div key={product.id} className="basket__item">
                   <img
                     className="basket__item-img"
-                    src={`http://localhost:9091/api/images/${product.main_photo_id}`}
+                    src={`http://localhost:9091/api/images/${product.productById?.main_photo_id}`}
                     alt=""
                   />
                   <div className="basket__item-information">
@@ -102,26 +102,28 @@ const BasketPage = () => {
                       <div className="basket__item-top">
                         <div className="basket__item-top-left">
                           <p className="card__producer title-5">
-                            {product.producer.name}
+                            {product?.productById?.producer?.name}
                           </p>
                           <h4 className="card__title title-4">
-                            {product.name}
+                            {product?.productById?.name}
                           </h4>
                         </div>
                         <div className="basket__item-top-right">
                           <h4 className="card__title title-4">
-                            ${product.price}
+                            ${product?.productById?.price}
                           </h4>
                           <span className="card__price-cost-sale title-5">
                             $229
                           </span>
                         </div>
                       </div>
-                      <p className="card__unisex">{product.category.name}</p>
+                      <p className="card__unisex">
+                        {product?.productById?.category?.name}
+                      </p>
                       <p className="card__producer title-5">
                         Size:
                         <span className="card__size">
-                          {` ${product.selectedSize.size_name}`}
+                          {` ${product?.selectedSize?.size_name}`}
                         </span>
                       </p>
                     </div>
@@ -129,18 +131,22 @@ const BasketPage = () => {
                       <div className="card__counter">
                         <button
                           className="card__sign"
-                          onClick={() => handleMinusCounter(product.id)}
+                          onClick={() =>
+                            handleMinusCounter(product?.productById?.id)
+                          }
                         >
                           -
                         </button>
                         <input
                           type="text"
                           className="card__quantity"
-                          value={product.quantity}
+                          value={product?.quantity}
                         />
                         <button
                           className="card__sign"
-                          onClick={() => handlePlusCounter(product.id)}
+                          onClick={() =>
+                            handlePlusCounter(product?.productById?.id)
+                          }
                         >
                           +
                         </button>
@@ -148,7 +154,9 @@ const BasketPage = () => {
                       <div className="card__icons">
                         <button
                           className="card__icons"
-                          onClick={() => handleRemoveProduct(product.id)}
+                          onClick={() =>
+                            handleRemoveProduct(product?.productById?.id)
+                          }
                         >
                           <img src={delIcon} alt="" />
                         </button>

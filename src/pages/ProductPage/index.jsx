@@ -66,7 +66,7 @@ export const ProductPage = () => {
 
   const handleAddButtonItem = () => {
     const existingProductIndex = selectedProduct.findIndex(
-      (item) => item.id === products[productId].id
+      (item) => item.id === productId
     );
 
     let updatedSelectedProduct = [...selectedProduct];
@@ -75,11 +75,13 @@ export const ProductPage = () => {
       updatedSelectedProduct[existingProductIndex].quantity++;
     } else {
       updatedSelectedProduct.push({
-        ...products[productId],
+        productById,
         quantity: 1,
         selectedSize,
       });
     }
+
+    console.log(updatedSelectedProduct);
 
     setSelectedProduct(updatedSelectedProduct);
     Cookies.set("selectedProduct", JSON.stringify(updatedSelectedProduct));
