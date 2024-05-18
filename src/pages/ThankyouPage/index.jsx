@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
+import { useTranslation } from "react-i18next";
 
 import { AppContext } from "../../store/context";
 
@@ -9,6 +10,7 @@ import backToHome from "../../assets/img/checkout/backToHome.svg";
 import "./index.scss";
 
 export const ThankyouPage = () => {
+  const { t } = useTranslation();
   const { selectedProduct, setSelectedProduct } = useContext(AppContext);
 
   const handleTotalSum = () => {
@@ -38,11 +40,11 @@ export const ThankyouPage = () => {
           <div className="thankyou__body">
             <div className="thankyou__body-wrapper">
               <div className="thankyou__infoblock">
-                <h4 className="thankyou__title">Order success!</h4>
+                <h4 className="thankyou__title">{t("thankyou.success")}</h4>
                 <div className="thankyou__infoblock-top">
                   <div className="thankyou__subtitle">
-                    <p>Your Order #17150810</p>
-                    <p className="thankyou__sub title-5">Wait for an sms message to your phone with other details</p>
+                    <p>{t("thankyou.order")} #17150810</p>
+                    <p className="thankyou__sub title-5">{t("thankyou.details")}</p>
                   </div>
                 </div>
 

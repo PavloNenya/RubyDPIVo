@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
+import { useTranslation } from "react-i18next";
 
 import { AppContext } from "../../store/context";
 
@@ -22,6 +23,8 @@ export const Header = () => {
   const { selectedProduct, setSelectedProduct, isAuth, setIsAuth, buttonActive, setButtonActive } =
     useContext(AppContext);
 
+  const { t, i18n } = useTranslation();
+
   const handleBurger = () => {
     setBurger(!burger);
     document.body.classList.toggle("_lock");
@@ -41,6 +44,11 @@ export const Header = () => {
     setIsAuth(false);
   };
 
+  const handleSelectLanguage = (e) => {
+    const selectedLanguage = e.target.value;
+    i18n.changeLanguage(selectedLanguage);
+  };
+
   useEffect(() => {
     const selectedProductFromCookie = Cookies.get("selectedProduct");
 
@@ -55,26 +63,26 @@ export const Header = () => {
         <div className="header__container">
           <div className="header__top-body">
             <div className="header__select select">
-              <select className="select__items" name="lang">
-                <option className="select__item" value="Eng">
-                  Eng
+              <select className="select__items" name="lang" onChange={handleSelectLanguage}>
+                <option className="select__item" value="en">
+                  en
                 </option>
-                <option className="select__item" value="Ukr">
-                  Ukr
+                <option className="select__item" value="ua">
+                  ua
                 </option>
-                <option className="select__item" value="Deu">
-                  Deu
+                <option className="select__item" value="de">
+                  de
                 </option>
-                <option className="select__item" value="Frn">
-                  Frn
+                <option className="select__item" value="fr">
+                  fr
                 </option>
-                <option className="select__item" value="Esp">
-                  Esp
+                <option className="select__item" value="es">
+                  es
                 </option>
               </select>
               <img className="select__icon" src={btnBackWhite} alt="btn-back" />
             </div>
-            <Link to="/help">Help</Link>
+            <Link to="/help">{t("header.help")}</Link>
           </div>
         </div>
       </div>
@@ -87,7 +95,7 @@ export const Header = () => {
               </Link>
             </div>
             <form className="header__form">
-              <input className="header__search" type="text" name="search" placeholder="Search" />
+              <input className="header__search" type="text" name="search" placeholder={t("header.search")} />
               <button className="header__button" type="submit">
                 <img className="icon-search" src={search} alt="search" />
               </button>
@@ -116,7 +124,7 @@ export const Header = () => {
                 {isAuth ? (
                   <>
                     <Link className="list__item" to="/profile" onClick={() => setButtonActive(false)}>
-                      My profile
+                      {t("header.profile")}
                     </Link>
                     <button
                       className="list__item"
@@ -126,16 +134,16 @@ export const Header = () => {
                         setButtonActive(false);
                       }}
                     >
-                      Logout
+                      {t("header.logout")}
                     </button>
                   </>
                 ) : (
                   <>
                     <Link className="list__item" to="/signin" onClick={() => setButtonActive(false)}>
-                      Login
+                      {t("header.login")}
                     </Link>
                     <Link className="list__item" to="/signup" onClick={() => setButtonActive(false)}>
-                      Register
+                      {t("header.register")}
                     </Link>
                   </>
                 )}
@@ -146,27 +154,27 @@ export const Header = () => {
             <ul className="header__menu menu">
               <li className="menu__item">
                 <Link to="/catalog/1/new" className="menu__link">
-                  New arrives
+                  {t("header.new")}
                 </Link>
               </li>
               <li className="menu__item">
                 <Link to="/catalog/1/men" className="menu__link">
-                  Men
+                  {t("header.men")}
                 </Link>
               </li>
               <li className="menu__item">
                 <Link to="/catalog/1/woman" className="menu__link">
-                  Woman
+                  {t("header.woman")}
                 </Link>
               </li>
               <li className="menu__item">
                 <Link to="/catalog/1/kids" className="menu__link">
-                  Kids
+                  {t("header.kids")}
                 </Link>
               </li>
               <li className="menu__item">
                 <Link to="/catalog/1/sale" className="menu__link">
-                  Sale
+                  {t("header.sale")}
                 </Link>
               </li>
             </ul>

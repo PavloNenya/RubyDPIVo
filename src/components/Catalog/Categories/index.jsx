@@ -1,4 +1,5 @@
 import { useContext } from "react";
+
 import { CatalogContext } from "../../../store/catalogContext";
 
 import reset from "../../../assets/img/icons/reset.svg";

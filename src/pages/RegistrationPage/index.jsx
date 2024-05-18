@@ -1,5 +1,6 @@
 import { useContext, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import { AppContext } from "../../store/context.jsx";
 
@@ -12,6 +13,7 @@ import logo from "../../assets/img/logo.svg";
 import "./index.scss";
 
 const RegistrationPage = () => {
+  const { t } = useTranslation();
   const { isAuth, setIsAuth, setButtonActive } = useContext(AppContext);
   const navigate = useNavigate();
 
@@ -59,7 +61,7 @@ const RegistrationPage = () => {
           <form className="authorization__form form" onSubmit={handleSubmit}>
             <div className="form__title-block">
               <img className="form__logo logo" src={logo} alt="logo.svg" />
-              <h1 className="form__title title-2">Registration</h1>
+              <h1 className="form__title title-2">{t("signup.title")}</h1>
             </div>
             <div className="form__group">
               <input
@@ -90,12 +92,12 @@ const RegistrationPage = () => {
             <div className="form__agree checkbox">
               <input type="checkbox" className="checkbox__index" id="agree" ref={ref} />
               <label className="checkbox__label" htmlFor="agree">
-                I have read and agree to the terms &amp; conotions and privacy policy
+                {t("signup.policy")}
               </label>
             </div>
             <div className="form__button button-wrapper">
               <button className="button button_lg button_default" type="submit" onClick={() => setButtonActive(false)}>
-                Register
+                {t("signup.button")}
                 <span className="icon-arrow" />
               </button>
             </div>

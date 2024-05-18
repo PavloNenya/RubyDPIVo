@@ -17,6 +17,8 @@ import FavoritePage from "./pages/FavoritePage";
 import RegistrationPage from "./pages/RegistrationPage";
 import SignUpPage from "./pages/SignUpPage";
 
+import "./i18n";
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <ContextProvider>
     <CatalogContextProvider>

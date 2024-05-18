@@ -1,5 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import { Link, useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+
 import { CatalogContext } from "../../store/catalogContext";
 
 import { getCategories } from "../../api/categories";
@@ -12,9 +14,9 @@ import Aside from "../../components/Catalog/Aside";
 import Pagination from "../../components/Catalog/Pagination";
 import ProductCard from "../../components/ProductCard";
 import Categories from "../../components/Catalog/Categories";
+import CardSkeleton from "../../components/Skeletons/CardSkeleton";
 
 import "./index.scss";
-import CardSkeleton from "../../components/Skeletons/CardSkeleton";
 
 const CatalogPage = () => {
   const { page, type } = useParams();
@@ -22,6 +24,7 @@ const CatalogPage = () => {
   const [products, setProducts] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
 
+  const { t } = useTranslation();
   const { selectedFilters, setSizes, setGenders, setCategories, setProducers, setIsFilterDataLoading } =
     useContext(CatalogContext);
 
@@ -52,7 +55,7 @@ const CatalogPage = () => {
           <div className="products__inner">
             <Aside />
             <div className="products__main">
-              <h1 className="products__title title-3">Nike Air Jordan</h1>
+              <h1 className="products__title title-3">{t("catalog.title")}</h1>
               <Categories />
               <div className="products__content">
                 <div className="products__cards">

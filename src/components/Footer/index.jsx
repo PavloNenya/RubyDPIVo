@@ -1,8 +1,11 @@
 import "./index.scss";
 
 import logo from "../../assets/img/logo.svg";
+import { useTranslation } from "react-i18next";
 
 export const Footer = () => {
+  const { t } = useTranslation();
+
   return (
     <footer className="footer">
       <div className="footer__container">
@@ -77,83 +80,83 @@ export const Footer = () => {
             <ul className="footer__items_main">
               <li className="footer__item">
                 <a href="#" className="footer__link_bold">
-                  Catalog
+                  {t("footer.catalog")}
                 </a>
               </li>
               <li className="footer__item">
                 <a href="#" className="footer__link_bold">
-                  Discounts
+                  {t("footer.discount")}
                 </a>
               </li>
               <li className="footer__item">
                 <a href="#" className="footer__link_bold">
-                  Brands
+                  {t("footer.brands")}
                 </a>
               </li>
               <li className="footer__item">
                 <a href="#" className="footer__link_bold">
-                  Personal office
+                  {t("footer.office")}
                 </a>
               </li>
             </ul>
             <ul className="footer__items">
               <li className="footer__item">
                 <a href="#" className="footer__link_bold">
-                  Customer service
+                  {t("footer.service")}
                 </a>
               </li>
               <li className="footer__item">
                 <a href="#" className="footer__link">
-                  Orders & delivery
+                  {t("footer.orders")}
                 </a>
               </li>
               <li className="footer__item">
                 <a href="#" className="footer__link">
-                  Returns & refunds
+                  {t("footer.returns")}
                 </a>
               </li>
               <li className="footer__item">
                 <a href="#" className="footer__link">
-                  FAQs
+                  {t("footer.faq")}
                 </a>
               </li>
               <li className="footer__item">
                 <a href="#" className="footer__link">
-                  Privacy policy
+                  {t("footer.policy")}
                 </a>
               </li>
             </ul>
             <ul className="footer__items">
               <li className="footer__item">
                 <a href="#" className="footer__link_bold">
-                  About us
+                  {t("footer.about")}
                 </a>
               </li>
               <li className="footer__item">
                 <a href="#" className="footer__link">
-                  Loyalty programme
+                  {t("footer.loyal")}
                 </a>
               </li>
               <li className="footer__item">
                 <a href="#" className="footer__link">
-                  Blog
+                  {t("footer.blog")}
                 </a>
               </li>
               <li className="footer__item">
                 <a href="#" className="footer__link">
-                  Sustainability
+                  {t("footer.sustainability")}
                 </a>
               </li>
               <li className="footer__item">
                 <a href="#" className="footer__link">
-                  Corporate govermance
+                  {t("footer.govermance")}
                 </a>
               </li>
             </ul>
             <ul className="footer__items">
               <li className="footer__item">
                 <a href="#" className="footer__link_bold">
-                  Contacts
+                  {t("footer.contacts")}
                 </a>
               </li>
               <li className="footer__item">
@@ -168,19 +171,19 @@ export const Footer = () => {
               </li>
               <li className="footer__item">
                 <a href="#" className="footer__link">
-                  Sustainability
+                  {t("footer.sustain")}
                 </a>
               </li>
               <li className="footer__item">
                 <a href="#" className="footer__link">
-                  Corporate govermance
+                  {t("footer.corporate")}
                 </a>
               </li>
             </ul>
           </nav>
         </div>
       </div>
-      <div className="footer__copyright">© Copyright 2023 SNEAKPEEK. All rights reserved.</div>
+      <div className="footer__copyright">{t("footer.")}© Copyright 2023 SNEAKPEEK. All rights reserved.</div>
     </footer>
   );
 };

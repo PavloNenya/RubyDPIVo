@@ -1,5 +1,6 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import { AppContext } from "../../store/context.jsx";
 
@@ -12,6 +13,7 @@ import logo from "../../assets/img/logo.svg";
 import "./index.scss";
 
 const SignUpPage = () => {
+  const { t } = useTranslation();
   const { isAuth, setIsAuth, setButtonActive } = useContext(AppContext);
   const navigate = useNavigate();
 
@@ -53,7 +55,7 @@ const SignUpPage = () => {
           <form className="authorization__form form" onSubmit={handleSubmit}>
             <div className="form__title-block">
               <img className="form__logo logo" src={logo} alt="logo.svg" />
-              <h1 className="form__title title-2">Login</h1>
+              <h1 className="form__title title-2">{t("signin.title")}</h1>
             </div>
             <div className="form__group">
               <input
@@ -75,7 +77,7 @@ const SignUpPage = () => {
             </div>
             <div className="form__button button-wrapper">
               <button className="button button_lg button_default" type="submit" onClick={() => setButtonActive(false)}>
-                Login
+                {t("signin.button")}
                 <span className="icon-arrow" />
               </button>
             </div>

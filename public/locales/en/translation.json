@@ -1,0 +1,158 @@
+{
+  "header": {
+    "help": "Help",
+    "search": "Search",
+    "profile": "My profile",
+    "logout": "Logout",
+    "login": "Login",
+    "register": "Register",
+    "new": "New arrives",
+    "men": "Men",
+    "woman": "Woman",
+    "kids": "Kids",
+    "sale": "Sale"
+  },
+  "footer": {
+    "catalog": "Catalog",
+    "discount": "Discounts",
+    "brands": "Brands",
+    "office": "Personal office",
+    "service": "Customer service",
+    "orders": "Orders & delivery",
+    "returns": "Returns & refunds",
+    "faq": "FAQs",
+    "policy": "Privacy policy",
+    "about": "About us",
+    "loyal": "Loyalty programme",
+    "blog": "Blog",
+    "sustainability": "Sustainability",
+    "govermance": "Corporate govermance",
+    "contacts": "Contacts",
+    "sustain": "Sustainability",
+    "corporate": "Corporate govermance"
+  },
+  "catalog": {
+    "title": "Catalog",
+    "aside": {
+      "filter": "Filters",
+      "showmore": "Show more"
+    },
+    "pricerange": {
+      "from": "from $",
+      "to": "to $"
+    },
+    "pagination": {
+      "page": "Page"
+    }
+  },
+  "slider": {
+    "new": "New Collection",
+    "sale": "Best Seller",
+    "category": "Categories",
+    "like": "You May Also Like"
+  },
+  "home": {
+    "blog": {
+      "title": "Our Blog",
+      "view": "View All",
+      "lookbook": "2023 Lookbook",
+      "new": "New Release",
+      "present": "Presenting new trends of 2023",
+      "watch": "Watch Trending",
+      "subscribe": "Subscribe",
+      "text": "Subscribe to the newsletter and receive new offers from our store with hot offers."
+    },
+    "mainscreen": {
+      "text": "In the whole summer show, this is the designer’s best look yet"
+    },
+    "saleform": {
+      "title": "35% off for only this friday and get special gift",
+      "text": "Subscribe to the our newsletter and get a bonus code for a 35% discount during this friday sale, plus a cool gift!!",
+      "button": "Go",
+      "search": "Enter e-mail"
+    },
+    "saletimer": {
+      "title": "Get 30% sale for summer collection",
+      "text": "The most wanted styles is waiting for you right now. Find the best styles of modern outfits for you at one place.",
+      "button": "buy now",
+      "days": "Days",
+      "hours": "Hours",
+      "minutes": "Minutes",
+      "seconds": "Seconds"
+    }
+  },
+  "basket": {
+    "size": "Size:",
+    "subtotal": "Subtotal:",
+    "summary": "Basket summary",
+    "items": "items:",
+    "promocode": "Promocode:",
+    "total": "Total:",
+    "checkout": "Go to checkout"
+  },
+  "checkout": {
+    "title": "Checkout",
+    "contact": "Contact Information",
+    "step1": "1 step",
+    "step2": "2 step",
+    "step3": "3 step",
+    "fname": "Name*",
+    "required": "This field is required",
+    "maxlength": "Max length exceeded",
+    "letters": "Only letters and spaces are allowed",
+    "sname": "Second name*",
+    "digits": "Only digits and + are allowed",
+    "email": "E-mail*",
+    "invalidemail": "Invalid email address",
+    "next": "Next",
+    "prev": "Previous",
+    "delivery": "Delivery",
+    "city": "City:",
+    "khr": "Kharkiv",
+    "kyiv": "Kyiv",
+    "lviv": "Lviv",
+    "new": "New Post",
+    "expected": "Expected delivery",
+    "free": "Free shipping on online over",
+    "ukr": "Ukrposhta",
+    "meest": "Meest",
+    "payment": "Payment Method",
+    "cardnumber": "Card number*",
+    "invalidcard": "Invalid card number",
+    "expiration": "Expiration date*",
+    "securitycode": "Security code*",
+    "policy": "I have read and agree to the terms &amp; conditions and privacy policy",
+    "finish": "Finish",
+    "buy": "Buy Now",
+    "order": "Your order"
+  },
+  "favourite": {
+    "title": "Favourites"
+  },
+  "notfound": {
+    "title": "404, ooops...",
+    "text": "Sorry, but we couldnt find the page you were looking for."
+  },
+  "product": {
+    "shipping": "Shipping &amp; Payment",
+    "avaibility": "Check avaibility in store",
+    "code": "Product code:",
+    "more": "more",
+    "new": "new"
+  },
+  "signup": {
+    "title": "Registration",
+    "policy": "I have read and agree to the terms &amp; conotions and privacy policy",
+    "button": "Register"
+  },
+  "signin": {
+    "title": "Login",
+    "button": "Login"
+  },
+  "thankyou": {
+    "success": "Order success!",
+    "order": "Your Order",
+    "details": "Wait for an sms message to your phone with other details"
+  },
+  "back": "back"
+}

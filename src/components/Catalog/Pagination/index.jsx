@@ -1,11 +1,13 @@
 import { useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import propTypes from "prop-types";
 
 import btnBack from "../../../assets/img/icons/btn-back.svg";
 
 const Pagination = ({ totalPages }) => {
   const { page, type } = useParams();
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -22,7 +24,7 @@ const Pagination = ({ totalPages }) => {
             <img className="pagination__icon" src={btnBack} alt="..." />
           </button>
         </Link>
-        <p className="pagination__text">Page</p>
+        <p className="pagination__text">{t("catalog.pagination.page")}</p>
         <ul className="pagination__items">
           <li className="pagination__item">
             {page} / {totalPages}

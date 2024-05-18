@@ -1,6 +1,9 @@
 /* eslint-disable react/prop-types */
-import "./index.scss";
-import "../../shared/scss/settings.scss";
+import { useContext } from "react";
+
+import { AppContext } from "../../store/context";
+
+import { addFavorite, deleteFavorite } from "../../api/favorite";
 
 import shoesImg from "../../assets/img/categories/shoes.png";
 import tshirtsImg from "../../assets/img/categories/t-shirts.png";
@@ -9,9 +12,8 @@ import jeensImg from "../../assets/img/categories/jeans.png";
 import accesImg from "../../assets/img/categories/acces.png";
 import arrowIcon from "../../assets/img/icons/arrow.svg";
 import clockIcon from "../../assets/img/icons/clock.svg";
-import { useContext } from "react";
-import { AppContext } from "../../store/context";
-import { addFavorite, deleteFavorite } from "../../api/favorite";
+
+import "./index.scss";
 
 const photosOfCategory = [shoesImg, tshirtsImg, hoodiesImg, jeensImg, accesImg];
 
@@ -21,14 +23,10 @@ const ProductCard = ({ type, product, cardWidth }) => {
   const handleButtonFavorite = () => {
     const productId = product.id;
 
-    const isProductLiked = likedProducts.some(
-      (product) => product.id === productId
-    );
+    const isProductLiked = likedProducts.some((product) => product.id === productId);
 
     if (isProductLiked) {
-      const updatedLikedProducts = likedProducts.filter(
-        (product) => product.id !== productId
-      );
+      const updatedLikedProducts = likedProducts.filter((product) => product.id !== productId);
 
       deleteFavorite(productId);
       setLikedProducts(updatedLikedProducts);
@@ -53,20 +51,13 @@ const ProductCard = ({ type, product, cardWidth }) => {
       />
       <div className="infolabel infolabel-left">
         {type !== "category" ? "new" : product?.infolabel}
-        <img
-          className="infolabel__icon"
-          src={type !== "category" ? clockIcon : arrowIcon}
-          alt=""
-        />
+        <img className="infolabel__icon" src={type !== "category" ? clockIcon : arrowIcon} alt="" />
       </div>
 
       {type !== "category" ? (
         <div className="button-like">
           <button onClick={handleButtonFavorite} className="button-like__icon">
-            <img
-              src={`http://localhost:9091/api/images?name=heart-svg.svg`}
-              alt=""
-            />
+            <img src={`http://localhost:9091/api/images?name=heart-svg.svg`} alt="" />
           </button>
         </div>
       ) : null}
@@ -76,9 +67,7 @@ const ProductCard = ({ type, product, cardWidth }) => {
           <div href="/" className="card__title title-4">
             {product.description}
           </div>
-          {type !== "category" ? (
-            <p className="card__producer title-5">{product.producer.name}</p>
-          ) : null}
+          {type !== "category" ? <p className="card__producer title-5">{product.producer.name}</p> : null}
         </div>
 
         {type !== "category" ? (

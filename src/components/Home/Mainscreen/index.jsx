@@ -1,9 +1,13 @@
+import { useTranslation } from "react-i18next";
+
 import bg from "../../../assets/img/mainscreen/bg.jpg";
 import banner from "../../../assets/img/mainscreen/banner.png";
 
 import "./index.scss";
 
 const Mainscreen = () => {
+  const { t } = useTranslation();
+
   return (
     <section className="page__mainscreen mainscreen">
       <div className="mainscreen__container">
@@ -17,7 +21,7 @@ const Mainscreen = () => {
             <img className="mainscreen__main-img" src={bg} alt="bg.jpg" />
             <div className="mainscreen__block">
               <div className="mainscreen__text">
-                <p className="text-reverse">In the whole summer show, this is the designer’s best look yet</p>
+                <p className="text-reverse">{t("home.mainscreen.text")}</p>
               </div>
               <div className="mainscreen__date">
                 <p className="text-reverse">

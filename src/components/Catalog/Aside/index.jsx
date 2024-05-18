@@ -1,4 +1,5 @@
 import { useState, useContext } from "react";
+import { useTranslation } from "react-i18next";
 
 import { CatalogContext } from "../../../store/catalogContext";
 
@@ -8,7 +9,7 @@ import PriceRange from "../PriceRange";
 
 const Aside = () => {
   const [activeSpoiler, setActiveSpoiler] = useState({});
-
+  const { t } = useTranslation();
   const { filterData, setSelectedFilters, isFilterDataLoading } = useContext(CatalogContext);
 
   const initialCount = 4;
@@ -49,7 +50,7 @@ const Aside = () => {
   return (
     <aside className="products__aside">
       <div className="products__title-block">
-        <h2 className="products__title title-3">Filters</h2>
+        <h2 className="products__title title-3">{t("catalog.aside.filter")}</h2>
         <div className="products__close"></div>
       </div>
       {Object.entries(Object.assign({ price: 1 }, filterData)).map(([filterType], index) => (
@@ -70,8 +71,7 @@ const Aside = () => {
                 .fill(0)
                 .map((_, index) => <Skeleton style={{ marginBottom: 5 }} height={20} key={index} />)
             ) : index == 0 ? (
-              // <PriceRange min={0} max={10000} />
-              <div></div>
+              <PriceRange min={0} max={10000} />
             ) : (
               filterData[filterType].slice(0, filterCount[filterType]).map((item, index) => (
                 <li className="filter__item checkbox" key={item.id}>
@@ -90,7 +90,7 @@ const Aside = () => {
             {filterCount[filterType] <= 4 && filterData[filterType].length > 4 && (
               <li className="filter__item showmore-wrapper">
                 <button className="showmore" onClick={() => handlerAction(filterType, setFilterCount, showmore)}>
-                  Show more
+                  {t("catalog.aside.showmore")}
                 </button>
               </li>
             )}

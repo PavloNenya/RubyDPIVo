@@ -1,13 +1,14 @@
 import { useContext, useEffect, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 import PropTypes from "prop-types";
+
+import { AppContext } from "../../store/context";
 
 import ProductCard from "../ProductCard";
 import SliderIndicator from "../SliderIndicator";
 import CardSkeleton from "../Skeletons/CardSkeleton";
 
 import scrollingArrows from "../../assets/img/icons/scrollingArrows.svg";
-
-import { AppContext } from "../../store/context";
 
 import "./index.scss";
 
@@ -23,6 +24,7 @@ const ProductSlider = ({ type, products }) => {
   const gap = 20;
 
   const { isLoading } = useContext(AppContext);
+  const { t } = useTranslation();
 
   useEffect(() => {
     let intervalId;
@@ -89,12 +91,12 @@ const ProductSlider = ({ type, products }) => {
 
   const titleOfBlock =
     type === "normal"
-      ? "New Collection"
+      ? t("slider.new")
       : type === "sale"
-      ? "Best Seller"
+      ? t("slider.sale")
       : type === "category"
-      ? "Categories"
-      : "You May Also Like";
+      ? t("slider.category")
+      : t("slider.like");
 
   return (
     <section className="page__goods goods">

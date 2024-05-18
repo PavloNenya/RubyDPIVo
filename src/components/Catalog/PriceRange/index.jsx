@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useState, useRef, useContext } from "react";
+import { useTranslation } from "react-i18next";
+import PropTypes from "prop-types";
 
 import { CatalogContext } from "../../../store/catalogContext";
 
-import PropTypes from "prop-types";
 import "./index.scss";
 
 const PriceRange = ({ min, max }) => {
@@ -13,6 +14,7 @@ const PriceRange = ({ min, max }) => {
   const range = useRef(null);
 
   const { selectedFilters, setSelectedFilters } = useContext(CatalogContext);
+  const { t } = useTranslation();
 
   // Convert to percentage
   const getPercent = useCallback((value) => Math.round(((value - min) / (max - min)) * 100), [min, max]);
@@ -74,7 +76,7 @@ const PriceRange = ({ min, max }) => {
         <input
           className="filter__input"
           type="text"
-          placeholder="From $"
+          placeholder={t("catalog.pricerange.from")}
           value={selectedFilters.min_price}
           onChange={(e) => handlePriceInput(e.target.value, "min_price")}
         />
@@ -83,7 +85,7 @@ const PriceRange = ({ min, max }) => {
         <input
           className="filter__input"
           type="text"
-          placeholder="To $"
+          placeholder={t("catalog.pricerange.from")}
           value={selectedFilters.max_price}
           onChange={(e) => handlePriceInput(e.target.value, "max_price")}
         />

@@ -1,0 +1,158 @@
+{
+  "header": {
+    "help": "Ayuda",
+    "search": "Buscar",
+    "profile": "Mi perfil",
+    "logout": "Cerrar sesión",
+    "login": "Iniciar sesión",
+    "register": "Registrarse",
+    "new": "Nuevas llegadas",
+    "men": "Hombres",
+    "woman": "Mujeres",
+    "kids": "Niños",
+    "sale": "Oferta"
+  },
+  "footer": {
+    "catalog": "Catálogo",
+    "discount": "Descuentos",
+    "brands": "Marcas",
+    "office": "Oficina personal",
+    "service": "Atención al cliente",
+    "orders": "Pedidos y entrega",
+    "returns": "Devoluciones y reembolsos",
+    "faq": "FAQs",
+    "policy": "Política de privacidad",
+    "about": "Sobre nosotros",
+    "loyal": "Programa de fidelización",
+    "blog": "Blog",
+    "sustainability": "Sostenibilidad",
+    "govermance": "Gobernanza corporativa",
+    "contacts": "Contactos",
+    "sustain": "Sostenibilidad",
+    "corporate": "Gobernanza corporativa"
+  },
+  "catalog": {
+    "title": "Catálogo",
+    "aside": {
+      "filter": "Filtros",
+      "showmore": "Mostrar más"
+    },
+    "pricerange": {
+      "from": "de $",
+      "to": "a $"
+    },
+    "pagination": {
+      "page": "Página"
+    }
+  },
+  "slider": {
+    "new": "Nueva Colección",
+    "sale": "Más Vendidos",
+    "category": "Categorías",
+    "like": "También te puede gustar"
+  },
+  "home": {
+    "blog": {
+      "title": "Nuestro Blog",
+      "view": "Ver Todo",
+      "lookbook": "Lookbook 2023",
+      "new": "Nuevo Lanzamiento",
+      "present": "Presentando nuevas tendencias de 2023",
+      "watch": "Ver Tendencias",
+      "subscribe": "Suscribirse",
+      "text": "Suscríbete al boletín y recibe nuevas ofertas de nuestra tienda con ofertas calientes."
+    },
+    "mainscreen": {
+      "text": "En toda la muestra de verano, este es el mejor look del diseñador hasta ahora"
+    },
+    "saleform": {
+      "title": "35% de descuento solo este viernes y recibe un regalo especial",
+      "text": "Suscríbete a nuestro boletín y recibe un código de bonificación para un 35% de descuento durante esta venta de viernes, ¡además de un regalo genial!",
+      "button": "Ir",
+      "search": "Introduce tu correo electrónico"
+    },
+    "saletimer": {
+      "title": "Obtén un 30% de descuento en la colección de verano",
+      "text": "Los estilos más deseados te esperan ahora mismo. Encuentra los mejores estilos de conjuntos modernos para ti en un solo lugar.",
+      "button": "comprar ahora",
+      "days": "Días",
+      "hours": "Horas",
+      "minutes": "Minutos",
+      "seconds": "Segundos"
+    }
+  },
+  "basket": {
+    "size": "Tamaño:",
+    "subtotal": "Subtotal:",
+    "summary": "Resumen del carrito",
+    "items": "artículos:",
+    "promocode": "Código promocional:",
+    "total": "Total:",
+    "checkout": "Ir a la caja"
+  },
+  "checkout": {
+    "title": "Caja",
+    "contact": "Información de contacto",
+    "step1": "1er paso",
+    "step2": "2do paso",
+    "step3": "3er paso",
+    "fname": "Nombre*",
+    "required": "Este campo es obligatorio",
+    "maxlength": "Se excedió la longitud máxima",
+    "letters": "Solo se permiten letras y espacios",
+    "sname": "Apellido*",
+    "digits": "Solo se permiten dígitos y +",
+    "email": "Correo electrónico*",
+    "invalidemail": "Dirección de correo electrónico no válida",
+    "next": "Siguiente",
+    "prev": "Anterior",
+    "delivery": "Entrega",
+    "city": "Ciudad:",
+    "khr": "Járkov",
+    "kyiv": "Kiev",
+    "lviv": "Leópolis",
+    "new": "Nuevo Correo",
+    "expected": "Entrega esperada",
+    "free": "Envío gratis en pedidos en línea superiores a",
+    "ukr": "Ukrposhta",
+    "meest": "Meest",
+    "payment": "Método de pago",
+    "cardnumber": "Número de tarjeta*",
+    "invalidcard": "Número de tarjeta no válido",
+    "expiration": "Fecha de vencimiento*",
+    "securitycode": "Código de seguridad*",
+    "policy": "He leído y acepto los términos y condiciones y la política de privacidad",
+    "finish": "Finalizar",
+    "buy": "Comprar Ahora",
+    "order": "Tu pedido"
+  },
+  "favourite": {
+    "title": "Favoritos"
+  },
+  "notfound": {
+    "title": "404, oooops...",
+    "text": "Lo siento, pero no pudimos encontrar la página que estabas buscando."
+  },
+  "product": {
+    "shipping": "Envío y Pago",
+    "avaibility": "Verificar disponibilidad en la tienda",
+    "code": "Código del producto:",
+    "more": "más",
+    "new": "nuevo"
+  },
+  "signup": {
+    "title": "Registro",
+    "policy": "He leído y acepto los términos y condiciones y la política de privacidad",
+    "button": "Registrarse"
+  },
+  "signin": {
+    "title": "Iniciar sesión",
+    "button": "Iniciar sesión"
+  },
+  "thankyou": {
+    "success": "¡Pedido exitoso!",
+    "order": "Tu pedido",
+    "details": "Espera un mensaje SMS en tu teléfono con más detalles"
+  },
+  "back": "Volver"
+}

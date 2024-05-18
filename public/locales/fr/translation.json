@@ -1,0 +1,158 @@
+{
+  "header": {
+    "help": "Aide",
+    "search": "Recherche",
+    "profile": "Mon profil",
+    "logout": "Déconnexion",
+    "login": "Connexion",
+    "register": "S'inscrire",
+    "new": "Nouveautés",
+    "men": "Hommes",
+    "woman": "Femmes",
+    "kids": "Enfants",
+    "sale": "Soldes"
+  },
+  "footer": {
+    "catalog": "Catalogue",
+    "discount": "Réductions",
+    "brands": "Marques",
+    "office": "Bureau personnel",
+    "service": "Service client",
+    "orders": "Commandes et livraison",
+    "returns": "Retours et remboursements",
+    "faq": "FAQs",
+    "policy": "Politique de confidentialité",
+    "about": "À propos de nous",
+    "loyal": "Programme de fidélité",
+    "blog": "Blog",
+    "sustainability": "Durabilité",
+    "govermance": "Gouvernance d'entreprise",
+    "contacts": "Contacts",
+    "sustain": "Durabilité",
+    "corporate": "Gouvernance d'entreprise"
+  },
+  "catalog": {
+    "title": "Catalogue",
+    "aside": {
+      "filter": "Filtres",
+      "showmore": "Afficher plus"
+    },
+    "pricerange": {
+      "from": "de $",
+      "to": "à $"
+    },
+    "pagination": {
+      "page": "Page"
+    }
+  },
+  "slider": {
+    "new": "Nouvelle Collection",
+    "sale": "Meilleures Ventes",
+    "category": "Catégories",
+    "like": "Vous Aimerez Aussi"
+  },
+  "home": {
+    "blog": {
+      "title": "Notre Blog",
+      "view": "Voir Tout",
+      "lookbook": "Lookbook 2023",
+      "new": "Nouvelle Sortie",
+      "present": "Présentation des nouvelles tendances de 2023",
+      "watch": "Voir les Tendances",
+      "subscribe": "S'abonner",
+      "text": "Abonnez-vous à la newsletter et recevez de nouvelles offres de notre magasin avec des offres exclusives."
+    },
+    "mainscreen": {
+      "text": "Dans tout le spectacle d'été, c'est le meilleur look du designer jusqu'à présent"
+    },
+    "saleform": {
+      "title": "35% de réduction uniquement ce vendredi et recevez un cadeau spécial",
+      "text": "Abonnez-vous à notre newsletter et recevez un code bonus pour une réduction de 35% pendant cette vente de vendredi, ainsi qu'un cadeau sympa!",
+      "button": "Aller",
+      "search": "Entrez l'e-mail"
+    },
+    "saletimer": {
+      "title": "Obtenez 30% de réduction sur la collection d'été",
+      "text": "Les styles les plus recherchés vous attendent dès maintenant. Trouvez les meilleurs styles de tenues modernes pour vous en un seul endroit.",
+      "button": "acheter maintenant",
+      "days": "Jours",
+      "hours": "Heures",
+      "minutes": "Minutes",
+      "seconds": "Secondes"
+    }
+  },
+  "basket": {
+    "size": "Taille:",
+    "subtotal": "Sous-total:",
+    "summary": "Résumé du panier",
+    "items": "articles:",
+    "promocode": "Code promo:",
+    "total": "Total:",
+    "checkout": "Passer à la caisse"
+  },
+  "checkout": {
+    "title": "Caisse",
+    "contact": "Informations de contact",
+    "step1": "1ère étape",
+    "step2": "2ème étape",
+    "step3": "3ème étape",
+    "fname": "Prénom*",
+    "required": "Ce champ est requis",
+    "maxlength": "Longueur maximale dépassée",
+    "letters": "Seules les lettres et les espaces sont autorisés",
+    "sname": "Nom*",
+    "digits": "Seuls les chiffres et + sont autorisés",
+    "email": "E-mail*",
+    "invalidemail": "Adresse e-mail invalide",
+    "next": "Suivant",
+    "prev": "Précédent",
+    "delivery": "Livraison",
+    "city": "Ville:",
+    "khr": "Kharkiv",
+    "kyiv": "Kyiv",
+    "lviv": "Lviv",
+    "new": "Nouvelle Poste",
+    "expected": "Livraison prévue",
+    "free": "Livraison gratuite pour les commandes en ligne supérieures à",
+    "ukr": "Ukrposhta",
+    "meest": "Meest",
+    "payment": "Méthode de paiement",
+    "cardnumber": "Numéro de carte*",
+    "invalidcard": "Numéro de carte invalide",
+    "expiration": "Date d'expiration*",
+    "securitycode": "Code de sécurité*",
+    "policy": "J'ai lu et j'accepte les termes et conditions et la politique de confidentialité",
+    "finish": "Terminer",
+    "buy": "Acheter Maintenant",
+    "order": "Votre commande"
+  },
+  "favourite": {
+    "title": "Favoris"
+  },
+  "notfound": {
+    "title": "404, oups...",
+    "text": "Désolé, nous n'avons pas pu trouver la page que vous cherchiez."
+  },
+  "product": {
+    "shipping": "Expédition & Paiement",
+    "avaibility": "Vérifier la disponibilité en magasin",
+    "code": "Code produit:",
+    "more": "plus",
+    "new": "nouveau"
+  },
+  "signup": {
+    "title": "Inscription",
+    "policy": "J'ai lu et j'accepte les termes et conditions et la politique de confidentialité",
+    "button": "S'inscrire"
+  },
+  "signin": {
+    "title": "Connexion",
+    "button": "Connexion"
+  },
+  "thankyou": {
+    "success": "Commande réussie!",
+    "order": "Votre commande",
+    "details": "Attendez un message SMS sur votre téléphone avec d'autres détails"
+  },
+  "back": "retour"
+}

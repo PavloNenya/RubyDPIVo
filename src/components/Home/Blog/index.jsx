@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 import arrowBlack from "../../../assets/img/icons/arrow-black.svg";
 import arrowWhite from "../../../assets/img/icons/arrow-white.svg";
 import play from "../../../assets/img/icons/play.svg";
@@ -13,16 +15,18 @@ import blog3 from "../../../assets/img/blog/blog-3.jpg";
 import "./index.scss";
 
 const Blog = () => {
+  const { t } = useTranslation();
+
   return (
     <section className="page__blog blog">
       <div className="blog__container">
         <div className="blog__body">
           <div className="blog__title-block title-block">
-            <h2 className="title-block__title title-2">Our Blog</h2>
+            <h2 className="title-block__title title-2">{t("home.blog.title")}</h2>
             <div className="title-block__button button-wrapper">
               <a className="button button_md button_ghost" href="#">
                 <img className="button__icon" src={arrowBlack} alt="arrow" />
-                <p>View All</p>
+                <p>{t("home.blog.view")}</p>
               </a>
             </div>
           </div>
@@ -31,13 +35,13 @@ const Blog = () => {
               <img src={blog1} alt="blog-1" />
               <div className="blog__button button-wrapper">
                 <a className="button button_lg button_transparent" href="#">
-                  <p>2023 Lookbook</p>
+                  <p>{t("home.blog.lookbook")}</p>
                   <img className="button__icon" src={arrowWhite} alt="arrow" />
                 </a>
               </div>
               <div className="blog__content">
-                <h2 className="blog__title title-2--reverse">New Release</h2>
-                <p className="blog__text text-light">Presenting new trends of 2023</p>
+                <h2 className="blog__title title-2--reverse">{t("home.blog.new")}</h2>
+                <p className="blog__text text-light">{t("home.blog.present")}</p>
               </div>
               <div className="blog__line"></div>
             </div>
@@ -46,12 +50,12 @@ const Blog = () => {
               <div className="blog__button button-wrapper">
                 <a className="button button_lg button_transparent" href="#">
                   <img className="button__icon" src={play} alt="arrow" />
-                  Watch Trending
+                  {t("home.blog.watch")}
                 </a>
               </div>
               <div className="blog__content">
-                <h2 className="blog__title title-2--reverse">New Release</h2>
-                <p className="blog__text text-light">Presenting new trends of 2023</p>
+                <h2 className="blog__title title-2--reverse">{t("home.blog.new")}</h2>
+                <p className="blog__text text-light">{t("home.blog.present")}Presenting new trends of 2023</p>
               </div>
               <div className="blog__line"></div>
             </div>
@@ -59,13 +63,11 @@ const Blog = () => {
               <img src={blog3} alt="blog-3" />
               <div className="blog__button button-wrapper">
                 <a className="button button_lg button_reverse" href="#">
-                  <span>Subscribe</span>
+                  <span>{t("home.blog.subscribe")}</span>
                 </a>
               </div>
               <div className="blog__content">
-                <p className="blog__text text-light">
-                  Subscribe to the newsletter and receive new offers from our store with hot offers.
-                </p>
+                <p className="blog__text text-light">{t("home.blog.text")}</p>
               </div>
               <ul className="blog__icons icons">
                 <li className="icons__item">
