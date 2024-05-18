@@ -1,3 +1,5 @@
+import { getToken } from "../services/tokenService";
+
 const BASE_URL = "http://localhost:9091/api";
 
 function wait(delay) {
@@ -13,6 +15,14 @@ function request(url, method = "GET", data = null) {
     options.body = JSON.stringify(data);
     options.headers = {
       "Content-Type": "application/json; charset=UTF-8",
+    };
+  }
+
+  const token = getToken();
+  if (token) {
+    options.headers = {
+      "Content-Type": "application/json; charset=UTF-8",
+      Authorization: `Bearer ${token}`,
     };
   }
 

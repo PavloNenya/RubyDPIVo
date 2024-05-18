@@ -1,7 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Cookies from "js-cookie";
 
-import "./index.scss";
+import { AppContext } from "../../store/context";
+
+import { deleteToken, getToken } from "../../services/tokenService";
+
+import { logout } from "../../api/auth";
 
 import logo from "../../assets/img/logo.svg";
 import search from "../../assets/img/icons/search.svg";
@@ -9,22 +14,35 @@ import cart from "../../assets/img/icons/cart.svg";
 import account from "../../assets/img/icons/account.svg";
 import likes from "../../assets/img/icons/likes.svg";
 import btnBackWhite from "../../assets/img/icons/btn-back-white.svg";
-import { AppContext } from "../../store/context";
-import Cookies from "js-cookie";
+
+import "./index.scss";
 
 export const Header = () => {
   const [burger, setBurger] = useState(false);
-  const { selectedProduct, setSelectedProduct } = useContext(AppContext);
+  const { selectedProduct, setSelectedProduct, isAuth, setIsAuth, buttonActive, setButtonActive } =
+    useContext(AppContext);
 
   const handleBurger = () => {
     setBurger(!burger);
     document.body.classList.toggle("_lock");
   };
 
+  const handleLogout = async () => {
+    const token = getToken();
+    if (token) {
+      try {
+        await logout();
+      } catch (e) {
+        console.log(e);
+      }
+    }
+
+    deleteToken();
+    setIsAuth(false);
+  };
+
   useEffect(() => {
     const selectedProductFromCookie = Cookies.get("selectedProduct");
-
-    console.log(selectedProductFromCookie);
 
     if (selectedProductFromCookie) {
       setSelectedProduct(JSON.parse(selectedProductFromCookie));
@@ -69,26 +87,15 @@ export const Header = () => {
               </Link>
             </div>
             <form className="header__form">
-              <input
-                className="header__search"
-                type="text"
-                name="search"
-                placeholder="Search"
-              />
+              <input className="header__search" type="text" name="search" placeholder="Search" />
               <button className="header__button" type="submit">
                 <img className="icon-search" src={search} alt="search" />
               </button>
             </form>
-            <div
-              className={`header__burger burger${burger ? " _menu-open" : ""}`}
-              onClick={handleBurger}
-            >
+            <div className={`header__burger burger${burger ? " _menu-open" : ""}`} onClick={handleBurger}>
               <div className="burger__line"></div>
             </div>
             <div className="header__items">
-              <a href="#" className="header__item">
-                <img src={account} alt="account" />
-              </a>
               <Link to="/favourites" className="header__item">
                 <img src={likes} alt="likes" />
               </Link>
@@ -97,13 +104,42 @@ export const Header = () => {
                   <img src={cart} alt="cart" />
                   {selectedProduct.length > 0 && (
                     <div className="header__infoitem">
-                      <p className="header__infoitem-text">
-                        {selectedProduct.length}
-                      </p>
+                      <p className="header__infoitem-text">{selectedProduct.length}</p>
                     </div>
                   )}
                 </div>
               </Link>
+              <button href="#" className="header__item" onClick={() => setButtonActive(!buttonActive)}>
+                <img src={account} alt="account" />
+              </button>
+              <div className={`header__list list${buttonActive ? " _active" : ""}`}>
+                {isAuth ? (
+                  <>
+                    <Link className="list__item" to="/profile" onClick={() => setButtonActive(false)}>
+                      My profile
+                    </Link>
+                    <button
+                      className="list__item"
+                      to="/logout"
+                      onClick={() => {
+                        handleLogout();
+                        setButtonActive(false);
+                      }}
+                    >
+                      Logout
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <Link className="list__item" to="/signin" onClick={() => setButtonActive(false)}>
+                      Login
+                    </Link>
+                    <Link className="list__item" to="/signup" onClick={() => setButtonActive(false)}>
+                      Register
+                    </Link>
+                  </>
+                )}
+              </div>
             </div>
           </div>
           <nav className={`header__nav${burger ? " _menu-open" : ""}`}>

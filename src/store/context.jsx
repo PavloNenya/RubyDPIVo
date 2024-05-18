@@ -11,6 +11,8 @@ export const ContextProvider = ({ children }) => {
   const [errorMessage, setErrorMessage] = useState(null);
   const [selectedSize, setSelectedSize] = useState({});
   const [likedProducts, setLikedProducts] = useState([]);
+  const [isAuth, setIsAuth] = useState(false);
+  const [buttonActive, setButtonActive] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
@@ -24,6 +26,13 @@ export const ContextProvider = ({ children }) => {
       .catch(() => setErrorMessage("Error retrieving products"))
       .finally(() => setIsLoading(false));
   }, [setErrorMessage, setProducts]);
+
+  useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+
+    if (token) setIsAuth(true);
+    console.log("Token", token);
+  }, []);
 
   const value = useMemo(
     () => ({
@@ -39,15 +48,12 @@ export const ContextProvider = ({ children }) => {
       setIsLoading,
       likedProducts,
       setLikedProducts,
+      isAuth,
+      setIsAuth,
+      buttonActive,
+      setButtonActive,
     }),
-    [
-      errorMessage,
-      isLoading,
-      likedProducts,
-      products,
-      selectedProduct,
-      selectedSize,
-    ]
+    [buttonActive, errorMessage, isAuth, isLoading, likedProducts, products, selectedProduct, selectedSize],
   );
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

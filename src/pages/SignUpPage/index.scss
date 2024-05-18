@@ -2,78 +2,52 @@
 
 .authorization {
   &__container {
-    max-width: 36rem;
-    box-sizing: content-box;
+    max-width: 590px;
     margin: 0 auto;
-    padding: 0 0.9375rem;
+    padding: 0 15px;
   }
 
-  &__maincontent {
-    display: flex;
-    flex-direction: column;
-    gap: 48px;
-  }
+  .form {
+    &__logo,
+    &__title {
+      margin-bottom: 30px;
+    }
 
-  &__header {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-  }
+    &__group {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
 
-  &__logo {
-    height: 36px;
-    width: 183px;
-  }
+    &__input {
+      border-radius: 10px;
+      background: var(--color-primary-grey);
+      height: 53px;
+      width: 100%;
+      padding: 10px 20px 10px 20px;
+      color: #757575;
+    }
 
-  &__checkbox-line {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
+    &__checkbox {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
 
-  &__footer {
-    margin-top: 36px;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  }
+    &__agree {
+      padding-top: 20px;
+      border-top: 1px solid var(--color-system-grey);
+      margin-bottom: 10px;
+    }
 
-  &__form {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
+    &__button {
+      width: 100%;
 
-  &__input {
-    border-radius: 10px;
-    background: rgb(249, 249, 249);
-    height: 53px;
-    width: 100%;
-    padding: 10px 20px 10px 20px;
-    color: #757575;
-  }
-
-  &__input-wrapper {
-    display: flex;
-    flex-direction: row;
-    gap: 16px;
-  }
-
-  &__button {
-    width: 35%;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .authorization__input-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-}
-
-@include phone {
-  .authorization__button {
-    width: 100%;
+      .button {
+        width: 100%;
+      }
+    }
   }
 }
