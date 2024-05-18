@@ -34,7 +34,6 @@ const SaleTimer = () => {
   });
 
   const timerComponents = Object.keys(timeLeft).map((interval) => {
-    console.log(interval);
     return (
       <div key={interval} className={`timer__item timer__${interval}`} data-title={interval}>
         {timeLeft[interval] < 10 ? `0${timeLeft[interval]}` : timeLeft[interval]}
