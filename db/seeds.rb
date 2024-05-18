@@ -114,3 +114,5 @@ ActiveRecord::Base.connection.execute "INSERT INTO product_material_cares (categ
 ActiveRecord::Base.connection.execute "INSERT INTO product_material_cares (category_id, name) VALUES (5, 'Description of category care 5');"
 ActiveRecord::Base.connection.execute "INSERT INTO product_material_cares (category_id, name) VALUES (6, 'Description of category care 6');"
 ActiveRecord::Base.connection.execute "INSERT INTO product_material_cares (category_id, name) VALUES (7, 'Description of category care 7');"
+
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
