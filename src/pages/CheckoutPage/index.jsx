@@ -48,7 +48,7 @@ export const CheckoutPage = () => {
     let resSum = 0;
 
     selectedProduct.forEach((product) => {
-      resSum += product.price * product.quantity;
+      resSum += product.productById?.price * product.quantity;
     });
 
     return resSum;
@@ -420,15 +420,24 @@ export const CheckoutPage = () => {
                 <hr className="checkout__infoblock-line" />
 
                 {selectedProduct.map((product) => (
-                  <div key={product.id} className="checkout__infoblock-it">
+                  <div
+                    key={product.productById?.id}
+                    className="checkout__infoblock-it"
+                  >
                     <img
                       className="basket__item-img"
-                      src={`http://localhost:9091/api/images/${product.main_photo_id}`}
+                      src={`http://localhost:9091/api/images/${product.productById?.main_photo_id}`}
                       alt=""
                     />
                     <div className="checkout__infoblock-item-information">
                       <div className="checkout__infoblock-item-top">
+<<<<<<< Updated upstream
                         <p className="card__producer title-5">{product.producer.name}</p>
+=======
+                        <p className="card__producer title-5">
+                          {product.productById?.producer.name}
+                        </p>
+>>>>>>> Stashed changes
                         <h4 className="card__title title-4">{product.name}</h4>
                       </div>
                       <div className="checkout__infoblock-item-bottom">
