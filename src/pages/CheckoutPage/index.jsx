@@ -11,6 +11,7 @@ import ukrIcon from "../../assets/img/checkout/ukr.svg";
 import meestIcon from "../../assets/img/checkout/meest.svg";
 
 import "./index.scss";
+import { addOrder } from "../../api/order";
 
 export const CheckoutPage = () => {
   const [step, setStep] = useState(1);
@@ -111,6 +112,7 @@ export const CheckoutPage = () => {
     };
 
     mergedData.products = dataFromItems;
+    addOrder(mergedData);
     handleRemoveProducts();
     console.log(mergedData);
   };
@@ -126,18 +128,25 @@ export const CheckoutPage = () => {
             </div>
 
             <div className="checkout__body-left">
-              <form className="checkout__form" onSubmit={handleSubmit(onSubmit)}>
+              <form
+                className="checkout__form"
+                onSubmit={handleSubmit(onSubmit)}
+              >
                 <div className="checkout__infoblock">
                   <div className="checkout__infoblock-top">
                     <h4 className="checkout__title">{t("checkout.contact")}</h4>
-                    <span className="checkout__subtitle title-5">{t("checkout.step1")}</span>
+                    <span className="checkout__subtitle title-5">
+                      {t("checkout.step1")}
+                    </span>
                   </div>
                   <div className="checkout__infoblock-form form">
                     <div className="form__input-wrapper">
                       <input
                         type="text"
                         id="firstName"
-                        className={`form__input ${errors.firstName ? "error-input" : ""}`}
+                        className={`form__input ${
+                          errors.firstName ? "error-input" : ""
+                        }`}
                         placeholder={t("checkout.fname")}
                         {...register("firstName", {
                           required: true,
@@ -145,22 +154,31 @@ export const CheckoutPage = () => {
                           pattern: /^[A-Za-z\s]+$/,
                         })}
                       />
-                      {errors.firstName && errors.firstName.type === "required" && (
-                        <span className="error">{t("checkout.required")}</span>
-                      )}
-                      {errors.firstName && errors.firstName.type === "maxLength" && (
-                        <span className="error">{t("checkout.maxlength")}</span>
-                      )}
-                      {errors.firstName && errors.firstName.type === "pattern" && (
-                        <span className="error">{t("checkout.letters")}</span>
-                      )}
+                      {errors.firstName &&
+                        errors.firstName.type === "required" && (
+                          <span className="error">
+                            {t("checkout.required")}
+                          </span>
+                        )}
+                      {errors.firstName &&
+                        errors.firstName.type === "maxLength" && (
+                          <span className="error">
+                            {t("checkout.maxlength")}
+                          </span>
+                        )}
+                      {errors.firstName &&
+                        errors.firstName.type === "pattern" && (
+                          <span className="error">{t("checkout.letters")}</span>
+                        )}
                     </div>
 
                     <div className="form__input-wrapper">
                       <input
                         type="text"
                         id="lastName"
-                        className={`form__input ${errors.lastName ? "error-input" : ""}`}
+                        className={`form__input ${
+                          errors.lastName ? "error-input" : ""
+                        }`}
                         placeholder={t("checkout.sname")}
                         {...register("lastName", {
                           required: true,
@@ -168,56 +186,78 @@ export const CheckoutPage = () => {
                           pattern: /^[A-Za-z\s]+$/,
                         })}
                       />
-                      {errors.lastName && errors.lastName.type === "required" && (
-                        <span className="error">{t("checkout.required")}</span>
-                      )}
-                      {errors.lastName && errors.lastName.type === "maxLength" && (
-                        <span className="error">{t("checkout.maxlength")}</span>
-                      )}
-                      {errors.lastName && errors.lastName.type === "pattern" && (
-                        <span className="error">{t("checkout.letters")}</span>
-                      )}
+                      {errors.lastName &&
+                        errors.lastName.type === "required" && (
+                          <span className="error">
+                            {t("checkout.required")}
+                          </span>
+                        )}
+                      {errors.lastName &&
+                        errors.lastName.type === "maxLength" && (
+                          <span className="error">
+                            {t("checkout.maxlength")}
+                          </span>
+                        )}
+                      {errors.lastName &&
+                        errors.lastName.type === "pattern" && (
+                          <span className="error">{t("checkout.letters")}</span>
+                        )}
                     </div>
 
                     <div className="form__input-wrapper">
                       <input
                         type="tel"
                         id="phoneNumber"
-                        className={`form__input ${errors.phoneNumber ? "error-input" : ""}`}
+                        className={`form__input ${
+                          errors.phoneNumber ? "error-input" : ""
+                        }`}
                         placeholder="+380*"
                         {...register("phoneNumber", {
                           required: true,
                           pattern: /^\+?[0-9]*$/,
                         })}
                       />
-                      {errors.phoneNumber && errors.phoneNumber.type === "required" && (
-                        <span className="error">{t("checkout.required")}</span>
-                      )}
-                      {errors.phoneNumber && errors.phoneNumber.type === "pattern" && (
-                        <span className="error">{t("checkout.digits")}</span>
-                      )}
+                      {errors.phoneNumber &&
+                        errors.phoneNumber.type === "required" && (
+                          <span className="error">
+                            {t("checkout.required")}
+                          </span>
+                        )}
+                      {errors.phoneNumber &&
+                        errors.phoneNumber.type === "pattern" && (
+                          <span className="error">{t("checkout.digits")}</span>
+                        )}
                     </div>
 
                     <div className="form__input-wrapper">
                       <input
                         type="text"
                         id="email"
-                        className={`form__input ${errors.email ? "error-input" : ""}`}
+                        className={`form__input ${
+                          errors.email ? "error-input" : ""
+                        }`}
                         placeholder={t("checkout.email")}
                         {...register("email", {
                           required: true,
-                          pattern: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}$/i,
+                          pattern:
+                            /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}$/i,
                         })}
                       />
                       {errors.email && errors.email.type === "required" && (
                         <span className="error">{t("checkout.required")}</span>
                       )}
                       {errors.email && errors.email.type === "pattern" && (
-                        <span className="error">{t("checkout.invalidemail")}</span>
+                        <span className="error">
+                          {t("checkout.invalidemail")}
+                        </span>
                       )}
                     </div>
                   </div>
-                  <button type="button" className="checkout__button-step" onClick={() => isStep1Valid() && setStep(2)}>
+                  <button
+                    type="button"
+                    className="checkout__button-step"
+                    onClick={() => isStep1Valid() && setStep(2)}
+                  >
                     {t("checkout.next")}
                   </button>
                 </div>
@@ -225,11 +265,17 @@ export const CheckoutPage = () => {
                 {(step === 2 || step === 3) && (
                   <div className="checkout__infoblock">
                     <div className="checkout__infoblock-top">
-                      <h4 className="checkout__title">{t("checkout.delivery")}</h4>
-                      <span className="checkout__subtitle title-5">{t("checkout.step2")}</span>
+                      <h4 className="checkout__title">
+                        {t("checkout.delivery")}
+                      </h4>
+                      <span className="checkout__subtitle title-5">
+                        {t("checkout.step2")}
+                      </span>
                     </div>
                     <div className="checkout__infoblock-dropdown">
-                      <h5 className="checkout__infoblock-dropdown-text">{t("checkout.city")}</h5>
+                      <h5 className="checkout__infoblock-dropdown-text">
+                        {t("checkout.city")}
+                      </h5>
                       <select className="dropdown" name="dropdown">
                         <option className="dropdown__option" value="Eng">
                           {t("checkout.khr")}
@@ -251,13 +297,25 @@ export const CheckoutPage = () => {
                           type="radio"
                           name="shipping-provider"
                           defaultValue="nova"
-                          onChange={(e) => setSelectedShippingProvider(e.target.value)}
+                          onChange={(e) =>
+                            setSelectedShippingProvider(e.target.value)
+                          }
                         />
-                        <img className="checkout__post-img" src={novaIcon} alt="" />
+                        <img
+                          className="checkout__post-img"
+                          src={novaIcon}
+                          alt=""
+                        />
                         <div className="checkout__post-information-wrapper">
-                          <h5 className="checkout__post-information-title">{t("checkout.new")}</h5>
-                          <p className="checout__post-information-date">{t("checkout.expected")}, Monday 17</p>
-                          <p className="checout__post-information-cost title-5">{t("checkout.free")} $110</p>
+                          <h5 className="checkout__post-information-title">
+                            {t("checkout.new")}
+                          </h5>
+                          <p className="checout__post-information-date">
+                            {t("checkout.expected")}, Monday 17
+                          </p>
+                          <p className="checout__post-information-cost title-5">
+                            {t("checkout.free")} $110
+                          </p>
                         </div>
                         <h3 className="checkout__post-price">$10</h3>
                       </label>
@@ -268,13 +326,25 @@ export const CheckoutPage = () => {
                           type="radio"
                           name="shipping-provider"
                           defaultValue="ukrposhta"
-                          onChange={(e) => setSelectedShippingProvider(e.target.value)}
+                          onChange={(e) =>
+                            setSelectedShippingProvider(e.target.value)
+                          }
                         />
-                        <img className="checkout__post-img" src={ukrIcon} alt="" />
+                        <img
+                          className="checkout__post-img"
+                          src={ukrIcon}
+                          alt=""
+                        />
                         <div className="checkout__post-information-wrapper">
-                          <h5 className="checkout__post-information-title">{t("checkout.ukr")}</h5>
-                          <p className="checout__post-information-date">{t("checkout.expected")}, Monday 19</p>
-                          <p className="checout__post-information-cost title-5">{t("checkout.free")} $30</p>
+                          <h5 className="checkout__post-information-title">
+                            {t("checkout.ukr")}
+                          </h5>
+                          <p className="checout__post-information-date">
+                            {t("checkout.expected")}, Monday 19
+                          </p>
+                          <p className="checout__post-information-cost title-5">
+                            {t("checkout.free")} $30
+                          </p>
                         </div>
                         <h3 className="checkout__post-price">$8</h3>
                       </label>
@@ -285,13 +355,25 @@ export const CheckoutPage = () => {
                           type="radio"
                           name="shipping-provider"
                           defaultValue="meest"
-                          onChange={(e) => setSelectedShippingProvider(e.target.value)}
+                          onChange={(e) =>
+                            setSelectedShippingProvider(e.target.value)
+                          }
                         />
-                        <img className="checkout__post-img" src={meestIcon} alt="" />
+                        <img
+                          className="checkout__post-img"
+                          src={meestIcon}
+                          alt=""
+                        />
                         <div className="checkout__post-information-wrapper">
-                          <h5 className="checkout__post-information-title">{t("checkout.meest")}</h5>
-                          <p className="checout__post-information-date">{t("checkout.expected")}, Monday 18</p>
-                          <p className="checout__post-information-cost title-5">{t("checkout.free")} $250</p>
+                          <h5 className="checkout__post-information-title">
+                            {t("checkout.meest")}
+                          </h5>
+                          <p className="checout__post-information-date">
+                            {t("checkout.expected")}, Monday 18
+                          </p>
+                          <p className="checout__post-information-cost title-5">
+                            {t("checkout.free")} $250
+                          </p>
                         </div>
                         <h3 className="checkout__post-price">$12</h3>
                       </label>
@@ -302,13 +384,23 @@ export const CheckoutPage = () => {
                       onChange={(e) => setSelectedPostOffice(e.target.value)}
                       name="text-input"
                     >
-                      <option value="">Post office #129. Kharkiv, Plekhanivska Street, 39.</option>
-                      <option value="option1">Post office #55. Kharkiv, Molochna Street, 39.</option>
-                      <option value="option2">Post office #29. Kharkiv, Buchmy Street, 17.</option>
+                      <option value="">
+                        Post office #129. Kharkiv, Plekhanivska Street, 39.
+                      </option>
+                      <option value="option1">
+                        Post office #55. Kharkiv, Molochna Street, 39.
+                      </option>
+                      <option value="option2">
+                        Post office #29. Kharkiv, Buchmy Street, 17.
+                      </option>
                     </select>
 
                     <div className="checkout__button-step-wrapper">
-                      <button type="button" className="checkout__button-step" onClick={() => setStep(1)}>
+                      <button
+                        type="button"
+                        className="checkout__button-step"
+                        onClick={() => setStep(1)}
+                      >
                         {t("checkout.prev")}
                       </button>
                       <button
@@ -326,8 +418,12 @@ export const CheckoutPage = () => {
                 {step === 3 && (
                   <div className="checkout__infoblock">
                     <div className="checkout__infoblock-top">
-                      <h4 className="checkout__title">{t("checkout.payment")}</h4>
-                      <span className="checkout__subtitle title-5">{t("checkout.step3")}3 step</span>
+                      <h4 className="checkout__title">
+                        {t("checkout.payment")}
+                      </h4>
+                      <span className="checkout__subtitle title-5">
+                        {t("checkout.step3")}3 step
+                      </span>
                     </div>
 
                     <div className="checkout__infoblock-payments">
@@ -335,7 +431,9 @@ export const CheckoutPage = () => {
                         <div className="form__input-wrapper">
                           <input
                             type="text"
-                            className={`form__input ${errors.cardNumber ? "error-input" : ""}`}
+                            className={`form__input ${
+                              errors.cardNumber ? "error-input" : ""
+                            }`}
                             name="cardNumber"
                             placeholder={t("checkout.cardnumber")}
                             {...register("cardNumber", {
@@ -344,37 +442,53 @@ export const CheckoutPage = () => {
                             })}
                           />
 
-                          {errors.cardNumber && errors.cardNumber.type === "required" && (
-                            <span className="error">{t("checkout.required")}</span>
-                          )}
-                          {errors.cardNumber && errors.cardNumber.type === "pattern" && (
-                            <span className="error">{t("checkout.invalidcard")}</span>
-                          )}
+                          {errors.cardNumber &&
+                            errors.cardNumber.type === "required" && (
+                              <span className="error">
+                                {t("checkout.required")}
+                              </span>
+                            )}
+                          {errors.cardNumber &&
+                            errors.cardNumber.type === "pattern" && (
+                              <span className="error">
+                                {t("checkout.invalidcard")}
+                              </span>
+                            )}
                         </div>
 
                         <div className="form__input-wrapper">
                           <input
                             type="date"
-                            className={`form__input ${errors.expirationDate ? "error-input" : ""}`}
+                            className={`form__input ${
+                              errors.expirationDate ? "error-input" : ""
+                            }`}
                             name="expirationDate"
                             placeholder={t("checkout.expiration")}
                             {...register("expirationDate", { required: true })}
                           />
-                          {errors.expirationDate && errors.expirationDate.type === "required" && (
-                            <span className="error">{t("checkout.required")}</span>
-                          )}
+                          {errors.expirationDate &&
+                            errors.expirationDate.type === "required" && (
+                              <span className="error">
+                                {t("checkout.required")}
+                              </span>
+                            )}
                         </div>
                         <div className="form__input-wrapper">
                           <input
                             type="text"
-                            className={`form__input ${errors.securityCode ? "error-input" : ""}`}
+                            className={`form__input ${
+                              errors.securityCode ? "error-input" : ""
+                            }`}
                             name="securityCode"
                             placeholder={t("checkout.securitycode")}
                             {...register("securityCode", { required: true })}
                           />
-                          {errors.securityCode && errors.securityCode.type === "required" && (
-                            <span className="error">{t("checkout.required")}</span>
-                          )}
+                          {errors.securityCode &&
+                            errors.securityCode.type === "required" && (
+                              <span className="error">
+                                {t("checkout.required")}
+                              </span>
+                            )}
                         </div>
                       </div>
                     </div>
@@ -382,14 +496,23 @@ export const CheckoutPage = () => {
                     <hr className="checkout__infoblock-line" />
 
                     <div className="checkout__checkbox">
-                      <input type="checkbox" id="subscribe" name="subscribe" className="checkbox" />
+                      <input
+                        type="checkbox"
+                        id="subscribe"
+                        name="subscribe"
+                        className="checkbox"
+                      />
                       <label htmlFor="subscribe" className="form__label">
                         {t("checkout.policy")}
                       </label>
                     </div>
 
                     <div className="checkout__button-step-wrapper">
-                      <button className="checkout__button-step" type="button" onClick={() => setStep(2)}>
+                      <button
+                        className="checkout__button-step"
+                        type="button"
+                        onClick={() => setStep(2)}
+                      >
                         {t("checkout.prev")}
                       </button>
                       <button
@@ -404,7 +527,10 @@ export const CheckoutPage = () => {
                 )}
 
                 {finish && (
-                  <Link to="/thankyou" className="button button_lg button_default button__checkout">
+                  <Link
+                    to="/thankyou"
+                    className="button button_lg button_default button__checkout"
+                  >
                     {t("checkout.buy")}
                     <span className="icon-arrow" />
                   </Link>
@@ -431,13 +557,9 @@ export const CheckoutPage = () => {
                     />
                     <div className="checkout__infoblock-item-information">
                       <div className="checkout__infoblock-item-top">
-<<<<<<< Updated upstream
-                        <p className="card__producer title-5">{product.producer.name}</p>
-=======
                         <p className="card__producer title-5">
                           {product.productById?.producer.name}
                         </p>
->>>>>>> Stashed changes
                         <h4 className="card__title title-4">{product.name}</h4>
                       </div>
                       <div className="checkout__infoblock-item-bottom">
@@ -454,18 +576,26 @@ export const CheckoutPage = () => {
                     <p className="checkout__infoblock-numofcount title-5">
                       {handleTotalItems()} {t("basket.items")}
                     </p>
-                    <p className="checkout__infoblock-price">${handleTotalSum()}</p>
+                    <p className="checkout__infoblock-price">
+                      ${handleTotalSum()}
+                    </p>
                   </div>
                   <div className="checkout__infoblock-wrapperinfo">
-                    <p className="checkout__infoblock-numofcount title-5">{t("checkout.delivery")}</p>
+                    <p className="checkout__infoblock-numofcount title-5">
+                      {t("checkout.delivery")}
+                    </p>
                     <p className="checkout__infoblock-price">$0</p>
                   </div>
                 </div>
                 <hr className="checkout__infoblock-line" />
                 <div className="checkout__infoblock-bottom">
                   <div className="checkout__infoblock-wrapperinfo">
-                    <h4 className="checkout__infoblock-text">{t("basket.total")}</h4>
-                    <h4 className="checkout__infoblock-text">${handleTotalSum()}</h4>
+                    <h4 className="checkout__infoblock-text">
+                      {t("basket.total")}
+                    </h4>
+                    <h4 className="checkout__infoblock-text">
+                      ${handleTotalSum()}
+                    </h4>
                   </div>
                 </div>
               </div>
