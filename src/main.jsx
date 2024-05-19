@@ -40,7 +40,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                   </Route>
                 </Route>
 
-                <Route path="favorite" element={<FavoritePage />} />
+                <Route path="favourite" element={<FavoritePage />} />
 
                 <Route path="basket" element={<BasketPage />} />
 
@@ -58,5 +58,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         </div>
       </React.StrictMode>
     </CatalogContextProvider>
-  </ContextProvider>,
+  </ContextProvider>
 );

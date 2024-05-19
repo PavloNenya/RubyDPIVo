@@ -20,8 +20,14 @@ import "./index.scss";
 
 export const Header = () => {
   const [burger, setBurger] = useState(false);
-  const { selectedProduct, setSelectedProduct, isAuth, setIsAuth, buttonActive, setButtonActive } =
-    useContext(AppContext);
+  const {
+    selectedProduct,
+    setSelectedProduct,
+    isAuth,
+    setIsAuth,
+    buttonActive,
+    setButtonActive,
+  } = useContext(AppContext);
 
   const { t, i18n } = useTranslation();
 
@@ -63,7 +69,11 @@ export const Header = () => {
         <div className="header__container">
           <div className="header__top-body">
             <div className="header__select select">
-              <select className="select__items" name="lang" onChange={handleSelectLanguage}>
+              <select
+                className="select__items"
+                name="lang"
+                onChange={handleSelectLanguage}
+              >
                 <option className="select__item" value="en">
                   en
                 </option>
@@ -95,16 +105,24 @@ export const Header = () => {
               </Link>
             </div>
             <form className="header__form">
-              <input className="header__search" type="text" name="search" placeholder={t("header.search")} />
+              <input
+                className="header__search"
+                type="text"
+                name="search"
+                placeholder={t("header.search")}
+              />
               <button className="header__button" type="submit">
                 <img className="icon-search" src={search} alt="search" />
               </button>
             </form>
-            <div className={`header__burger burger${burger ? " _menu-open" : ""}`} onClick={handleBurger}>
+            <div
+              className={`header__burger burger${burger ? " _menu-open" : ""}`}
+              onClick={handleBurger}
+            >
               <div className="burger__line"></div>
             </div>
             <div className="header__items">
-              <Link to="/favourites" className="header__item">
+              <Link to="/favourite" className="header__item">
                 <img src={likes} alt="likes" />
               </Link>
               <Link to="/basket" className="header__item">
@@ -112,18 +130,30 @@ export const Header = () => {
                   <img src={cart} alt="cart" />
                   {selectedProduct.length > 0 && (
                     <div className="header__infoitem">
-                      <p className="header__infoitem-text">{selectedProduct.length}</p>
+                      <p className="header__infoitem-text">
+                        {selectedProduct.length}
+                      </p>
                     </div>
                   )}
                 </div>
               </Link>
-              <button href="#" className="header__item" onClick={() => setButtonActive(!buttonActive)}>
+              <button
+                href="#"
+                className="header__item"
+                onClick={() => setButtonActive(!buttonActive)}
+              >
                 <img src={account} alt="account" />
               </button>
-              <div className={`header__list list${buttonActive ? " _active" : ""}`}>
+              <div
+                className={`header__list list${buttonActive ? " _active" : ""}`}
+              >
                 {isAuth ? (
                   <>
-                    <Link className="list__item" to="/profile" onClick={() => setButtonActive(false)}>
+                    <Link
+                      className="list__item"
+                      to="/profile"
+                      onClick={() => setButtonActive(false)}
+                    >
                       {t("header.profile")}
                     </Link>
                     <button
@@ -139,10 +169,18 @@ export const Header = () => {
                   </>
                 ) : (
                   <>
-                    <Link className="list__item" to="/signin" onClick={() => setButtonActive(false)}>
+                    <Link
+                      className="list__item"
+                      to="/signin"
+                      onClick={() => setButtonActive(false)}
+                    >
                       {t("header.login")}
                     </Link>
-                    <Link className="list__item" to="/signup" onClick={() => setButtonActive(false)}>
+                    <Link
+                      className="list__item"
+                      to="/signup"
+                      onClick={() => setButtonActive(false)}
+                    >
                       {t("header.register")}
                     </Link>
                   </>
