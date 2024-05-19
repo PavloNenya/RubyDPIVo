@@ -21,7 +21,7 @@ import { Link } from "react-router-dom";
 
 const photosOfCategory = [shoesImg, tshirtsImg, hoodiesImg, jeensImg, accesImg];
 
-const ProductCard = ({ type, product, cardWidth }) => {
+const ProductCard = ({ type, product, cardWidth, classType = "goods" }) => {
   const { likedProducts, setLikedProducts } = useContext(AppContext);
 
   const productId = product.id;
@@ -57,7 +57,7 @@ const ProductCard = ({ type, product, cardWidth }) => {
   };
 
   return (
-    <div className="goods__card card" style={{ width: cardWidth }}>
+    <div className={`${classType}__card card`} style={{ width: cardWidth }}>
       <img
         className="card__image"
         src={

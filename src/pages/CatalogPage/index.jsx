@@ -26,8 +26,14 @@ const CatalogPage = () => {
   const navigate = useNavigate();
 
   const { t } = useTranslation();
-  const { selectedFilters, setSizes, setGenders, setCategories, setProducers, setIsFilterDataLoading } =
-    useContext(CatalogContext);
+  const {
+    selectedFilters,
+    setSizes,
+    setGenders,
+    setCategories,
+    setProducers,
+    setIsFilterDataLoading,
+  } = useContext(CatalogContext);
 
   useEffect(() => {
     const currentPage = parseInt(page, 10);
@@ -48,7 +54,13 @@ const CatalogPage = () => {
       })
       .catch((error) => console.error("Error fetching filter data:", error))
       .finally(() => setIsFilterDataLoading(false));
-  }, [setCategories, setGenders, setIsFilterDataLoading, setProducers, setSizes]);
+  }, [
+    setCategories,
+    setGenders,
+    setIsFilterDataLoading,
+    setProducers,
+    setSizes,
+  ]);
 
   useEffect(() => {
     let isMounted = true;
@@ -90,9 +102,11 @@ const CatalogPage = () => {
                         .fill(0)
                         .map((_, index) => <CardSkeleton key={index} />)
                     : products.map((product) => (
-                        <Link className="products__card" to={`/catalog/product/${product.id}`} key={product.id}>
-                          <ProductCard product={product} />
-                        </Link>
+                        <ProductCard
+                          key={product.id}
+                          product={product}
+                          classType="products"
+                        />
                       ))}
                 </div>
                 <Pagination totalPages={totalPages} />

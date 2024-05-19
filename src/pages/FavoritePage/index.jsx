@@ -38,7 +38,11 @@ const FavoritePage = () => {
             <div className="products__content">
               <div className="products__cards">
                 {likedProducts.map((product) => (
-                  <ProductCard key={product.id} product={product} />
+                  <ProductCard
+                    key={product.id}
+                    product={product}
+                    classType="products"
+                  />
                 ))}
               </div>
             </div>
