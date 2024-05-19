@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import propTypes from "prop-types";
 
@@ -8,13 +7,6 @@ import btnBack from "../../../assets/img/icons/btn-back.svg";
 const Pagination = ({ totalPages }) => {
   const { page, type } = useParams();
   const { t } = useTranslation();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (page < 1 || page > totalPages) {
-      return navigate("/catalog/1");
-    }
-  }, [navigate, page, totalPages]);
 
   return (
     totalPages != 0 && (

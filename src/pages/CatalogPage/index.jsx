@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import { CatalogContext } from "../../store/catalogContext";
@@ -23,29 +23,55 @@ const CatalogPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [products, setProducts] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
+  const navigate = useNavigate();
 
   const { t } = useTranslation();
   const { selectedFilters, setSizes, setGenders, setCategories, setProducers, setIsFilterDataLoading } =
     useContext(CatalogContext);
 
   useEffect(() => {
+    const currentPage = parseInt(page, 10);
+
+    if (isNaN(currentPage) || currentPage < 1 || currentPage > totalPages) {
+      navigate(`/catalog/1`, { replace: true });
+    }
+  }, [page, totalPages, navigate]);
+
+  useEffect(() => {
     setIsFilterDataLoading(true);
-    getCategories().then((data) => setCategories(data));
-    getProducers().then((data) => setProducers(data));
-    getSizes().then((data) => setSizes(data));
-    getGenders().then((data) => setGenders(data));
-    setIsFilterDataLoading(false);
+    Promise.all([getCategories(), getProducers(), getSizes(), getGenders()])
+      .then(([categories, producers, sizes, genders]) => {
+        setCategories(categories);
+        setProducers(producers);
+        setSizes(sizes);
+        setGenders(genders);
+      })
+      .catch((error) => console.error("Error fetching filter data:", error))
+      .finally(() => setIsFilterDataLoading(false));
   }, [setCategories, setGenders, setIsFilterDataLoading, setProducers, setSizes]);
 
   useEffect(() => {
+    let isMounted = true;
+
     setProducts([]);
     setIsLoading(true);
 
-    getProductsByPage(page, selectedFilters).then((data) => {
-      setProducts(data?.content);
-      setTotalPages(data?.totalPages);
-      setIsLoading(false);
-    });
+    getProductsByPage(page, selectedFilters)
+      .then((data) => {
+        if (isMounted) {
+          setProducts(data?.content || []);
+          setTotalPages(data?.totalPages || 1);
+          setIsLoading(false);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching products:", error);
+        if (isMounted) setIsLoading(false);
+      });
+
+    return () => {
+      isMounted = false;
+    };
   }, [page, selectedFilters]);
 
   return (
