@@ -52,10 +52,14 @@ const Categories = () => {
       size_ids: [],
     }));
 
-    Object.keys(filterData).forEach((filterType) => {
-      selectedFilters[filterType + "_ids"].forEach((_, index) => {
-        handleCheckboxToggle(filterData[filterType][index].name);
-      });
+    Object.entries(selectedFilters).forEach(([filterType, filterArray]) => {
+      console.log(filterType, filterArray);
+      if (Array.isArray(filterArray)) {
+        filterArray.forEach((item) => {
+          console.log(filterData[filterType.slice(0, -4)][item].name, item);
+          handleCheckboxToggle(filterData[filterType.slice(0, -4)][item - 1].name);
+        });
+      }
     });
   };
 

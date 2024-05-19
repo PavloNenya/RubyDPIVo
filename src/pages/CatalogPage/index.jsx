@@ -19,7 +19,7 @@ import CardSkeleton from "../../components/Skeletons/CardSkeleton";
 import "./index.scss";
 
 const CatalogPage = () => {
-  const { page, type } = useParams();
+  const { page } = useParams();
   const [isLoading, setIsLoading] = useState(false);
   const [products, setProducts] = useState([]);
   const [totalPages, setTotalPages] = useState(1);

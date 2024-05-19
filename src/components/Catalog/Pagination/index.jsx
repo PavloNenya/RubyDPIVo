@@ -5,7 +5,7 @@ import propTypes from "prop-types";
 import btnBack from "../../../assets/img/icons/btn-back.svg";
 
 const Pagination = ({ totalPages }) => {
-  const { page, type } = useParams();
+  const { page } = useParams();
   const { t } = useTranslation();
 
   return (
