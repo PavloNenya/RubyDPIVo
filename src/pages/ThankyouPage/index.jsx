@@ -1,9 +1,5 @@
-import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Cookies from "js-cookie";
 import { useTranslation } from "react-i18next";
-
-import { AppContext } from "../../store/context";
 
 import backToHome from "../../assets/img/checkout/backToHome.svg";
 
@@ -11,27 +7,6 @@ import "./index.scss";
 
 export const ThankyouPage = () => {
   const { t } = useTranslation();
-  const { selectedProduct, setSelectedProduct } = useContext(AppContext);
-
-  const handleTotalSum = () => {
-    let resSum = 0;
-
-    selectedProduct.forEach((product) => {
-      resSum += product.price * product.quantity;
-    });
-
-    return resSum;
-  };
-
-  useEffect(() => {
-    const selectedProductFromCookie = Cookies.get("selectedProduct");
-
-    console.log(selectedProductFromCookie);
-
-    if (selectedProductFromCookie) {
-      setSelectedProduct(JSON.parse(selectedProductFromCookie));
-    }
-  }, [setSelectedProduct]);
 
   return (
     <main className="page">
@@ -44,39 +19,17 @@ export const ThankyouPage = () => {
                 <div className="thankyou__infoblock-top">
                   <div className="thankyou__subtitle">
                     <p>{t("thankyou.order")} #17150810</p>
-                    <p className="thankyou__sub title-5">{t("thankyou.details")}</p>
+                    <p className="thankyou__sub title-5">
+                      {t("thankyou.details")}
+                    </p>
                   </div>
                 </div>
+
+                <hr className="thankyou__infoblock-line" />
 
                 <Link to="/" className="thankyou__backhome">
                   <img src={backToHome} alt="" />
                 </Link>
-
-                <hr className="thankyou__infoblock-line" />
-                {selectedProduct.map((product) => (
-                  <div key={product.id} className="thankyou__infoblock-item">
-                    <img
-                      className="thankyou__infoblock-item-img"
-                      src={`http://localhost:9091/api/images/${product.main_photo_id}`}
-                      alt=""
-                    />
-                    <div className="thankyou__infoblock-item-information">
-                      <div className="thankyou__infoblock-item-top">
-                        <p className="card__producer title-5">{product.producer.name}</p>
-                        <h4 className="card__title title-4">{product.name}</h4>
-                      </div>
-                      <div className="thankyou__infoblock-item-bottom">
-                        <h4 className="card__title title-4">${product.price}</h4>
-                        <p className="card__producer title-5">Size:{` ${product.selectedSize.size_name}`}</p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-                <hr className="thankyou__infoblock-line" />
-                <div className="thankyou__infoblock-wrapperinfo">
-                  <h4 className="thankyou__infoblock-text">Total:</h4>
-                  <h4 className="thankyou__infoblock-text">${handleTotalSum()}</h4>
-                </div>
               </div>
             </div>
           </div>

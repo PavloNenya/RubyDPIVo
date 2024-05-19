@@ -13,7 +13,7 @@ import "./index.scss";
 
 const FavoritePage = () => {
   const { t } = useTranslation();
-  const { products, likedProducts, setLikedProducts } = useContext(AppContext);
+  const { likedProducts, setLikedProducts } = useContext(AppContext);
 
   useEffect(() => {
     setLikedProducts([]);
@@ -31,14 +31,14 @@ const FavoritePage = () => {
           <div className="products__main">
             <div className="products__title-wrapper">
               <h4 className="products__title">{t("favourite.title")}</h4>
-              <span className="products__subtitle title-5">{products.length}</span>
+              <span className="products__subtitle title-5">
+                {likedProducts.length}
+              </span>
             </div>
             <div className="products__content">
               <div className="products__cards">
                 {likedProducts.map((product) => (
-                  <Link className="products__card" to={`/catalog/product/${product.id}`} key={product.id}>
-                    <ProductCard product={product} />
-                  </Link>
+                  <ProductCard key={product.id} product={product} />
                 ))}
               </div>
             </div>
