@@ -1,0 +1,60 @@
+.profile {
+  &__container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--color-secondary-grey);
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__form-group {
+    margin-bottom: 15px;
+  }
+
+  &__label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__button {
+    &.button-wrapper {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+}

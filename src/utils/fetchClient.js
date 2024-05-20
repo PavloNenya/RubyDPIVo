@@ -35,5 +35,6 @@ export const client = {
   get: (url) => request(url),
   post: (url, data) => request(url, "POST", data),
   patch: (url, data) => request(url, "PATCH", data),
+  put: (url, data) => request(url, "PUT", data),
   delete: (url) => request(url, "DELETE"),
 };
