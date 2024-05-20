@@ -5,6 +5,7 @@ import { AppContext } from "../../store/context";
 
 import { addFavorite, deleteFavorite } from "../../api/favorite";
 
+import heartIcon from "../../assets/img/icons/heart.svg";
 import pressIcon from "../../assets/img/icons/heart-pressed.svg";
 
 import shoesImg from "../../assets/img/categories/shoes.png";
@@ -58,15 +59,21 @@ const ProductCard = ({ type, product, cardWidth, classType = "goods" }) => {
 
   return (
     <div className={`${classType}__card card`} style={{ width: cardWidth }}>
-      <img
-        className="card__image"
-        src={
-          type !== "category"
-            ? `http://localhost:9091/api/images/${product.main_photo_id}`
-            : photosOfCategory[product.id - 1]
-        }
-        alt="img-of-item"
-      />
+      <Link
+        className="products__card"
+        to={`/catalog/product/${product.id}`}
+        key={product.id}
+      >
+        <img
+          className="card__image"
+          src={
+            type !== "category"
+              ? `http://localhost:9091/api/images/${product.main_photo_id}`
+              : photosOfCategory[product.id - 1]
+          }
+          alt="img-of-item"
+        />
+      </Link>
       <div className="infolabel infolabel-left">
         {type !== "category" ? "new" : product?.infolabel}
         <img
@@ -76,19 +83,10 @@ const ProductCard = ({ type, product, cardWidth, classType = "goods" }) => {
         />
       </div>
 
-      {console.log(isProductLiked())}
-
       {type !== "category" ? (
         <div className="button-like">
           <button onClick={handleButtonFavorite} className="button-like__icon">
-            <img
-              src={
-                isProductLiked()
-                  ? pressIcon
-                  : `http://localhost:9091/api/images?name=heart-svg.svg`
-              }
-              alt=""
-            />
+            <img src={isProductLiked() ? pressIcon : heartIcon} alt="" />
           </button>
         </div>
       ) : null}
@@ -100,12 +98,12 @@ const ProductCard = ({ type, product, cardWidth, classType = "goods" }) => {
       >
         <div className="card__information">
           <div className="card__description">
-            <div href="/" className="card__title title-4">
-              {product.description}
-            </div>
             {type !== "category" ? (
               <p className="card__producer title-5">{product.producer.name}</p>
             ) : null}
+            <div href="/" className="card__title title-4">
+              {product.name}
+            </div>
           </div>
 
           {type !== "category" ? (

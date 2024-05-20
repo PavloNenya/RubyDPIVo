@@ -53,7 +53,16 @@ export const ContextProvider = ({ children }) => {
       buttonActive,
       setButtonActive,
     }),
-    [buttonActive, errorMessage, isAuth, isLoading, likedProducts, products, selectedProduct, selectedSize],
+    [
+      buttonActive,
+      errorMessage,
+      isAuth,
+      isLoading,
+      likedProducts,
+      products,
+      selectedProduct,
+      selectedSize,
+    ]
   );
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

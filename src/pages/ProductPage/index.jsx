@@ -29,7 +29,13 @@ export const ProductPage = () => {
   const [productById, setProductById] = useState({});
 
   const { t } = useTranslation();
-  const { products, selectedProduct, setSelectedProduct, selectedSize, setSelectedSize } = useContext(AppContext);
+  const {
+    products,
+    selectedProduct,
+    setSelectedProduct,
+    selectedSize,
+    setSelectedSize,
+  } = useContext(AppContext);
 
   const { productId } = useParams();
 
@@ -63,7 +69,9 @@ export const ProductPage = () => {
   };
 
   const handleAddButtonItem = () => {
-    const existingProductIndex = selectedProduct.findIndex((item) => item.id === productId);
+    const existingProductIndex = selectedProduct.findIndex(
+      (item) => item.id === productId
+    );
 
     let updatedSelectedProduct = [...selectedProduct];
 
@@ -84,8 +92,11 @@ export const ProductPage = () => {
   };
 
   const images = useMemo(
-    () => (Array.isArray(productById?.images) ? [...productById.images] : []),
-    [productById.images],
+    () =>
+      Array.isArray(productById?.images)
+        ? [productById.main_photo_id, ...productById.images]
+        : [],
+    [productById.images, productById.main_photo_id]
   );
 
   const tabs = [
@@ -112,20 +123,29 @@ export const ProductPage = () => {
               <div className="product-page__top-wrapper">
                 <BackBtn />
 
-                <ImagesSlider images={images} />
+                <ImagesSlider productById={productById} images={images} />
 
                 <div className="product-page__top-right">
                   <div className="product-page__information">
                     <div className="product-page__description">
-                      <p className="product-page__producer title-5">{productById?.producer?.name}</p>
-                      <a href="/url-до-сторінки-з-товаром-4" className="product-page__title">
+                      <p className="product-page__producer title-5">
+                        {productById?.producer?.name}
+                      </p>
+                      <a
+                        href="/url-до-сторінки-з-товаром-4"
+                        className="product-page__title"
+                      >
                         {productById?.name}
                       </a>
-                      <p className="product-page__sex">{productById?.category?.name}</p>
+                      <p className="product-page__sex">
+                        {productById?.category?.name}
+                      </p>
                     </div>
 
                     <div className="product-page__price">
-                      <p className="product-page__price-cost">{productById?.price && `${productById.price}$`}</p>
+                      <p className="product-page__price-cost">
+                        {productById?.price && `${productById.price}$`}
+                      </p>
                       <span className="product-page__price-cost-sale title-5">
                         {productById?.price && `${productById.price + 120}$`}
                       </span>
@@ -139,8 +159,15 @@ export const ProductPage = () => {
                           <div
                             key={productInstanceInfo.size_name}
                             className={`product-page__size ${
-                              selectedSize.size_name === productInstanceInfo.size_name ? "checked" : ""
-                            } ${productInstanceInfo.present === 823 ? "disabled" : ""}`}
+                              selectedSize.size_name ===
+                              productInstanceInfo.size_name
+                                ? "checked"
+                                : ""
+                            } ${
+                              productInstanceInfo.present === 823
+                                ? "disabled"
+                                : ""
+                            }`}
                             onClick={() => {
                               if (productInstanceInfo.present !== 823) {
                                 setZeroSizes(false);
@@ -158,7 +185,10 @@ export const ProductPage = () => {
                           className={`button button_lg button_default button_authorization ${
                             isClicked ? "clicked" : ""
                           }`}
-                          onClick={() => !zeroSizes && (handleAddButtonItem(), setIsClicked(true))}
+                          onClick={() =>
+                            !zeroSizes &&
+                            (handleAddButtonItem(), setIsClicked(true))
+                          }
                         >
                           {isClicked ? "Added to cart" : "Buy Now"}
 
@@ -175,19 +205,37 @@ export const ProductPage = () => {
                       </div>
 
                       <div className="product-page__dropdowns">
-                        <select className="product-page__ship-wrapper" id="size">
-                          <option className="product-page__ship" value="Shipping & Payment">
+                        <select
+                          className="product-page__ship-wrapper"
+                          id="size"
+                        >
+                          <option
+                            className="product-page__ship"
+                            value="Shipping & Payment"
+                          >
                             {t("product.shipping")}
                           </option>
-                          <option className="product-page__ship" value="Check avaibility in store">
+                          <option
+                            className="product-page__ship"
+                            value="Check avaibility in store"
+                          >
                             2
                           </option>
                         </select>
-                        <select className="product-page__ship-wrapper" id="size">
-                          <option className="product-page__ship" value="Shipping & Payment">
+                        <select
+                          className="product-page__ship-wrapper"
+                          id="size"
+                        >
+                          <option
+                            className="product-page__ship"
+                            value="Shipping & Payment"
+                          >
                             {t("product.avaibility")}
                           </option>
-                          <option className="product-page__ship" value="Check avaibility in store">
+                          <option
+                            className="product-page__ship"
+                            value="Check avaibility in store"
+                          >
                             2
                           </option>
                         </select>
@@ -207,9 +255,14 @@ export const ProductPage = () => {
                     <div className="product-page__tabs-buttons-wrapper">
                       <div className="product-page__tabs-buttons">
                         {tabs.map((tab, index) => (
-                          <div key={index} className="product-page__tabs-button">
+                          <div
+                            key={index}
+                            className="product-page__tabs-button"
+                          >
                             <div
-                              className={`${"product-page__tablink"} ${index === activeTab ? "active" : ""}`}
+                              className={`${"product-page__tablink"} ${
+                                index === activeTab ? "active" : ""
+                              }`}
                               onClick={() => setActiveTab(index)}
                             >
                               {tab.title}

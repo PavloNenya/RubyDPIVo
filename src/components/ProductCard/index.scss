@@ -8,12 +8,17 @@
   box-sizing: border-box;
   // width: 212px;
 
-  .card__title {
+  &__title {
+    width: 100%;
     flex-wrap: wrap;
-    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
+
+  &__title:hover {
+    text-decoration: underline;
+  }
+
   &__image {
     width: 100%;
     aspect-ratio: 4/5;

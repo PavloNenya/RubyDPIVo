@@ -43,7 +43,9 @@ export const ImagesSlider = ({ images }) => {
         {images.slice(0, 6).map((image, index) => (
           <img
             key={index}
-            className={`product-page__mini-photo ${index === currentIndex ? "selected" : ""}`}
+            className={`product-page__mini-photo ${
+              index === currentIndex ? "selected" : ""
+            }`}
             src={`http://localhost:9091/api/images/${image}`}
             alt={`mini-photo-${index}`}
             onClick={() => handleImageClick(index)}
@@ -63,11 +65,17 @@ export const ImagesSlider = ({ images }) => {
         </div>
 
         <div className="product-page__togles">
-          <button className="product-page__toggle-button" onClick={handlePrevClick}>
+          <button
+            className="product-page__toggle-button"
+            onClick={handlePrevClick}
+          >
             <img className="product-page__togle" src={arrowSlider} alt="" />
           </button>
 
-          <button className="product-page__toggle-button left" onClick={handleNextClick}>
+          <button
+            className="product-page__toggle-button left"
+            onClick={handleNextClick}
+          >
             <img className="product-page__togle" src={arrowSlider} alt="" />
           </button>
         </div>

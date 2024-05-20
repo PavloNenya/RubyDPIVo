@@ -1,5 +1,4 @@
 import { useContext, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import { AppContext } from "../../store/context";
@@ -37,13 +36,14 @@ const FavoritePage = () => {
             </div>
             <div className="products__content">
               <div className="products__cards">
-                {likedProducts.map((product) => (
-                  <ProductCard
-                    key={product.id}
-                    product={product}
-                    classType="products"
-                  />
-                ))}
+                {Array.isArray(likedProducts) &&
+                  likedProducts.map((product) => (
+                    <ProductCard
+                      key={product.id}
+                      product={product}
+                      classType="products"
+                    />
+                  ))}
               </div>
             </div>
           </div>

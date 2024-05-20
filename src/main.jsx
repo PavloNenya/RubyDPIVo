@@ -18,6 +18,7 @@ import RegistrationPage from "./pages/RegistrationPage";
 import SignUpPage from "./pages/SignUpPage";
 
 import "./i18n";
+import UserProfile from "./pages/UserProfile";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <ContextProvider>
@@ -43,6 +44,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                 <Route path="favourite" element={<FavoritePage />} />
 
                 <Route path="basket" element={<BasketPage />} />
+
+                <Route path="profile" element={<UserProfile />} />
 
                 <Route path="checkout" element={<CheckoutPage />} />
 
