@@ -310,3 +310,7 @@
 .disabled {
   opacity: 0.3;
 }
+
+.tab-content {
+  grid-column: 1 / -1;
+}

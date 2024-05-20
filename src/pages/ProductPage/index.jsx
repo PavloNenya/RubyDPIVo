@@ -15,6 +15,7 @@ import TabsContent from "./Components/Content";
 import ProductSlider from "../../components/ProductSlider";
 
 import "./index.scss";
+import { getMaterialAndCareOfProduct } from "../../api/products";
 
 function generateRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -27,6 +28,7 @@ export const ProductPage = () => {
   const [isClicked, setIsClicked] = useState(false);
   const [productInstancesAndSizes, setProductInstancesAndSizes] = useState([]);
   const [productById, setProductById] = useState({});
+  const [productMaterialAndCare, setProductMaterialAndCare] = useState({});
 
   const { t } = useTranslation();
   const {
@@ -44,6 +46,12 @@ export const ProductPage = () => {
       setProductInstancesAndSizes(data);
     });
   }, [productId]);
+
+  useEffect(() => {
+    getMaterialAndCareOfProduct(productById?.category?.id).then((data) =>
+      setProductMaterialAndCare(data)
+    );
+  }, [productById?.category?.id]);
 
   useEffect(() => {
     getProductById(productId).then((data) => setProductById(data));
@@ -106,7 +114,7 @@ export const ProductPage = () => {
     },
     {
       title: "Material & Care",
-      content: <TabsContent text={"Tabs 2"} />,
+      content: <TabsContent text={productMaterialAndCare.name} />,
     },
     {
       title: "Rewiews (17)",
