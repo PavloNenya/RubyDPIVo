@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./index.scss";
 import { getOldProfile, updateProfile } from "../../api/profile";
+import { AppContext } from "../../store/context";
 
 const UserProfile = () => {
-  const [user, setUser] = useState({});
+  const { user, setUser } = useContext(AppContext);
   const [updateUser, setUpdateUser] = useState({});
   const [isEditing, setIsEditing] = useState(false);
 
@@ -14,7 +15,7 @@ const UserProfile = () => {
         setUpdateUser(data);
       })
       .catch(() => setUser({}));
-  }, []);
+  }, [setUser]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

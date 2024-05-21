@@ -12,6 +12,7 @@ import meestIcon from "../../assets/img/checkout/meest.svg";
 
 import "./index.scss";
 import { addOrder } from "../../api/order";
+import { getOldProfile } from "../../api/profile";
 
 export const CheckoutPage = () => {
   const [step, setStep] = useState(1);
@@ -20,7 +21,19 @@ export const CheckoutPage = () => {
   const [finish, setFinish] = useState(false);
 
   const { t } = useTranslation();
-  const { selectedProduct, setSelectedProduct } = useContext(AppContext);
+  const { user, setUser, selectedProduct, setSelectedProduct } =
+    useContext(AppContext);
+
+  useEffect(() => {
+    getOldProfile()
+      .then((data) => {
+        setUser(data);
+      })
+      .catch(() => setUser({}));
+  }, [setUser]);
+
+  console.log(user);
+
   const {
     register,
     handleSubmit,
@@ -147,6 +160,7 @@ export const CheckoutPage = () => {
                         className={`form__input ${
                           errors.firstName ? "error-input" : ""
                         }`}
+                        value={user.name}
                         placeholder={t("checkout.fname")}
                         {...register("firstName", {
                           required: true,
@@ -176,6 +190,7 @@ export const CheckoutPage = () => {
                       <input
                         type="text"
                         id="lastName"
+                        value={user.surname}
                         className={`form__input ${
                           errors.lastName ? "error-input" : ""
                         }`}
@@ -208,6 +223,7 @@ export const CheckoutPage = () => {
                       <input
                         type="tel"
                         id="phoneNumber"
+                        value={user.phone_number}
                         className={`form__input ${
                           errors.phoneNumber ? "error-input" : ""
                         }`}
@@ -560,7 +576,9 @@ export const CheckoutPage = () => {
                         <p className="card__producer title-5">
                           {product.productById?.producer.name}
                         </p>
-                        <h4 className="card__title title-4">{product.name}</h4>
+                        <h4 className="card__title title-4">
+                          {product.productById?.name}
+                        </h4>
                       </div>
                       <div className="checkout__infoblock-item-bottom">
                         <p className="card__producer title-5">

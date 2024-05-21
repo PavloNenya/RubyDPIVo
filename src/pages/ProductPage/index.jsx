@@ -172,12 +172,12 @@ export const ProductPage = () => {
                                 ? "checked"
                                 : ""
                             } ${
-                              productInstanceInfo.present === 823
+                              productInstanceInfo.present === 0
                                 ? "disabled"
                                 : ""
                             }`}
                             onClick={() => {
-                              if (productInstanceInfo.present !== 823) {
+                              if (productInstanceInfo.present !== 0) {
                                 setZeroSizes(false);
                                 handleSizeClick(productInstanceInfo);
                               }

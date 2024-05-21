@@ -13,6 +13,7 @@ export const ContextProvider = ({ children }) => {
   const [likedProducts, setLikedProducts] = useState([]);
   const [isAuth, setIsAuth] = useState(false);
   const [buttonActive, setButtonActive] = useState(false);
+  const [user, setUser] = useState({});
 
   useEffect(() => {
     setIsLoading(true);
@@ -52,6 +53,8 @@ export const ContextProvider = ({ children }) => {
       setIsAuth,
       buttonActive,
       setButtonActive,
+      user,
+      setUser,
     }),
     [
       buttonActive,
@@ -62,6 +65,7 @@ export const ContextProvider = ({ children }) => {
       products,
       selectedProduct,
       selectedSize,
+      user,
     ]
   );
 
