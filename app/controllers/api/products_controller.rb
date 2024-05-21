@@ -212,14 +212,18 @@ class Api::ProductsController < ApplicationController
       },
       name: product.name,
       description: product.description,
-      images: product.images.map do |image|
-        {
-          id: image.id,
-          url: Rails.application.routes.url_helpers.rails_blob_url(image, only_path: true)
-        }
-      end,
+      # images: product.images.map do |image|
+      #   {
+      #     id: image.id,
+      #     url: Rails.application.routes.url_helpers.rails_blob_url(image, only_path: true)
+      #   }
+      # end,
+      images:
+        product.images.map do |image|
+          image.id
+        end,
       price: product.price,
-      main_photo_id: product.main_photo_id
+      main_photo_id: product.main_photo.id
     }
   end
 
