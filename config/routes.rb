@@ -29,6 +29,9 @@ Rails.application.routes.draw do
     post 'carts/:user_id', to: 'shopping_cart#create'
     delete 'carts/:id', to: 'shopping_cart#delete'
 
+    get 'products/instances', to: 'product_instances#index'
+    get 'products/instances/:id', to: 'product_instances#show'
+
     post 'products/filter', to: 'products#filter'
     get 'products/:id', to: 'products#show'
     get 'products', to: 'products#index'
@@ -36,6 +39,9 @@ Rails.application.routes.draw do
     put 'products/:id', to: 'products#update'
     post 'products', to: 'products#create'
     delete 'products/:id', to: 'products#delete'
+    get 'products/:id/instances', to: 'products#instances_product_page'
+
+
 
     get 'producers/:id', to: 'producers#show'
     get 'producers/name/:name', to: 'producers#name'

@@ -3,6 +3,7 @@ class ProductInstance < ApplicationRecord
   belongs_to :size
   belongs_to :product
 
+  validates :quantity, presence: true, numericality: { greater_than_or_equal_to: 0 }
   def self.ransackable_associations(auth_object = nil)
     @ransackable_associations ||= reflect_on_all_associations.map { |a| a.name.to_s }
   end
