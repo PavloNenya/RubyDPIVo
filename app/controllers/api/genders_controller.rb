@@ -1,9 +1,16 @@
-class Api::GenderController < ApplicationController
+class Api::GendersController < ApplicationController
   def index
-
+    @genders = Gender.all
+    render json: @genders
   end
 
   def show
+    @gender = Gender.find_by(id: params[:id])
+    if @gender
+      render json: @gender
+    else
+      render json: { error: "Gender not found" }, status: :not_found
+    end
   end
 
   def create

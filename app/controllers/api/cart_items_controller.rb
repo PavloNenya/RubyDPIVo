@@ -1,4 +1,4 @@
-class Api::CartItemController < ApplicationController
+class Api::CartItemsController < ApplicationController
   def index
     @cart_items = CartItem.all
     render json: @cart_items

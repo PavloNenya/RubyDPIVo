@@ -1,13 +1,13 @@
-class Api::ProductController < ApplicationController
+class Api::ProductsController < ApplicationController
   def index
     @products = Product.all
-    render json: @products
+    render json: @products.map { |product| product_to_json(product) }
   end
 
   def name
     @product = Product.find_by(name: params[:name])
     if @product
-      render json: @product
+      render json: product_to_json(@product)
     else
       render json: { error: "Product not found" }, status: :not_found
     end
@@ -17,7 +17,7 @@ class Api::ProductController < ApplicationController
     @product = Product.new(product_params)
 
     if @product.save
-      render json: @product, status: :created
+      render json: product_to_json(@product), status: :created
     else
       render json: @product.errors, status: :unprocessable_entity
     end
@@ -31,7 +31,7 @@ class Api::ProductController < ApplicationController
     @product = Product.find_by(id: params[:id])
 
     if @product.update(product_params)
-      render json: @product, status: :created
+      render json: product_to_json(@product), status: :created
     else
       render json: @product.errors, status: :unprocessable_entity
     end
@@ -89,7 +89,7 @@ class Api::ProductController < ApplicationController
   def show
     @product = Product.find_by(id: params[:id])
     if @product
-      render json: @product
+      render json: product_to_json(@product)
     else
       render json: { error: "Product not found" }, status: :not_found
     end
@@ -100,4 +100,31 @@ class Api::ProductController < ApplicationController
     @product.destroy
     head :no_content
   end
+
+  private
+
+  def product_to_json(product)
+    {
+      id: product.id,
+      producer: {
+        id: product.producer.id,
+        name: product.producer.name
+      },
+      category: {
+        id: product.category.id,
+        name: product.category.name
+      },
+      gender: {
+        id: product.gender.id,
+        name: product.gender.name
+      },
+      name: product.name,
+      description: product.description,
+      images: [],
+      # images: product.images.map(&:id), # Передбачається використання Active Storage
+      price: product.price,
+      main_photo_id: product.main_photo_id
+    }
+  end
+
 end

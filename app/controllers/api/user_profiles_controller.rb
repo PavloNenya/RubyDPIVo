@@ -1,4 +1,4 @@
-class Api::UserProfileController < ApplicationController
+class Api::UserProfilesController < ApplicationController
   def index
     @users = UserProfile.all
     render json: @users

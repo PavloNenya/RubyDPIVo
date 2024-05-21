@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "3.2.2"
+ruby "3.2.3"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3", ">= 7.1.3.2"
@@ -10,6 +10,10 @@ gem "sprockets-rails"
 
 # Use postgresql as the database for Active Record
 gem "pg"
+
+gem 'faker', '~> 2.20'
+
+gem 'rack-cors'
 
 # Pagination
 gem 'kaminari'
