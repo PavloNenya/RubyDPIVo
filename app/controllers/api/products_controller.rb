@@ -1,5 +1,7 @@
 class Api::ProductsController < ApplicationController
 
+  include Api::ProductHelper
+
   skip_before_action :verify_authenticity_token, only: [:filter]
   def index
     @products = Product.all
@@ -195,36 +197,6 @@ class Api::ProductsController < ApplicationController
 
   private
 
-  def product_to_json(product)
-    {
-      id: product.id,
-      producer: {
-        id: product.producer.id,
-        name: product.producer.name
-      },
-      category: {
-        id: product.category.id,
-        name: product.category.name
-      },
-      gender: {
-        id: product.gender.id,
-        name: product.gender.name
-      },
-      name: product.name,
-      description: product.description,
-      # images: product.images.map do |image|
-      #   {
-      #     id: image.id,
-      #     url: Rails.application.routes.url_helpers.rails_blob_url(image, only_path: true)
-      #   }
-      # end,
-      images:
-        product.images.map do |image|
-          image.id
-        end,
-      price: product.price,
-      main_photo_id: product.main_photo.id
-    }
-  end
+
 
 end

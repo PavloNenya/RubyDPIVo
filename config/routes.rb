@@ -11,6 +11,10 @@ Rails.application.routes.draw do
     delete 'cart_items/:id', to: 'cart_items#delete'
     # get 'cart_items/create'
 
+
+    get 'users/wishlist', to: 'users#get_wishlist'
+    get 'users/:id/wishlist', to: 'users#get_id_wishlist'
+
     get 'user_profiles', to: 'user_profiles#index'
     get 'user_profiles/show' , to: 'user_profiles#show'
     # get 'user_profiles/create', to: 'user_profiles#create'
@@ -21,6 +25,7 @@ Rails.application.routes.draw do
     delete 'genders/:id', to: 'genders#delete'
 
     get 'users/:id', to: 'users#show'
+    get 'users/current/user', to: 'users#current'
     get 'users', to: 'users#index'
 
     get 'carts/:id', to: 'shopping_cart#show'
@@ -73,12 +78,9 @@ Rails.application.routes.draw do
     resources :sizes, only: [:index]
     resources :images, only: [:show]
 
-    devise_scope :user do
-      post 'users', to: 'user#create'
-      post 'users/login', to: 'user#login'
-    end
-    devise_for :users, path_names: { sign_up: 'register', sign_in: 'login' }
-    delete 'logout', to: 'sessions#destroy'
+
+    devise_for :users, path_names: { sign_up: 'register', sign_in: 'login', sign_out: 'logout' }
+    # delete 'logout', to: 'sessions#destroy'
   end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

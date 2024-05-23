@@ -6,6 +6,9 @@ class Product < ApplicationRecord
   has_many_attached :images
   has_one_attached :main_photo
 
+  has_many :wishlists
+  has_many :users, through: :wishlists
+
   def self.ransackable_associations(auth_object = nil)
     @ransackable_associations ||= reflect_on_all_associations.map { |a| a.name.to_s }
   end

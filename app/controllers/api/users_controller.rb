@@ -1,4 +1,6 @@
 class Api::UsersController < ApplicationController
+
+  include Api::ProductHelper
   def index
     @users = User.all
     render json: @users
@@ -6,6 +8,15 @@ class Api::UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
+    if @user
+      render json: @user
+    else
+      render json: { error: "User not found" }, status: :not_found
+    end
+  end
+
+  def current
+    @user = current_user
     if @user
       render json: @user
     else
@@ -26,18 +37,47 @@ class Api::UsersController < ApplicationController
       end
     end
   end
-  def login
-    @existing = User.find_by(email: params[:email], password: params[:password])
-    if @existing
-      render json: @existing, status: :found
-    else
-      render json: '{"error":"User not registered!"}', status: :conflict
-    end
-  end
+
+  # def login
+  #   @existing = User.find_by(username: params[:username], password: params[:password])
+  #
+  #   # @existing = User.find_by(email: params[:email], password: params[:password])
+  #   if @existing
+  #     puts "Existing =" + @existing.to_s
+  #     render json: @existing, status: :found
+  #   else
+  #     render json: '{"error":"User not registered!"}', status: :conflict
+  #   end
+  # end
 
   def delete
     @user = User.find(params[:id])
     @user.destroy
     head :no_content
+  end
+
+  def get_wishlist
+    @user = current_user
+    puts "CURRENT USER = " + @user.to_s
+    if @user.nil?
+      render json: []
+    else
+      @products = @user.favourite_products
+      render json: product_to_json(@product)
+    end
+  end
+
+  def get_id_wishlist
+    @user = User.find_by(id: params[:id])
+    if @user.nil?
+      render json: { error: "User not found" }, status: :not_found
+    else
+      @products = @user.favourite_products
+      if @products.empty?
+        render json: []
+      else
+        render json: @products.map { |product| product_to_json(product) }
+      end
+    end
   end
 end
