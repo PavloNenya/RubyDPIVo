@@ -1,6 +1,7 @@
 class Api::UsersController < ApplicationController
-
+  before_action :authenticate_user!
   include Api::ProductHelper
+  before_action :authenticate_request
   def index
     @users = User.all
     render json: @users
@@ -64,6 +65,21 @@ class Api::UsersController < ApplicationController
     else
       @products = @user.favourite_products
       render json: product_to_json(@product)
+    end
+  end
+
+  def delete_wishlist_product_id
+    @user = current_user
+    if @user
+      product = Product.find_by(id: params[:id])
+      if product
+        @user.favourite_products.delete(product)
+        render json: { message: "Product removed from wishlist successfully" }, status: :ok
+      else
+        render json: { error: "Product not found" }, status: :not_found
+      end
+    else
+      render json: { error: "User not authenticated" }, status: :unauthorized
     end
   end
 

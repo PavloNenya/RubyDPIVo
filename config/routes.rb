@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  devise_for :users, ActiveAdmin::Devise.config
+  # devise_for :admin_users, ActiveAdmin::Devise.config
+  # devise_for :users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+
+
+
+
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   namespace :api do
 
@@ -11,9 +16,10 @@ Rails.application.routes.draw do
     delete 'cart_items/:id', to: 'cart_items#delete'
     # get 'cart_items/create'
 
-
     get 'users/wishlist', to: 'users#get_wishlist'
     get 'users/:id/wishlist', to: 'users#get_id_wishlist'
+
+    delete 'users/wishlist/:id', to: 'users#delete_wishlist_product_id'
 
     get 'user_profiles', to: 'user_profiles#index'
     get 'user_profiles/show' , to: 'user_profiles#show'
@@ -79,8 +85,13 @@ Rails.application.routes.draw do
     resources :images, only: [:show]
 
 
-    devise_for :users, path_names: { sign_up: 'register', sign_in: 'login', sign_out: 'logout' }
-    # delete 'logout', to: 'sessions#destroy'
+    post 'auth/register', to: 'registrations#create'
+
+    post 'auth/login', to: 'registrations#login'
+
+    # devise_for :users, path: 'auth', path_names: { sign_up: 'register', sign_in: 'login', sign_out: 'logout'}
+    # devise_for :users, path_names: { sign_up: 'register', sign_in: 'login', sign_out: 'logout' }
+
   end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

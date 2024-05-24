@@ -1,5 +1,7 @@
 class Api::ImagesController < ApplicationController
 
+  skip_before_action :authenticate_request, only: [:show]
+
   def show
     image = ActiveStorage::Blob.find_by(id: params[:id])
     if image

@@ -2,7 +2,6 @@ class Api::ProductsController < ApplicationController
 
   include Api::ProductHelper
 
-  skip_before_action :verify_authenticity_token, only: [:filter]
   def index
     @products = Product.all
     render json: @products.map { |product| product_to_json(product) }

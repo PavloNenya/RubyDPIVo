@@ -15,6 +15,8 @@ gem 'faker', '~> 2.20'
 
 gem 'rack-cors'
 
+gem 'jwt'
+
 # Pagination
 gem 'kaminari'
 
