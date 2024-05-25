@@ -77,6 +77,29 @@ class Api::RegistrationsController < ApplicationController
     end
   end
 
+  def logout
+    authorization_header = request.headers['Authorization']
+
+    # Перевіряємо, чи присутній заголовок Authorization в запиті
+    unless authorization_header
+      render json: { error: "Authorization header is missing" }, status: :unauthorized
+      return
+    end
+
+    # Виділяємо токен JWT з заголовка Authorization
+    token = authorization_header.split(' ').last
+    puts "LOGOUT TOKEN + " + token.to_s
+    # Викликаємо метод decode з модуля JsonWebTokenHelper для розкодування токену
+    decoded_token = Api::JsonWebTokenHelper.decode(token)
+
+    # Перевіряємо, чи токен був успішно розкодований
+    if decoded_token
+      render json: { accessToken: token }, status: :ok
+    else
+      render json: { error: "Invalid JWT token" }, status: :unauthorized
+    end
+  end
+
   private
 
   def user_params

@@ -1,7 +1,7 @@
 class Api::UsersController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   include Api::ProductHelper
-  before_action :authenticate_request
+  # before_action :authenticate_request
   def index
     @users = User.all
     render json: @users
@@ -17,7 +17,7 @@ class Api::UsersController < ApplicationController
   end
 
   def current
-    @user = current_user
+    @user = @current_user
     if @user
       render json: @user
     else
@@ -58,23 +58,39 @@ class Api::UsersController < ApplicationController
   end
 
   def get_wishlist
-    @user = current_user
+    @user = @current_user
     puts "CURRENT USER = " + @user.to_s
     if @user.nil?
       render json: []
     else
       @products = @user.favourite_products
-      render json: product_to_json(@product)
+      render json: @products.map { |product| product_to_json(product) }
     end
   end
 
   def delete_wishlist_product_id
-    @user = current_user
+    @user = @current_user
     if @user
       product = Product.find_by(id: params[:id])
       if product
         @user.favourite_products.delete(product)
         render json: { message: "Product removed from wishlist successfully" }, status: :ok
+      else
+        render json: { error: "Product not found" }, status: :not_found
+      end
+    else
+      render json: { error: "User not authenticated" }, status: :unauthorized
+    end
+  end
+
+  def add_wishlist_product_id
+    @user = @current_user
+    puts "CURRENT USER ADD WISHLIST PROD + #{@user}"
+    if @user
+      product = Product.find_by(id: params[:id])
+      if product
+        @user.favourite_products.append(product)
+        render json: { message: "Product added to wishlist successfully" }, status: :ok
       else
         render json: { error: "Product not found" }, status: :not_found
       end

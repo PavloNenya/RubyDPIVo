@@ -16,13 +16,11 @@ Rails.application.routes.draw do
     delete 'cart_items/:id', to: 'cart_items#delete'
     # get 'cart_items/create'
 
-    get 'users/wishlist', to: 'users#get_wishlist'
-    get 'users/:id/wishlist', to: 'users#get_id_wishlist'
-
-    delete 'users/wishlist/:id', to: 'users#delete_wishlist_product_id'
-
     get 'user_profiles', to: 'user_profiles#index'
     get 'user_profiles/show' , to: 'user_profiles#show'
+    get 'users/profiles/my', to: 'user_profiles#current_user_profile'
+    put 'users/profiles/:id', to: 'user_profiles#update'
+
     # get 'user_profiles/create', to: 'user_profiles#create'
 
     get 'genders/:id', to: 'genders#show'
@@ -30,9 +28,15 @@ Rails.application.routes.draw do
     post 'genders/create', to: 'genders#create'
     delete 'genders/:id', to: 'genders#delete'
 
+    get 'users/wishlist', to: 'users#get_wishlist'
+    get 'users/:id/wishlist', to: 'users#get_id_wishlist'
+    delete 'users/wishlist/:id', to: 'users#delete_wishlist_product_id'
+    post 'users/wishlist/:id', to: 'users#add_wishlist_product_id'
+
     get 'users/:id', to: 'users#show'
     get 'users/current/user', to: 'users#current'
     get 'users', to: 'users#index'
+
 
     get 'carts/:id', to: 'shopping_cart#show'
     get 'carts', to: 'shopping_cart#index'
@@ -51,8 +55,6 @@ Rails.application.routes.draw do
     post 'products', to: 'products#create'
     delete 'products/:id', to: 'products#delete'
     get 'products/:id/instances', to: 'products#instances_product_page'
-
-
 
     get 'producers/:id', to: 'producers#show'
     get 'producers/name/:name', to: 'producers#name'
@@ -86,8 +88,8 @@ Rails.application.routes.draw do
 
 
     post 'auth/register', to: 'registrations#create'
-
     post 'auth/login', to: 'registrations#login'
+    post 'auth/logout', to: 'registrations#logout'
 
     # devise_for :users, path: 'auth', path_names: { sign_up: 'register', sign_in: 'login', sign_out: 'logout'}
     # devise_for :users, path_names: { sign_up: 'register', sign_in: 'login', sign_out: 'logout' }
