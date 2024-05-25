@@ -1,4 +1,6 @@
 class Api::ColorsController < ApplicationController
+
+  before_action :authenticate_request
   def index
     @colors = Color.all
     render json: @colors

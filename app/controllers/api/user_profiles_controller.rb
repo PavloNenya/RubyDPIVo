@@ -1,4 +1,5 @@
 class Api::UserProfilesController < ApplicationController
+  before_action :authenticate_request
   def index
     @users = UserProfile.all
     render json: @users

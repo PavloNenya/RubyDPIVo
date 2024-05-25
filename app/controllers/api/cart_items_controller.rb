@@ -1,4 +1,6 @@
 class Api::CartItemsController < ApplicationController
+
+  before_action :authenticate_request
   def index
     @cart_items = CartItem.all
     render json: @cart_items

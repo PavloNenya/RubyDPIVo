@@ -1,4 +1,7 @@
 class Api::ProducersController < ApplicationController
+
+
+  before_action :authenticate_request
   def index
     @producers = Producer.all
     render json: @producers

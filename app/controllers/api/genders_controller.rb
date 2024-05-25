@@ -1,5 +1,7 @@
 class Api::GendersController < ApplicationController
 
+  before_action :authenticate_request
+
   def index
     @genders = Gender.all
     render json: @genders

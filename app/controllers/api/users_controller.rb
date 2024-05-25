@@ -1,4 +1,5 @@
 class Api::UsersController < ApplicationController
+  before_action :authenticate_request
   # before_action :authenticate_user!
   include Api::ProductHelper
   # before_action :authenticate_request

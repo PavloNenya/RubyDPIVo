@@ -1,4 +1,6 @@
 class Api::SizesController < ApplicationController
+
+  before_action :authenticate_request
   def index
     @sizes = Size.all
     render json: @sizes

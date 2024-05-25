@@ -1,4 +1,6 @@
 class Api::ProductInstancesController < ApplicationController
+
+  before_action :authenticate_request
   def index
     @product_instances = ProductInstance.all
     render json: @product_instances

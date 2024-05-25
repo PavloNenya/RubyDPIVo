@@ -40,8 +40,7 @@
 
 class Api::RegistrationsController < ApplicationController
 
-  skip_before_action :authenticate_request, only: [:create, :login]
-
+  # skip_before_action :authenticate_request, only: [:create, :login]
   include Api::JsonWebTokenHelper
 
   def create

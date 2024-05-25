@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :null_session
 
-  before_action :authenticate_request
+  # before_action :authenticate_request
 
   skip_before_action :verify_authenticity_token
 
@@ -16,6 +16,9 @@ class ApplicationController < ActionController::Base
     @current_user = authorize_request
     render json: { error: 'Not Authorized' }, status: 401 unless @current_user
   end
+  # def authenticate_admin_user!
+  #   true
+  # end
 
   def authorize_request
     header = request.headers['Authorization']
