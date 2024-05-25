@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import { AppContext } from "../../store/context.jsx";
@@ -81,6 +81,12 @@ const SignUpPage = () => {
                 <span className="icon-arrow" />
               </button>
             </div>
+            <p>
+              if you dont have an account, please{" "}
+              <Link to="/signup" style={{ color: "blue" }}>
+                register
+              </Link>
+            </p>
           </form>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
 import { AppContext } from "../../store/context";
@@ -12,8 +12,9 @@ import delIcon from "../../assets/img/icons/del.svg";
 import "./index.scss";
 
 const BasketPage = () => {
+  const navigate = useNavigate();
   const { t } = useTranslation();
-  const { products, selectedProduct, setSelectedProduct } = useContext(AppContext);
+  const { products, selectedProduct, setSelectedProduct, isAuth } = useContext(AppContext);
 
   const handlePlusCounter = (productId) => {
     const updatedSelectedProducts = selectedProduct.map((product) => {
@@ -70,6 +71,10 @@ const BasketPage = () => {
 
     return totalItems;
   };
+
+  useEffect(() => {
+    if (!isAuth) navigate("/signin");
+  }, [isAuth, navigate]);
 
   useEffect(() => {
     const selectedProductFromCookie = Cookies.get("selectedProduct");

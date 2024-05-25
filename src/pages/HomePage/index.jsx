@@ -1,4 +1,5 @@
 import { useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { AppContext } from "../../store/context";
 import categories from "../../utils/categories";
@@ -12,7 +13,12 @@ import ProductSlider from "../../components/ProductSlider";
 import "./index.scss";
 
 const HomePage = () => {
-  const { products } = useContext(AppContext);
+  const { products, isAuth } = useContext(AppContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isAuth) navigate("/signin");
+  }, [isAuth, navigate]);
 
   useEffect(() => {
     (function ibg() {

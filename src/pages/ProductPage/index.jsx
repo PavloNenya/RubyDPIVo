@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useContext, useEffect, useMemo, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Cookies from "js-cookie";
 import { useTranslation } from "react-i18next";
 
@@ -30,16 +30,16 @@ export const ProductPage = () => {
   const [productById, setProductById] = useState({});
   const [productMaterialAndCare, setProductMaterialAndCare] = useState({});
 
+  const navigate = useNavigate();
   const { t } = useTranslation();
-  const {
-    products,
-    selectedProduct,
-    setSelectedProduct,
-    selectedSize,
-    setSelectedSize,
-  } = useContext(AppContext);
+  const { products, selectedProduct, setSelectedProduct, selectedSize, setSelectedSize, isAuth } =
+    useContext(AppContext);
 
   const { productId } = useParams();
+
+  useEffect(() => {
+    if (!isAuth) navigate("/signin");
+  }, [isAuth, navigate]);
 
   useEffect(() => {
     getProductInstancesAndSizes(productId).then((data) => {
@@ -48,9 +48,7 @@ export const ProductPage = () => {
   }, [productId]);
 
   useEffect(() => {
-    getMaterialAndCareOfProduct(productById?.category?.id).then((data) =>
-      setProductMaterialAndCare(data)
-    );
+    getMaterialAndCareOfProduct(productById?.category?.id).then((data) => setProductMaterialAndCare(data));
   }, [productById?.category?.id]);
 
   useEffect(() => {
@@ -77,9 +75,7 @@ export const ProductPage = () => {
   };
 
   const handleAddButtonItem = () => {
-    const existingProductIndex = selectedProduct.findIndex(
-      (item) => item.id === productId
-    );
+    const existingProductIndex = selectedProduct.findIndex((item) => item.id === productId);
 
     let updatedSelectedProduct = [...selectedProduct];
 
@@ -100,11 +96,8 @@ export const ProductPage = () => {
   };
 
   const images = useMemo(
-    () =>
-      Array.isArray(productById?.images)
-        ? [productById.main_photo_id, ...productById.images]
-        : [],
-    [productById.images, productById.main_photo_id]
+    () => (Array.isArray(productById?.images) ? [productById.main_photo_id, ...productById.images] : []),
+    [productById.images, productById.main_photo_id],
   );
 
   const tabs = [
@@ -136,24 +129,15 @@ export const ProductPage = () => {
                 <div className="product-page__top-right">
                   <div className="product-page__information">
                     <div className="product-page__description">
-                      <p className="product-page__producer title-5">
-                        {productById?.producer?.name}
-                      </p>
-                      <a
-                        href="/url-до-сторінки-з-товаром-4"
-                        className="product-page__title"
-                      >
+                      <p className="product-page__producer title-5">{productById?.producer?.name}</p>
+                      <a href="/url-до-сторінки-з-товаром-4" className="product-page__title">
                         {productById?.name}
                       </a>
-                      <p className="product-page__sex">
-                        {productById?.category?.name}
-                      </p>
+                      <p className="product-page__sex">{productById?.category?.name}</p>
                     </div>
 
                     <div className="product-page__price">
-                      <p className="product-page__price-cost">
-                        {productById?.price && `${productById.price}$`}
-                      </p>
+                      <p className="product-page__price-cost">{productById?.price && `${productById.price}$`}</p>
                       <span className="product-page__price-cost-sale title-5">
                         {productById?.price && `${productById.price + 120}$`}
                       </span>
@@ -167,15 +151,8 @@ export const ProductPage = () => {
                           <div
                             key={productInstanceInfo.size_name}
                             className={`product-page__size ${
-                              selectedSize.size_name ===
-                              productInstanceInfo.size_name
-                                ? "checked"
-                                : ""
-                            } ${
-                              productInstanceInfo.present === 0
-                                ? "disabled"
-                                : ""
-                            }`}
+                              selectedSize.size_name === productInstanceInfo.size_name ? "checked" : ""
+                            } ${productInstanceInfo.present === 0 ? "disabled" : ""}`}
                             onClick={() => {
                               if (productInstanceInfo.present !== 0) {
                                 setZeroSizes(false);
@@ -193,10 +170,7 @@ export const ProductPage = () => {
                           className={`button button_lg button_default button_authorization ${
                             isClicked ? "clicked" : ""
                           }`}
-                          onClick={() =>
-                            !zeroSizes &&
-                            (handleAddButtonItem(), setIsClicked(true))
-                          }
+                          onClick={() => !zeroSizes && (handleAddButtonItem(), setIsClicked(true))}
                         >
                           {isClicked ? "Added to cart" : "Buy Now"}
 
@@ -213,37 +187,19 @@ export const ProductPage = () => {
                       </div>
 
                       <div className="product-page__dropdowns">
-                        <select
-                          className="product-page__ship-wrapper"
-                          id="size"
-                        >
-                          <option
-                            className="product-page__ship"
-                            value="Shipping & Payment"
-                          >
+                        <select className="product-page__ship-wrapper" id="size">
+                          <option className="product-page__ship" value="Shipping & Payment">
                             {t("product.shipping")}
                           </option>
-                          <option
-                            className="product-page__ship"
-                            value="Check avaibility in store"
-                          >
+                          <option className="product-page__ship" value="Check avaibility in store">
                             2
                           </option>
                         </select>
-                        <select
-                          className="product-page__ship-wrapper"
-                          id="size"
-                        >
-                          <option
-                            className="product-page__ship"
-                            value="Shipping & Payment"
-                          >
+                        <select className="product-page__ship-wrapper" id="size">
+                          <option className="product-page__ship" value="Shipping & Payment">
                             {t("product.avaibility")}
                           </option>
-                          <option
-                            className="product-page__ship"
-                            value="Check avaibility in store"
-                          >
+                          <option className="product-page__ship" value="Check avaibility in store">
                             2
                           </option>
                         </select>
@@ -263,14 +219,9 @@ export const ProductPage = () => {
                     <div className="product-page__tabs-buttons-wrapper">
                       <div className="product-page__tabs-buttons">
                         {tabs.map((tab, index) => (
-                          <div
-                            key={index}
-                            className="product-page__tabs-button"
-                          >
+                          <div key={index} className="product-page__tabs-button">
                             <div
-                              className={`${"product-page__tablink"} ${
-                                index === activeTab ? "active" : ""
-                              }`}
+                              className={`${"product-page__tablink"} ${index === activeTab ? "active" : ""}`}
                               onClick={() => setActiveTab(index)}
                             >
                               {tab.title}

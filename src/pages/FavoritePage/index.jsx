@@ -1,5 +1,6 @@
 import { useContext, useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 import { AppContext } from "../../store/context";
 
@@ -11,8 +12,13 @@ import ProductCard from "../../components/ProductCard";
 import "./index.scss";
 
 const FavoritePage = () => {
+  const navigate = useNavigate();
   const { t } = useTranslation();
-  const { likedProducts, setLikedProducts } = useContext(AppContext);
+  const { likedProducts, setLikedProducts, isAuth } = useContext(AppContext);
+
+  useEffect(() => {
+    if (!isAuth) navigate("/signin");
+  }, [isAuth, navigate]);
 
   useEffect(() => {
     setLikedProducts([]);
@@ -30,19 +36,13 @@ const FavoritePage = () => {
           <div className="products__main">
             <div className="products__title-wrapper">
               <h4 className="products__title">{t("favourite.title")}</h4>
-              <span className="products__subtitle title-5">
-                {likedProducts.length}
-              </span>
+              <span className="products__subtitle title-5">{likedProducts.length}</span>
             </div>
             <div className="products__content">
               <div className="products__cards">
                 {Array.isArray(likedProducts) &&
                   likedProducts.map((product) => (
-                    <ProductCard
-                      key={product.id}
-                      product={product}
-                      classType="products"
-                    />
+                    <ProductCard key={product.id} product={product} classType="products" />
                   ))}
               </div>
             </div>

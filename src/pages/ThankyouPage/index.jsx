@@ -1,12 +1,21 @@
-import { Link } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+
+import { AppContext } from "../../store/context";
 
 import backToHome from "../../assets/img/checkout/backToHome.svg";
 
 import "./index.scss";
 
 export const ThankyouPage = () => {
+  const navigate = useNavigate();
   const { t } = useTranslation();
+  const { isAuth } = useContext(AppContext);
+
+  useEffect(() => {
+    if (!isAuth) navigate("/signin");
+  }, [isAuth, navigate]);
 
   return (
     <main className="page">
@@ -19,9 +28,7 @@ export const ThankyouPage = () => {
                 <div className="thankyou__infoblock-top">
                   <div className="thankyou__subtitle">
                     <p>{t("thankyou.order")} #17150810</p>
-                    <p className="thankyou__sub title-5">
-                      {t("thankyou.details")}
-                    </p>
+                    <p className="thankyou__sub title-5">{t("thankyou.details")}</p>
                   </div>
                 </div>
 

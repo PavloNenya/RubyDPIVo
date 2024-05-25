@@ -1,12 +1,21 @@
 import { useContext, useEffect, useState } from "react";
-import "./index.scss";
-import { getOldProfile, updateProfile } from "../../api/profile";
+import { useNavigate } from "react-router-dom";
+
 import { AppContext } from "../../store/context";
 
+import { getOldProfile, updateProfile } from "../../api/profile";
+
+import "./index.scss";
+
 const UserProfile = () => {
-  const { user, setUser } = useContext(AppContext);
+  const navigate = useNavigate();
+  const { user, setUser, isAuth } = useContext(AppContext);
   const [updateUser, setUpdateUser] = useState({});
   const [isEditing, setIsEditing] = useState(false);
+
+  useEffect(() => {
+    if (!isAuth) navigate("/signin");
+  }, [isAuth, navigate]);
 
   useEffect(() => {
     getOldProfile()
@@ -80,10 +89,7 @@ const UserProfile = () => {
                   <strong>Apartment:</strong> {user?.apartment}
                 </p>
               </div>
-              <button
-                className="button button_lg button_default"
-                onClick={handleEditClick}
-              >
+              <button className="button button_lg button_default" onClick={handleEditClick}>
                 Edit
               </button>
             </div>
@@ -116,10 +122,7 @@ const UserProfile = () => {
                 />
               </div>
               <div className="profile__form-group">
-                <label
-                  className="profile__label title-5"
-                  htmlFor="phone_number"
-                >
+                <label className="profile__label title-5" htmlFor="phone_number">
                   Phone Number:
                 </label>
                 <input
@@ -197,10 +200,7 @@ const UserProfile = () => {
                 />
               </div>
               <div className="form__button button-wrapper">
-                <button
-                  className="button button_lg button_default"
-                  type="submit"
-                >
+                <button className="button button_lg button_default" type="submit">
                   Save
                 </button>
               </div>
